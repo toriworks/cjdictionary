@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mabatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hyonga.dictionary.dao.HeritageMapper">
+
+    <!-- 문화재 검색 -->
+    <select id="searchHeritage"
+            parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchResult">
+        SELECT a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode
+        FROM TEntry a, TEntryUCI b
+        WHERE 1=1
+        AND a.Idx = b.EntryIdx
+         <if test="entryTitle != null">
+        AND (a.EntryTitle LIKE '%'+#{entryTitle}+'%' OR a.Tag LIKE '%'+#{entryTitle}+'%')
+         </if>
+        <if test="munitidx != ''">
+        AND MUnitIdx = #{munitidx}
+        </if>
+        <if test="munitidx ==''">
+        AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
+        </if>
+        ORDER BY a.EntryTitle ASC
+    </select>
+
+</mapper>

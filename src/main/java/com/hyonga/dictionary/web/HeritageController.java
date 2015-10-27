@@ -35,7 +35,6 @@ public class HeritageController {
     public String heritageThemePage(Map<String, Object> model) {
         logger.debug("heritageThemePage() is executed!");
 
-
         return "heritage_theme";
     }
 
@@ -89,13 +88,29 @@ public class HeritageController {
     }
 
     /**
+     * 문화유산 테마별 자료 상세 페이지
+     * @param idx
+     * @return
+     */
+    @RequestMapping(value = "/heritage_view.do", method = RequestMethod.GET)
+    public ModelAndView heritageResearchDetail(String idx) {
+        logger.debug("heritageResearchDetail() is executed!");
+        ModelAndView mav = new ModelAndView();
+
+        // TODO :
+
+        mav.setViewName("heritage_view");
+        return mav;
+    }
+
+    /**
      * 문화유산 기획자료 상세 페이지
      * @param idx
      * @return
      */
     @RequestMapping(value = "/heritage_view2.do", method = RequestMethod.GET)
-    public ModelAndView heritageResearchDetail(String idx) {
-        logger.debug("heritageResearchDetail() is executed!");
+    public ModelAndView heritageResearchDetail2(String idx) {
+        logger.debug("heritageResearchDetail2() is executed!");
         ModelAndView mav = new ModelAndView();
 
         logger.debug("문화유산 기획자료 파라미터 idx : " + idx + "<<END");
@@ -172,10 +187,17 @@ public class HeritageController {
             logger.debug("문화유산 기획자료 - heritageSearchEntryUCIResult is null");
         }
 
-
         mav.setViewName("heritage_view2");
         return mav;
     }
+
+    @RequestMapping(value = "/heritage_list.do", method = RequestMethod.GET)
+    public String heritageListPage(Map<String, Object> model) {
+        logger.debug("heritageListPage() is executed!");
+
+        return "heritage_list";
+    }
+
 
     /**
      * 검색어 변경 출력을 위한 문자열 변경

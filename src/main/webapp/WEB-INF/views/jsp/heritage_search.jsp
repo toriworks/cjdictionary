@@ -46,8 +46,8 @@
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="#">테마 별 문화유산</a>
-				<a href="#">기획자료</a>
+				<a href="heritage_theme.do">테마 별 문화유산</a>
+				<a href="heritage_research.do">기획자료</a>
 				<a href="#" class="focus">문화유산 검색</a>
 			</div>
 		</div>
@@ -85,20 +85,12 @@
 						<dt class="nextLine">시대</dt>
 						<dd><select name="" id="">
 								<option value="전체">전체</option>
-								<option value="시대">시대</option>
-								<option value="시대">시대</option>
-								<option value="시대">시대</option>
-								<option value="시대">시대</option>
 							</select>
 						</dd>
 
 						<dt>지역</dt>
 						<dd><select name="" id="">
 								<option value="전체">전체</option>
-								<option value="지역">지역</option>
-								<option value="지역">지역</option>
-								<option value="지역">지역</option>
-								<option value="지역">지역</option>
 							</select>
 						</dd>
 					</dl>

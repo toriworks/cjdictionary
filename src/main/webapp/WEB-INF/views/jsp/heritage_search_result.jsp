@@ -40,8 +40,8 @@ request.setCharacterEncoding("UTF-8");
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_view.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="heritage_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_view.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -49,9 +49,9 @@ request.setCharacterEncoding("UTF-8");
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="#">테마 별 문화유산</a>
-				<a href="#">기획자료</a>
-				<a href="heritage_search.do" class="focus">문화유산 검색</a>
+				<a href="heritage_theme.do">테마 별 문화유산</a>
+				<a href="heritage_research.do">기획자료</a>
+				<a href="#" class="focus">문화유산 검색</a>
 			</div>
 		</div>
 	</div>
@@ -88,20 +88,12 @@ request.setCharacterEncoding("UTF-8");
 						<dt class="nextLine">시대</dt>
 						<dd><select name="" id="">
 								<option value="전체">전체</option>
-								<option value="시대">시대</option>
-								<option value="시대">시대</option>
-								<option value="시대">시대</option>
-								<option value="시대">시대</option>
 							</select>
 						</dd>
 
 						<dt>지역</dt>
 						<dd><select name="" id="">
 								<option value="전체">전체</option>
-								<option value="지역">지역</option>
-								<option value="지역">지역</option>
-								<option value="지역">지역</option>
-								<option value="지역">지역</option>
 							</select>
 						</dd>
 					</dl>
@@ -111,7 +103,7 @@ request.setCharacterEncoding("UTF-8");
 
 				<div class="searchResultTab">
 					<a href="#" class="selTab">“<c:out value="${refineEntryTitle}"/>” 검색 결과 (<c:out value="${totalCount}"/>건)</a>
-					<a href="heritage_search_img.html">“<c:out value="${refineEntryTitle}"/>” 관련 이미지 검색결과 (1,123건)</a>
+					<a href="heritage_search_img.do">“<c:out value="${refineEntryTitle}"/>” 관련 이미지 검색결과 (1,123건)</a>
 				</div>
 
 				<div class="board boardList"><!-- board -->
@@ -137,8 +129,8 @@ request.setCharacterEncoding("UTF-8");
 							<c:set var="i" value="${i + 1}" scope="page"/>
 							<tr>
 								<td><c:out value="${i}" /></td>
-								<td><a href="heritage_view.html">사적 제 32호</a></td>
-								<td><a href="heritage_view.html"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitle}" /></a></td>
+								<td><a href="heritage_view.do">사적 제 32호</a></td>
+								<td><a href="heritage_view.do"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitle}" /></a></td>
 								<td><c:out value="${lists.ucicode}" /></td>
 							</tr>
 						</c:forEach>

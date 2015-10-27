@@ -27,77 +27,67 @@
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="heritage_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
 				<a href="biology_view.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
 			<h2><img src="${croot}images/common/logo_uci.png" alt="UCI"></h2>
 		</div>
+		<div class="subNav"><!-- 문화유산 // sub menu -->
+			<div class="section">
+				<a href="heritage_theme.do">테마 별 문화유산</a>
+				<a href="#" class="focus">기획자료</a>
+				<a href="heritage_search.do">문화유산 검색</a>
+			</div>
+		</div>
 	</div>
 
 	<div id="container">
-		<div id="mainVisual" style="background:#b2eef0 url(${croot}images/main/mainVisual_img.png) no-repeat center 59px;">
-			<div class="section">
-				<a href="heritage_theme.do">문화유산 GO</a>
-				<a href="biology_view.do">생물정보 GO</a>
+		<div class="subTit">
+			<div class="section menuCulture">
+				<p>기획자료</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>기획자료</span></div>
 			</div>
 		</div>
-		<!-- 문화유산, 생물정보 tab -->
-		<div id="mainContent">
+		<div class="subCnt">
 			<div class="section">
-				<ul class="tab">
-					<li class="active"><a href="#heritageBox">문화유산</a></li>
-					<li><a href="#biologyBox">생물정보</a></li>
-				</ul>
-			</div>
-			<div id="heritageBox" class="mainBox">
-				<div class="section">
-					<div class="heritageSearch">
-						<p>문화재청에서 제공하는 <strong>4,500여건</strong>의 문화유산 정보를 검색하실 수 있습니다.</p>
-						<input type="text" class="searchText" /><button>문화유산 검색</button>
-					</div>
+				<div class="subDesc">
+					테마 별 문화유산에 대한 설명 영역
 				</div>
-			</div>
-			<div id="biologyBox" class="mainBox">
-				<div class="section">
-					<div class="heritageSearch">
-						<p><strong>24,500여건</strong>의 생물정보 정보를 검색하실 수 있습니다.</p>
-						<input type="text" class="searchText" /><button>생물정보 검색</button>
-					</div>
-				</div>
-			</div>
-			<div class="themeHeritage">
-				<div class="section">
-					<p class="sectionTit theme">테마 별 문화유산 <a class="moreBtn" href="heritage_theme.do">테마 전체보기 ▶</a></p>
 
-					<div class="themeT bg1 first">
-						<p>초등학생이 꼭 알아야 할 국보 10가지</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-					</div>
-					<div class="themeT bg2">
-						<p>중학교 1학년 역사교과서에 나오는 문화재</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-					</div>
-					<div class="themeT bg3">
-						<p>광복 70주년 독립운동 문화유산</p>
-						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span>
-					</div>
-				</div>
-			</div>
-			<!-- 문화재 학습자료 -->
-			<div class="mainStudy">
-				<div class="section">
-					<p class="sectionTit culture">문화재 학습자료 <a class="moreBtn" href="heritage_research.do">기획자료 전체보기 ▶</a></p>
+				<div class="cultureList">
 					<div class="cultureT first">
-						<a href="#"><img src="${croot}images/@culture1.png" alt=""> <span>세계문화유산 수원화성</span></a>
+						<a href="heritage_view2.do?idx=57412"><img src="${croot}images/108_1.jpg" alt=""> <span>무령왕릉으로 보는 백제의 모습</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="#"><img src="${croot}images/@culture2.png" alt=""> <span>일본의 침략에 맞선 임진왜란</span></a>
+						<a href="heritage_view2.do?idx=64126"><img src="${croot}images/108_2.jpg" alt=""> <span>신라의 불교문화</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="#"><img src="${croot}images/@culture3.png" alt=""> <span>오백년 역사가 잠든 조선왕릉</span></a>
+						<a href="heritage_view2.do?idx=64127"><img src="${croot}images/109_1.jpg" alt=""> <span>고인돌</span></a>
 					</div>
+					<div class="cultureT first">
+						<a href="heritage_view2.do?idx=64128"><img src="${croot}images/109_2.jpg" alt=""> <span>고려청자</span></a>
+					</div>
+					<div class="cultureT">
+						<a href="heritage_view2.do?idx=64129"><img src="${croot}images/109_3.jpg" alt=""> <span>고려 팔만대장경</span></a>
+					</div>
+					<div class="cultureT">
+						<a href="heritage_view2.do?idx=64134"><img src="${croot}images/110_1.jpg" alt=""> <span>기념비로 살펴보는 고구려 영토</span></a>
+					</div>
+					<div class="cultureT first">
+						<a href="heritage_view2.do?idx=64155"><img src="${croot}images/123_1.jpg" alt=""> <span>일본의 침략에 맞선 임진왜란</span></a>
+					</div>
+					<div class="cultureT">
+						<a href="heritage_view2.do?idx=64156"><img src="${croot}images/123_2.jpg" alt=""> <span>오백년 역사가 잠든 조선왕릉</span></a>
+					</div>
+					<div class="cultureT">
+						<a href="heritage_view2.do?idx=64172"><img src="${croot}images/132_1.jpg" alt=""> <span>세계문화유산 수원 화성</span></a>
+					</div>
+					<div class="cultureT first">
+						<a href="heritage_view2.do?idx=81975"><img src="${croot}images/232_1.jpg" alt=""> <span>경복궁</span></a>
+					</div>
+
 				</div>
 			</div>
 		</div>

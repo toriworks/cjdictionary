@@ -58,4 +58,8 @@
         <param-value>/WEB-INF/spring-core-config.xml, /WEB-INF/spring-mvc-config.xml, /WEB-INF/spring-db-config.xml</param-value>
     </context-param>
 
+    <welcome-file-list>
+        <welcome-file>main.do</welcome-file>
+    </welcome-file-list>
+
 </web-app>

@@ -1,3 +1,6 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<spring:url value="/resources/" var="croot" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" />
 <meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, initial-scale=0.38, maximum-scale=2, user-scalable=yes" />
 <title>천재학습백과 공유저작물</title>
-<link rel="stylesheet" href="./common/css/common.css" type="text/css" />
-<script type="text/javascript" src="./common/js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="./common/js/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="./common/js/jquery-ui-1.8.23.custom.min.js"></script>
-<script type="text/javascript" src="./common/js/common.js"></script>
+<link rel="stylesheet" href="${croot}css/common.css" type="text/css" />
+<script type="text/javascript" src="${croot}js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" src="${croot}js/common.js"></script>
 </head>
 
 <body>
@@ -22,20 +25,20 @@
 <div id="wrap">
 	<div id="header">
 		<div class="section">
-			<h1><a href="main.jsp"><img src="./images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
+			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.jsp" class="page"><img src="./images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_view.jsp"><img src="./images/common/gnb_02.png" alt="생물정보" /></a>
-				<a href="intro_page.jsp"><img src="./images/common/gnb_03.png" alt="공유저작물 소개" /></a>
-				<a href="uci_page.jsp"><img src="./images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
+				<a href="heritage_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_view.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
+				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
-			<h2><img src="./images/common/logo_uci.png" alt="UCI"></h2>
+			<h2><img src="${croot}images/common/logo_uci.png" alt="UCI"></h2>
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="#">테마 별 문화유산</a>
+				<a href="heritage_theme.do">테마 별 문화유산</a>
 				<a href="#" class="focus">기획자료</a>
-				<a href="#">문화유산 검색</a>
+				<a href="heritage_search.do">문화유산 검색</a>
 			</div>
 		</div>
 	</div>
@@ -44,7 +47,7 @@
 		<div class="subTit">
 			<div class="section menuCulture">
 				<p>기획자료</p>
-				<div class="breadcrumbs"><a href="main.jsp">HOME</a><a href="#">문화유산</a><span>기획자료</span></div>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>기획자료</span></div>
 			</div>
 		</div>
 		<div class="subBody">
@@ -54,10 +57,10 @@
 					<!-- <div class="themeTit">
 						<p>광복 70주년 독립운동 문화유산</p>
 					</div> -->
-					<h2>서울 숭례문</h2>
+					<h2>${entry.entryTitle}</h2>
 					<p>조선시대 서울도성을 둘러싸고 있던 성곽의 정문으로 원래 이름은 숭례문이며, 남쪽에 있다고 해서 남대문이라고도 불렀다. 현재 서울에 남아 있는 목조 건물 중 가장 오래된 것으로 태조 5년(1396)에 짓기 시작하여 태조 7년(1398)에 완성하였다. </p>
 					<figure>
-						<img src="./images/@pic01.jpg" alt="" />
+						<img src="${croot}images/@pic01.jpg" alt="" />
 					</figure>
 					<p>이 건물은 세종 30년(1448)에 고쳐 지은 것인데 1961∼1963년 해체·수리 때 성종 10년 (1479)에도 큰 공사가 있었다는 사실이 밝혀졌다. 이후, 2008년 2월 10일 숭례문 방화 화재로 <a class="term" id="term2">누각</a> 2층 지붕이 붕괴되고 1층 지붕도 일부 소실되는 등 큰 피해를 입었으며, 5년 2개월에 걸친 복원공사 끝에 2013년 5월 4일 준공되어 일반에 공개되고 있다.<br />
 					이 문은 돌을 높이 쌓아 만든 <a class="term" id="term3">석축</a> 가운데에 무지개 모양의 <a class="term" id="term1">홍예문</a>을 두고, 그 위에 앞면 5칸·옆면 2칸 크기로 지은 <a class="term" id="term2">누각</a>형 2층 건물이다. 지붕은 앞면에서 볼 때 사다리꼴 형태를 하고 있는데, 이러한 지붕을 우진각지붕이라 한다. 지붕 처마를 받치기 위해 기둥 위부분에 장식하여 짠 구조가 기둥 위뿐만 아니라 기둥 사이에도 있는 다포 양식으로, 그 형태가 곡이 심하지 않고 짜임도 건실해 조선 전기의 특징을 잘 보여주고 있다.<br />
@@ -69,7 +72,7 @@
 				</div>
 				<!-- 우측 본문 -->
 				<div class="descSection">
-					<h2 class="uci">I421: C001-01-00001 <button class="button type2">Info</button></h2>
+					<h2 class="uci"><c:out value="${uciresult.uciCode}" /> <button class="button type2">Info</button></h2>
 
 					<h3>개요</h3>
 					<div class="boardTb">
@@ -82,39 +85,39 @@
 							<tbody>
 								<tr>
 									<th>종목</th>
-									<td>국보 제 1호</td>
+									<td>${informations[0].outlineData}</td>
 								</tr>
 								<tr>
 									<th>명칭</th>
-									<td>서울 숭례문 (서울 崇禮門)</td>
+									<td>${entry.entryTitle} <c:if test="${entry.entryTitleC != ''}">(<c:out value="${entry.entryTitleC}" />)</c:if></td>
 								</tr>
 								<tr>
 									<th>분류</th>
-									<td>유적건조물 / 정치국방 / 성 / 성곽시설</td>
+									<td>${informations[1].outlineData}</td>
 								</tr>
 								<tr>
 									<th>수량/면적</th>
-									<td>1동</td>
+									<td>${informations[2].outlineData}</td>
 								</tr>
 								<tr>
 									<th>지정(등록)일</th>
-									<td>1962.12.20</td>
+									<td>${informations[3].outlineData}</td>
 								</tr>
 								<tr>
 									<th>소재지</th>
-									<td>서울 중구 세종대로 40 (남대문로 4가)</td>
+									<td>${informations[4].outlineData}</td>
 								</tr>
 								<tr>
 									<th>시대</th>
-									<td>조선시대</td>
+									<td>${informations[5].outlineData}</td>
 								</tr>
 								<tr>
 									<th>소유자<br /><em>(소유단체)</em></th>
-									<td>국유</td>
+									<td>${informations[6].outlineData}</td>
 								</tr>
 								<tr>
 									<th>관리자<br /><em>(관리단체)</em></th>
-									<td>문화재청 숭례문관리소</td>
+									<td>${informations[7].outlineData}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -130,16 +133,13 @@
 								<col style="width:32%" />
 							</colgroup>
 							<tbody>
+							<c:forEach var="data_relations" items="${list_relations}">
 								<tr>
-									<th class="figure"><img src="./images/@pic03.jpg" alt=""></th>
-									<td>흥인지문</td>
-									<td>보물 제 1호</td>
+									<th class="figure"><img src="${croot}images/${data_relations.filename}" alt=""></th>
+									<td>${data_relations.entryTitle}</td>
+									<td>${data_relations.tag}</td>
 								</tr>
-								<tr>
-									<th class="figure"><img src="./images/@pic02.jpg" alt=""></th>
-									<td>경복궁 (景福宮)</td>
-									<td>사적 제 117호</td>
-								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -152,12 +152,13 @@
 								<col style="width:100%" />
 							</colgroup>
 							<tbody>
+							<c:set var="i" value="0" scope="page" />
+							<c:forEach var="data" items="${arr_chapterdata}">
 								<tr>
-									<td class="subject">중1 &gt; 역사① &gt; 조선의 성립과 발전</td>
+									<td class="subject">${data}</td>
 								</tr>
-								<tr>
-									<td class="subject">고1 &gt; 역사① &gt; 조선 사회의 변동</td>
-								</tr>
+								<c:set var="i" value="${i + 1}" scope="page"/>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -172,11 +173,17 @@
 								<col style="width:33%" />
 							</colgroup>
 							<tbody>
+							<c:set var="j" value="0" scope="page" />
+							<c:forEach var="terms_data" items="${list_terms}">
+								<c:if test="${j mod 3 eq 0}">
 								<tr>
-									<td><a class="termWord" href="#term1pop">홍예문</a></td>
-									<td><a class="termWord" href="#term2pop">누각</a></td>
-									<td><a class="termWord" href="#term3pop">석축</a></td>
+								</c:if>
+									<td><a href="heritage_view2.do?idx=${list_terms.get(j).idx}">${list_terms.get(j).entryTitle}</a></td>
+								<c:if test="${j mod 3 eq 0}">
 								</tr>
+								</c:if>
+								<c:set var="j" value="${j + 1}" scope="page"/>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -187,7 +194,7 @@
 	</div>
 	<div id="footer">
 		<div class="section">
-			<div class="logo"><img src="./images/common/logo_footer.png" alt="천재교육"></div>
+			<div class="logo"><img src="${croot}images/common/logo_footer.png" alt="천재교육"></div>
 			<span>(주)천재교육</span>
 			<span>대표 : 최용준</span>
 			<span> 주소 : 서울특별시 금천구 가산로 9길 54</span>
@@ -202,26 +209,26 @@
 	<!-- 용어 레이어 -->
 	<div id="term1pop" style="display:none;">
 		<div class="term miniPop">
-			<figure><img src="./images/@pic02.jpg" alt=""></figure>
+			<figure><img src="${croot}images/@pic02.jpg" alt=""></figure>
 			<p>무지개처럼 생긴 문이라는 뜻의 홍예문은 철도 건설을 담당하고 있던 일본 공병대가  1906년 착공하여 1908년에 준공하였다.</p>
 		</div>
-		<img src="./images/bg_po.png" class="pointDot">
+		<img src="${croot}images/bg_po.png" class="pointDot">
 	</div>
 
 	<div id="term2pop" style="display:none;">
 		<div class="term miniPop">
-			<figure><img src="./images/@pic03.jpg" alt=""></figure>
+			<figure><img src="${croot}images/@pic03.jpg" alt=""></figure>
 			<p>누각은..........누각은.........</p>
 		</div>
-		<img src="./images/bg_po.png" class="pointDot">
+		<img src="${croot}images/bg_po.png" class="pointDot">
 	</div>
 
 	<div id="term3pop" style="display:none;">
 		<div class="term miniPop">
-			<figure><img src="./images/@pic03.jpg" alt=""></figure>
+			<figure><img src="${croot}images/@pic03.jpg" alt=""></figure>
 			<p>석축 석축석축석축 용어 설명</p>
 		</div>
-		<img src="./images/bg_po.png" class="pointDot">
+		<img src="${croot}images/bg_po.png" class="pointDot">
 	</div>
 </div>
 

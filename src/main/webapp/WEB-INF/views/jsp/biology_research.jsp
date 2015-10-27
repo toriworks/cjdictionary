@@ -28,75 +28,64 @@
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
 				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_view.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="biology_view.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
 			<h2><img src="${croot}images/common/logo_uci.png" alt="UCI"></h2>
 		</div>
+		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
+			<div class="section">
+				<a href="biology_view.do">테마 별 생물정보</a>
+				<a href="#" class="focus">학습자료</a>
+				<a href="biology_search.do">생물정보 검색</a>
+			</div>
+		</div>
 	</div>
 
 	<div id="container">
-		<div id="mainVisual" style="background:#b2eef0 url(${croot}images/main/mainVisual_img.png) no-repeat center 59px;">
-			<div class="section">
-				<a href="heritage_theme.do">문화유산 GO</a>
-				<a href="biology_view.do">생물정보 GO</a>
+		<div class="subTit">
+			<div class="section menuBio">
+				<p>생물정보 검색</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">생물정보</a><span>학습자료</span></div>
 			</div>
 		</div>
-		<!-- 문화유산, 생물정보 tab -->
-		<div id="mainContent">
+		<div class="subCnt">
 			<div class="section">
-				<ul class="tab">
-					<li class="active"><a href="#heritageBox">문화유산</a></li>
-					<li><a href="#biologyBox">생물정보</a></li>
-				</ul>
-			</div>
-			<div id="heritageBox" class="mainBox">
-				<div class="section">
-					<div class="heritageSearch">
-						<p>문화재청에서 제공하는 <strong>4,500여건</strong>의 문화유산 정보를 검색하실 수 있습니다.</p>
-						<input type="text" class="searchText" /><button>문화유산 검색</button>
-					</div>
+				<div class="subDesc">
+					테마 별 문화유산에 대한 설명 영역
 				</div>
-			</div>
-			<div id="biologyBox" class="mainBox">
-				<div class="section">
-					<div class="heritageSearch">
-						<p><strong>24,500여건</strong>의 생물정보 정보를 검색하실 수 있습니다.</p>
-						<input type="text" class="searchText" /><button>생물정보 검색</button>
-					</div>
-				</div>
-			</div>
-			<div class="themeHeritage">
-				<div class="section">
-					<p class="sectionTit theme">테마 별 문화유산 <a class="moreBtn" href="heritage_theme.do">테마 전체보기 ▶</a></p>
 
-					<div class="themeT bg1 first">
-						<p>초등학생이 꼭 알아야 할 국보 10가지</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-					</div>
-					<div class="themeT bg2">
-						<p>중학교 1학년 역사교과서에 나오는 문화재</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-					</div>
-					<div class="themeT bg3">
-						<p>광복 70주년 독립운동 문화유산</p>
-						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span>
-					</div>
-				</div>
-			</div>
-			<!-- 문화재 학습자료 -->
-			<div class="mainStudy">
-				<div class="section">
-					<p class="sectionTit culture">문화재 학습자료 <a class="moreBtn" href="heritage_research.do">기획자료 전체보기 ▶</a></p>
+				<div class="cultureList">
 					<div class="cultureT first">
-						<a href="#"><img src="${croot}images/@culture1.png" alt=""> <span>세계문화유산 수원화성</span></a>
+						<a href="heritage_view2.do?idx=78872"><img src="${croot}images/173_1.jpg" alt=""> <span>연못이나 강가에 사는 식물</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="#"><img src="${croot}images/@culture2.png" alt=""> <span>일본의 침략에 맞선 임진왜란</span></a>
+						<a href="heritage_view2.do?idx=78876"><img src="${croot}images/173_2.jpg" alt=""> <span>곤충의 먹이</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="#"><img src="${croot}images/@culture3.png" alt=""> <span>오백년 역사가 잠든 조선왕릉</span></a>
+						<a href="heritage_view2.do?idx=78879"><img src="${croot}images/183_1.jpg" alt=""> <span>여러 가지 식물의 한살이</span></a>
+					</div>
+					<div class="cultureT first">
+						<a href="heritage_view2.do?idx=78880"><img src="${croot}images/183_2.jpg" alt=""> <span>우리땅 독도의 생태계</span></a>
+					</div>
+					<div class="cultureT">
+						<a href="heritage_view2.do?idx=78881"><img src="${croot}images/184_1.jpg" alt=""> <span>희귀한 우리나라 꽃</span></a>
+					</div>
+					<div class="cultureT">
+						<a href="heritage_view2.do?idx=78882"><img src="${croot}images/184_2.jpg" alt=""> <span>식물이 자라는 데 필요한 조건</span></a>
+					</div>
+					<div class="cultureT first">
+						<a href="heritage_view2.do?idx=79246"><img src="${croot}images/214_1.jpg" alt=""> <span>곤충의 한살이</span></a>
+					</div>
+					<div class="cultureT">
+						<a href="heritage_view2.do?idx=79247"><img src="${croot}images/214_2.jpg" alt=""> <span>곤충들의 숨바꼭질</span></a>
+					</div>
+					<div class="cultureT">
+						<a href="heritage_view2.do?idx=79248"><img src="${croot}images/214_3.jpg" alt=""> <span>물에 사는 동물의 특징</span></a>
+					</div>
+					<div class="cultureT first">
+						<a href="heritage_view2.do?idx=79249"><img src="${croot}images/214_3.jpg" alt=""> <span>식물의 구조와 기능</span></a>
 					</div>
 				</div>
 			</div>

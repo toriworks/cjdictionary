@@ -36,9 +36,9 @@
 		</div>
 		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="#">테마 별 생물정보</a>
+				<a href="biology_view.do">테마 별 생물정보</a>
 				<a href="#">기획자료</a>
-				<a href="#" class="focus">생물정보 검색</a>
+				<a href="biology_search.do" class="focus">생물정보 검색</a>
 			</div>
 		</div>
 	</div>

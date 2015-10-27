@@ -37,7 +37,7 @@
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
 				<a href="#" class="focus">테마 별 문화유산</a>
-				<a href="#">기획자료</a>
+				<a href="heritage_research.do">기획자료</a>
 				<a href="heritage_search.do">문화유산 검색</a>
 			</div>
 		</div>

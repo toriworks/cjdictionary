@@ -4,6 +4,12 @@
 
 <mapper namespace="com.hyonga.dictionary.dao.HeritageMapper">
 
+    <resultMap id="mapInformations" type="java.util.HashMap">
+        <result javaType="java.lang.String" column="outlineIdx" property="outlineIdx" />
+        <result javaType="java.lang.String" column="outlineData" property="outlineData" />
+        <result javaType="java.lang.String" column="outlineName" property="outlineName" />
+    </resultMap>
+
     <!-- 문화재 검색 -->
     <select id="searchHeritage"
             parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
@@ -22,6 +28,64 @@
         AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
         </if>
         ORDER BY a.EntryTitle ASC
+    </select>
+
+
+    <!-- 문화유산 상세 기본 -->
+    <select id="searchHeritageBasic"
+            parameterType="java.lang.String"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchBasic">
+        SELECT recType, content
+        FROM TEntryData
+        WHERE entryIdx = #{entryIdx}
+        AND parentIdx=0
+        AND delFlag=0
+        ORDER BY sortNo ASC
+    </select>
+
+    <!-- 문화유산 상세 기본 추가 -->
+    <select id="searchHeritageEntry"
+            parameterType="java.lang.String"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchEntry">
+        SELECT idx, schoolIdx, munitIdx, entryTitle, entryTitleK, entryTitleE, entryTitleC, tag
+        FROM TEntry
+        WHERE idx = #{idx}
+    </select>
+
+    <!-- 문화유산 기획 상세(uci, 관련교과, 연관엔트리) -->
+    <select id="searchHeritageEntryUCI"
+            parameterType="java.lang.String"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchEntryUCIResult">
+        SELECT uciCode, chapterData, relationEntryData, termsData
+        FROM TEntryUCI
+        WHERE EntryIdx = #{entryIdx}
+    </select>
+
+    <!-- 문화유산 기획 상세(연관엔트리 타이틀, 이미지 1개), 용어 해설도 사용 가능 -->
+    <select id="searchHeritageRelations"
+            parameterType="java.util.Map"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchRelations">
+        SELECT
+            entryTitle,
+            idx,
+            tag,
+	        (SELECT top 1 filename FROM TFiledata b WHERE a.idx = b.entryidx) AS filename
+        FROM TEntry a
+        WHERE
+	        idx IN
+        <foreach item="item" index="index" collection="listIdx"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <!-- 개요 -->
+    <select id="selectHeritageInformation"
+            parameterType="java.lang.String"
+            resultMap="mapInformations">
+        SELECT outlineIdx, outlineData, outlineName
+        FROM TOutlineEntry A join TOutline B on A.OutlineIdx=B.Idx
+        WHERE EntryIdx = #{entryIdx}
     </select>
 
 </mapper>

@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -108,13 +111,16 @@ public class HeritageController {
             tempData = tempData.toUpperCase();
 
             if (tempData.equals("INDEXCONTENT")) {
-                basicIndexContent = tempData;
+                basicIndexContent = "<?xml version='1.0' encoding='UTF-8' ?><ROOT>" + listHeritageSearchBasic.get(o).getContent() + "</ROOT>";
             } else {
-                basicTag = tempData;
+                basicTag =  listHeritageSearchBasic.get(o).getContent();;
             }
         }
 
-        logger.debug(basicIndexContent);
+        HeritageBasicXML heritageBasicXML = this.getHeritageBasicXML(basicIndexContent);
+        mav.addObject("basic", heritageBasicXML);
+        //
+        logger.debug(heritageBasicXML.toString());
         logger.debug(basicTag);
 
         /////////////////////////////////////////////////////////////////////////////////////////
@@ -256,5 +262,62 @@ public class HeritageController {
         }
 
         return lastWord;
+    }
+
+    /**
+     * XML 문자열로부터 데이터를 얻음
+     * @param xml
+     * @return
+     */
+    private HeritageBasicXML getHeritageBasicXML(String xml) {
+        String bodyFirst = "";
+        String bodySecond = "";
+        String bodyImg = "";
+
+        // 문자열로 된 xml을 객체로 얻음
+        Document doc = Utility.convertStringToDocument(xml);
+        NodeList nodeLisfOfBasic = null;
+        Element elementOfBasic = null;
+
+        // 상단설명부 얻기
+        if (doc != null) {
+            nodeLisfOfBasic = doc.getElementsByTagName("BASIC");
+            elementOfBasic = (Element) nodeLisfOfBasic.item(0);
+            if (elementOfBasic != null) {
+                NodeList nodeListOfText = elementOfBasic.getElementsByTagName("TEXT");
+                Element elementOfText = (Element) nodeListOfText.item(0);
+                bodyFirst = elementOfText.getFirstChild().getNodeValue();
+                //
+                logger.debug("bodyFirst : " + bodyFirst);
+            }
+
+            // 하단설명부 얻기
+            if (nodeLisfOfBasic.getLength() > 1) {
+                Element elementOfSecondBasic = (Element) nodeLisfOfBasic.item(1);
+                NodeList nodeListOfSecondText = elementOfSecondBasic.getElementsByTagName("TEXT");
+                Element elementOfSecondText = (Element) nodeListOfSecondText.item(0);
+                bodySecond = elementOfSecondText.getFirstChild().getNodeValue();
+                //
+                logger.debug("bodySecond : " + bodySecond);
+            }
+
+            // 이미지 얻기
+            NodeList nodeListOfImgs = doc.getElementsByTagName("IMGS");
+            if (nodeListOfImgs.getLength() > 0) {
+                Element elementOfImgs = (Element) nodeListOfImgs.item(0);
+                NodeList nodeListOfFilename = elementOfImgs.getElementsByTagName("FILENAME");
+                Element elementOfFilename = (Element) nodeListOfFilename.item(0);
+                bodyImg = elementOfFilename.getFirstChild().getNodeValue();
+                //
+                logger.debug("bodyImg : " + bodyImg);
+            }
+        }
+
+        HeritageBasicXML heritageBasicXML = new HeritageBasicXML();
+        heritageBasicXML.setBodyFirst(bodyFirst);
+        heritageBasicXML.setBodySecond(bodySecond);
+        heritageBasicXML.setBodyImg(bodyImg);
+
+        return heritageBasicXML;
     }
 }

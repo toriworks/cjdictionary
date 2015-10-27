@@ -1,6 +1,6 @@
 package com.hyonga.dictionary.service;
 
-import com.hyonga.dictionary.common.HeritageSearchBasic;
+import com.hyonga.dictionary.domain.HeritageSearchBasic;
 import com.hyonga.dictionary.domain.*;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -52,8 +52,8 @@ public class HeritageServiceImpl implements IHeritageService {
     }
 
     @Override
-    public HeritageSearchBasic getHeritageSearchBasic(String entryIdx) {
-        return this.sqlSessionTemplate.selectOne(NAMESPACE + ".searchHeritageBasic", entryIdx);
+    public List<HeritageSearchBasic> listHeritageSearchBasic(String entryIdx) {
+        return this.sqlSessionTemplate.selectList(NAMESPACE + ".searchHeritageBasic", entryIdx);
     }
 
 }

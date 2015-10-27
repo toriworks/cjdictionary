@@ -1,11 +1,8 @@
 package com.hyonga.dictionary.service;
 
-import com.hyonga.dictionary.common.HeritageSearchBasic;
+import com.hyonga.dictionary.domain.HeritageSearchBasic;
 import com.hyonga.dictionary.domain.*;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +18,6 @@ public interface IHeritageService {
 
     public List<Object> listHeritageSearchInformations(String entryIdx);
 
-    public HeritageSearchBasic getHeritageSearchBasic(String entryIdx);
+    public List<HeritageSearchBasic> listHeritageSearchBasic(String entryIdx);
 
 }

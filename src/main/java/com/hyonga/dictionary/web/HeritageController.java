@@ -1,6 +1,6 @@
 package com.hyonga.dictionary.web;
 
-import com.hyonga.dictionary.common.HeritageSearchBasic;
+import com.hyonga.dictionary.domain.HeritageSearchBasic;
 import com.hyonga.dictionary.common.Utility;
 import com.hyonga.dictionary.domain.*;
 import com.hyonga.dictionary.service.IHeritageService;
@@ -99,9 +99,23 @@ public class HeritageController {
 
 
         /////////////////////////////////////////////////////////////////////////////////////////
-        HeritageSearchBasic heritageSearchBasic = iHeritageService.getHeritageSearchBasic(idx);
-        logger.debug(heritageSearchBasic.getIndexContent());
-        mav.addObject("basic", heritageSearchBasic);
+        // 엔트리 기본정보
+        List<HeritageSearchBasic> listHeritageSearchBasic = iHeritageService.listHeritageSearchBasic(idx);
+        String basicIndexContent = "";
+        String basicTag = "";
+        for (int o=0; o<listHeritageSearchBasic.size(); o++) {
+            String tempData = listHeritageSearchBasic.get(o).getRecType();
+            tempData = tempData.toUpperCase();
+
+            if (tempData.equals("INDEXCONTENT")) {
+                basicIndexContent = tempData;
+            } else {
+                basicTag = tempData;
+            }
+        }
+
+        logger.debug(basicIndexContent);
+        logger.debug(basicTag);
 
         /////////////////////////////////////////////////////////////////////////////////////////
         // 엔트리 기본정보 추가

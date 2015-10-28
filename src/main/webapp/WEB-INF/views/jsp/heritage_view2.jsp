@@ -14,6 +14,11 @@
 <script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
 <script type="text/javascript" src="${croot}js/common.js"></script>
+<script type="text/javascript">
+	goPage = function(url) {
+		location.href = url;
+	}
+</script>
 </head>
 
 <body>
@@ -69,7 +74,7 @@
 					2008년 숭례문 방화 사건(崇禮門放火事件)은 2008년 2월 10일 ~ 2월 11일 숭례문 건물이 방화로 타 무너진 사건이다. 화재는 2008년 2월 10일 오후 8시 40분 전후에 발생하여 다음날인 2008년 2월 11일 오전 0시 40분경 숭례문의 <a class="term" id="term2">누각</a> 2층 지붕이 붕괴하였고 이어 1층에도 불이 붙어 화재 5시간 만인 오전 1시 55분쯤 <a class="term" id="term3">석축</a> 을 제외한 건물이 훼손되었다.</p-->
 					<p>${basic.bodySecond}</p>
 
-					<div class="sideR"><button class="button type1">목록</button></div>
+					<div class="sideR"><button class="button type1" onclick="goPage('heritage_research.do');">목록</button></div>
 				</div>
 				<!-- 우측 본문 -->
 				<div class="descSection">

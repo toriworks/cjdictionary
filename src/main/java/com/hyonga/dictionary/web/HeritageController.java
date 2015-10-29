@@ -132,17 +132,17 @@ public class HeritageController {
             }
         }
 
-        HeritageBasicXML heritageBasicXML = this.getHeritageBasicXML(basicIndexContent);
-        mav.addObject("basic", heritageBasicXML);
+        CommonBasicXML commonBasicXML = Utility.getCommonBasicXML(basicIndexContent);
+        mav.addObject("basic", commonBasicXML);
         //
-        logger.debug(heritageBasicXML.toString());
+        logger.debug(commonBasicXML.toString());
         logger.debug(basicTag);
 
         /////////////////////////////////////////////////////////////////////////////////////////
         // 엔트리 기본정보 추가
         HeritageSearchEntry heritageSearchEntry = iHeritageService.getHeritageSearchEntry(idx);
         String entryTag = heritageSearchEntry.getTag();
-        entryTag = this.getLastWordFromString(entryTag, ",");
+        entryTag = Utility.getLastWordFromString(entryTag, ",");
         heritageSearchEntry.setTag(entryTag);
         //
         mav.addObject("entry", heritageSearchEntry);
@@ -160,14 +160,14 @@ public class HeritageController {
 
             // 관련 문화재 얻기
             String relationEntryData = heritageSearchEntryUCIResult.getRelationEntryData();
-            List<HeritageSearchRelations> listsHeritageSearchRelation = iHeritageService.listHeritageSearchRelations(this.makeRelationEntryData(relationEntryData));
+            List<HeritageSearchRelations> listsHeritageSearchRelation = iHeritageService.listHeritageSearchRelations(Utility.makeRelationEntryData(relationEntryData));
             //
             // 태그가공
             List<String> listTags = new ArrayList<String>();
             for (int k=0; k<listsHeritageSearchRelation.size(); k++) {
                 HeritageSearchRelations tempHeritageSearchRelations = listsHeritageSearchRelation.get(k);
                 String tempTags = tempHeritageSearchRelations.getTag();
-                tempTags = this.getLastWordFromString(tempTags, ",");
+                tempTags = Utility.getLastWordFromString(tempTags, ",");
 
                 tempHeritageSearchRelations.setTag(tempTags);
             }
@@ -175,11 +175,11 @@ public class HeritageController {
             mav.addObject("list_relations", listsHeritageSearchRelation);
 
             // 관련 교과 얻기
-            mav.addObject("arr_chapterdata", this.splitStringByWord(heritageSearchEntryUCIResult.getChapterData(), ","));
+            mav.addObject("arr_chapterdata", Utility.splitStringByWord(heritageSearchEntryUCIResult.getChapterData(), ","));
 
             // 용어해설 얻기
             String termsData = heritageSearchEntryUCIResult.getTermsData();
-            List<HeritageSearchRelations> listsHeritageTermsData = iHeritageService.listHeritageSearchRelations(this.makeRelationEntryData(termsData));
+            List<HeritageSearchRelations> listsHeritageTermsData = iHeritageService.listHeritageSearchRelations(Utility.makeRelationEntryData(termsData));
             //
             mav.addObject("list_terms", listsHeritageTermsData);
 
@@ -243,103 +243,4 @@ public class HeritageController {
         return strMUnitIdx;
     }
 
-    /**
-     * 문자열을 주어진 문자열로 나누기
-     * @param ori
-     * @param splitter
-     * @return
-     */
-    private String[] splitStringByWord(String ori, String splitter) {
-        String[] arrSplittedString = ori.split(splitter);
-        return arrSplittedString;
-    }
-
-    private Map<String, Object> makeRelationEntryData(String ori) {
-        String[] arrSplittedString = this.splitStringByWord(ori, ",");
-        int lengthOfArr = arrSplittedString.length;
-
-        List<String> listRelationEntryData = new ArrayList<String>();
-        for (int k=0; k<lengthOfArr; k++) {
-            listRelationEntryData.add(arrSplittedString[k]);
-        }
-
-        Map<String, Object> iMap = new HashMap<String, Object>();
-        iMap.put("listIdx", listRelationEntryData);
-        return iMap;
-    }
-
-    /**
-     * 특정 문자를 기준으로 맨 마지막 단어를 얻음
-     * @param ori
-     * @param splitter
-     * @return
-     */
-    private String getLastWordFromString(String ori, String splitter) {
-        String[] arrSplittedString = this.splitStringByWord(ori, ",");
-        int lengthOfArr = arrSplittedString.length;
-
-        String lastWord = "";
-        if (lengthOfArr > 0) {
-            lastWord = arrSplittedString[lengthOfArr - 1];
-        }
-
-        return lastWord;
-    }
-
-    /**
-     * XML 문자열로부터 데이터를 얻음
-     * @param xml
-     * @return
-     */
-    private HeritageBasicXML getHeritageBasicXML(String xml) {
-        String bodyFirst = "";
-        String bodySecond = "";
-        String bodyImg = "";
-
-        // 문자열로 된 xml을 객체로 얻음
-        Document doc = Utility.convertStringToDocument(xml);
-        NodeList nodeLisfOfBasic = null;
-        Element elementOfBasic = null;
-
-        // 상단설명부 얻기
-        if (doc != null) {
-            nodeLisfOfBasic = doc.getElementsByTagName("BASIC");
-            elementOfBasic = (Element) nodeLisfOfBasic.item(0);
-            if (elementOfBasic != null) {
-                NodeList nodeListOfText = elementOfBasic.getElementsByTagName("TEXT");
-                Element elementOfText = (Element) nodeListOfText.item(0);
-                bodyFirst = elementOfText.getFirstChild().getNodeValue();
-                //
-                logger.debug("bodyFirst : " + bodyFirst);
-            }
-
-            // 하단설명부 얻기
-            if (nodeLisfOfBasic.getLength() > 1) {
-                Element elementOfSecondBasic = (Element) nodeLisfOfBasic.item(1);
-                NodeList nodeListOfSecondText = elementOfSecondBasic.getElementsByTagName("TEXT");
-                Element elementOfSecondText = (Element) nodeListOfSecondText.item(0);
-                bodySecond = elementOfSecondText.getFirstChild().getNodeValue();
-                //
-                logger.debug("bodySecond : " + bodySecond);
-            }
-
-            // 이미지 얻기
-            NodeList nodeListOfImgs = doc.getElementsByTagName("IMGS");
-            if (nodeListOfImgs.getLength() > 0) {
-                Element elementOfImgs = (Element) nodeListOfImgs.item(0);
-                NodeList nodeListOfFilename = elementOfImgs.getElementsByTagName("FILENAME");
-                Element elementOfFilename = (Element) nodeListOfFilename.item(0);
-                bodyImg = elementOfFilename.getFirstChild().getNodeValue();
-                //
-                logger.debug("bodyImg : " + bodyImg);
-            }
-        }
-
-        HeritageBasicXML heritageBasicXML = new HeritageBasicXML();
-        heritageBasicXML.setBodyFirst(bodyFirst);
-        heritageBasicXML.setBodySecond(bodySecond);
-        heritageBasicXML.setBodyImg(bodyImg);
-
-        return heritageBasicXML;
-    }
 }

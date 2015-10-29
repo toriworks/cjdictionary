@@ -27,18 +27,18 @@
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_theme.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_view.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
 			<h2><img src="${croot}images/common/logo_uci.png" alt="UCI"></h2>
 		</div>
-		<div class="subNav"><!-- 문화유산 // sub menu -->
+		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="#" class="focus">테마 별 문화유산</a>
-				<a href="heritage_research.do">기획자료</a>
-				<a href="heritage_search.do">문화유산 검색</a>
+				<a href="#" class="focus">테마 별 생물정보</a>
+				<a href="biology_research.do">학습자료</a>
+				<a href="biology_search.do">생물정보 검색</a>
 			</div>
 		</div>
 	</div>
@@ -46,14 +46,14 @@
 	<div id="container">
 		<div class="subTit">
 			<div class="section menuCulture">
-				<p>테마 별 문화유산</p>
-				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마 별 문화유산</span></div>
+				<p>테마 별 생물정보</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">생물정보</a><span>테마 별 생물정보</span></div>
 			</div>
 		</div>
 		<div class="subCnt">
 			<div class="section">
 				<div class="subDesc">
-					테마 별 문화유산에 대한 설명 영역
+					생물정보 학습자료 설명영역
 				</div>
 				<div class="sorting">
 					<div class="sideL"><span>학교구분</span>

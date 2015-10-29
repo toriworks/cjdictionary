@@ -28,7 +28,7 @@
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
 				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_view.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="biology_theme.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -40,7 +40,7 @@
 		<div id="mainVisual" style="background:#b2eef0 url(${croot}images/main/mainVisual_img.png) no-repeat center 59px;">
 			<div class="section">
 				<a href="heritage_theme.do">문화유산 GO</a>
-				<a href="biology_view.do">생물정보 GO</a>
+				<a href="biology_theme.do">생물정보 GO</a>
 			</div>
 		</div>
 		<!-- 문화유산, 생물정보 tab -->

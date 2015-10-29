@@ -16,7 +16,7 @@ opacity: 1; -ms-filter:progid:DXImageTransform.Microsoft.alpha(opacity=100); fil
 .memberWrap #header { transition: none; }
 .memberWrap #header.fixed { top: 1px; height: 95px; background: none; border-bottom: none; transition: none;  }
 .memberWrap #header.fixed .section { width: 1200px; height: 80px; margin: 15px auto 0; }
-.memberWrap #header.fixed .section h1 a { background:url('/resources/images/common/logo.png') no-repeat 0 0; }
+.memberWrap #header.fixed .section h1 a { background:url('/images/common/logo.png') no-repeat 0 0; }
 .memberWrap #header #step { float: right; padding-top: 22px; padding-right: 26px; }
 .memberWrap #header #step ul { width: 148px; height: 40px; background-image: url('/images/member/icon_step.png'); background-repeat: no-repeat; }
 .memberWrap #header #step ul:after { display: block; visibility: hidden; clear: both; height: 0; content: "."; }

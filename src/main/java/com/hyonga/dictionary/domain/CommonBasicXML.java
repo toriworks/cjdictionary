@@ -1,6 +1,6 @@
 package com.hyonga.dictionary.domain;
 
-public class HeritageBasicXML {
+public class CommonBasicXML {
 
     private String bodyFirst;
     private String bodyImg;
@@ -32,7 +32,7 @@ public class HeritageBasicXML {
 
     @Override
     public String toString() {
-        return "HeritageBasicXML{" +
+        return "CommonBasicXML{" +
                 "bodyFirst='" + bodyFirst + '\'' +
                 ", bodyImg='" + bodyImg + '\'' +
                 ", bodySecond='" + bodySecond + '\'' +

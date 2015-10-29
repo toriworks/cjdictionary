@@ -14,6 +14,11 @@
   <script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
   <script type="text/javascript" src="${croot}js/common.js"></script>
+  <script type="text/javascript">
+    goPage = function(url) {
+      location.href = url;
+    }
+  </script>
 </head>
 
 <body>
@@ -54,10 +59,14 @@
       <div class="subBodyArea">
         <!-- 좌측 본문 -->
         <div class="textSection">
-          <h2>연못이나 강가에 사는 식물</h2>
+          <h2>${entry.entryTitle}</h2>
+          <p>${basic.bodyFirst}</p>
+          <figure>
+            <img src="${croot}images/@pic01.jpg" alt="" />
+          </figure>
+          <p>${basic.bodySecond}</p>
 
-
-          <div class="sideR"><button class="button type1">목록</button></div>
+          <div class="sideR"><button class="button type1" onclick="goPage('biology_research.do');">목록</button></div>
         </div>
         <!-- 우측 본문 -->
         <div class="descSection">

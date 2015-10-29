@@ -1,7 +1,9 @@
 package com.hyonga.dictionary.common;
 
-import com.hyonga.dictionary.domain.HeritageBasicXML;
+import com.hyonga.dictionary.domain.CommonBasicXML;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -11,6 +13,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Utility {
 
@@ -44,5 +50,119 @@ public class Utility {
         }
 
         return null;
+    }
+
+    public static String[] splitStringByWord(String ori, String splitter) {
+        String[] arrSplittedString = ori.split(splitter);
+        return arrSplittedString;
+    }
+
+    /**
+     * 특정 문자를 기준으로 맨 마지막 단어를 얻음
+     * @param ori
+     * @param splitter
+     * @return
+     */
+    public static String getLastWordFromString(String ori, String splitter) {
+        String[] arrSplittedString = splitStringByWord(ori, ",");
+        int lengthOfArr = arrSplittedString.length;
+
+        String lastWord = "";
+        if (lengthOfArr > 0) {
+            lastWord = arrSplittedString[lengthOfArr - 1];
+        }
+
+        return lastWord;
+    }
+
+    /**
+     * 문자열을 주어진 문자열로 나누기
+     * @param ori
+     * @return
+     */
+    public static Map<String, Object> makeRelationEntryData(String ori) {
+        String[] arrSplittedString = splitStringByWord(ori, ",");
+        int lengthOfArr = arrSplittedString.length;
+
+        List<String> listRelationEntryData = new ArrayList<String>();
+        for (int k=0; k<lengthOfArr; k++) {
+            listRelationEntryData.add(arrSplittedString[k]);
+        }
+
+        Map<String, Object> iMap = new HashMap<String, Object>();
+        iMap.put("listIdx", listRelationEntryData);
+        return iMap;
+    }
+
+    /**
+     * XML 문자열로부터 데이터를 얻음
+     * @param xml
+     * @return
+     */
+    public static CommonBasicXML getCommonBasicXML(String xml) {
+        String bodyFirst = "";
+        String bodySecond = "";
+        String bodyImg = "";
+
+        // 문자열로 된 xml을 객체로 얻음
+        Document doc = Utility.convertStringToDocument(xml);
+        NodeList nodeLisfOfBasic = null;
+        Element elementOfBasic = null;
+
+        // 상단설명부 얻기
+        if (doc != null) {
+            nodeLisfOfBasic = doc.getElementsByTagName("BASIC");
+            elementOfBasic = (Element) nodeLisfOfBasic.item(0);
+            if (elementOfBasic != null) {
+                NodeList nodeListOfText = elementOfBasic.getElementsByTagName("TEXT");
+                Element elementOfText = (Element) nodeListOfText.item(0);
+                bodyFirst = elementOfText.getFirstChild().getNodeValue();
+                bodyFirst = replaceHightlight(bodyFirst);
+            }
+
+            // 하단설명부 얻기
+            if (nodeLisfOfBasic.getLength() > 1) {
+                Element elementOfSecondBasic = (Element) nodeLisfOfBasic.item(1);
+                NodeList nodeListOfSecondText = elementOfSecondBasic.getElementsByTagName("TEXT");
+                Element elementOfSecondText = (Element) nodeListOfSecondText.item(0);
+                bodySecond = elementOfSecondText.getFirstChild().getNodeValue();
+                bodySecond = replaceHightlight(bodySecond);
+            }
+
+            // 이미지 얻기
+            NodeList nodeListOfImgs = doc.getElementsByTagName("IMGS");
+            if (nodeListOfImgs.getLength() > 0) {
+                Element elementOfImgs = (Element) nodeListOfImgs.item(0);
+                NodeList nodeListOfFilename = elementOfImgs.getElementsByTagName("FILENAME");
+                Element elementOfFilename = (Element) nodeListOfFilename.item(0);
+                bodyImg = elementOfFilename.getFirstChild().getNodeValue();
+            }
+        }
+
+        CommonBasicXML CommonBasicXML = new CommonBasicXML();
+        CommonBasicXML.setBodyFirst(bodyFirst);
+        CommonBasicXML.setBodySecond(bodySecond);
+        CommonBasicXML.setBodyImg(bodyImg);
+
+        return CommonBasicXML;
+    }
+
+    /**
+     * 하이라이트용 문자열 변경
+     * @param ori
+     * @return
+     */
+    public static String replaceHightlight(String ori) {
+        // 변환 로직 규칙
+        // 첫번째 문자열 매칭 - ^<\$  => <a href="showLayer('
+        // 두번째 문자열 매칭 - #  => ','
+        // 세번째 문자열 매칭 - ^  => ’);>
+        // 네번째 문자열 매칭 - (\$>)  => </a>
+        ori = ori.replaceAll("^<\\$", "<a href=\"showLayer('");
+        ori = ori.replaceAll("#", "','");
+        ori = ori.replaceAll("\\^", "\");");
+        ori = ori.replaceAll("(\\$>)", "</a>");
+
+        return ori;
     }
 }

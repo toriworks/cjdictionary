@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
  * Name      : common.js
- * Desc      : Allice 스크립트
+ * Desc      : 스크립트
  * Created   : 2015-09-09 by tttboram
  ------------------------------------------------------------ */
 function fileUpload() {
@@ -57,23 +57,23 @@ $(document).ready(function(){
 	//상세 예문 레이어 tip //추가개발필요함
 	$(".termWord").click(function(e){
 		e.preventDefault();
-		$($(this).attr("href")).show();
-		var _thisHtml = $($(this).attr("href")).html();
-		//alert(_thisHtml);
 
-		var _word = $(this).attr("href").substring(1,6);
-		//alert(_word);
-		$("#"+_word).css({'position':'relative'});
-		$("#"+_word).addClass("focus");
-		$("#"+_word).append(_thisHtml);
-		return false;
+		if($(this).children().css({'display':'none'})){
+			$(".miniPop").css({'display':'block'});
+			$(".pointDot").css({'display':'block'});
+			var _word = $(this).attr("href");
+			$(_word).show();
+			var _thisHtml = $(_word).html();
+			$(this).append(_thisHtml);
+		}else{
+			$(this).empty();
+			$(".pointDot").remove();
+		}
 	});
-	$(".miniPop").live("click", function(e){
+	$(".btnX").live("click", function(e){
 		e.preventDefault();
-		$(".miniPop").remove();
-		$(".pointDot").remove();
-		$(".term").removeClass("focus");
-		$(this).hide();
+		$(".miniPop").hide();
+		$(".pointDot").hide();
 		return false;
 	});
 

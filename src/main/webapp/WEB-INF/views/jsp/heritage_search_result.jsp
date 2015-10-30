@@ -1,9 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <spring:url value="/resources/" var="croot" />
-<%
-request.setCharacterEncoding("UTF-8");
-%>
+<jsp:useBean id="utility" class="com.hyonga.dictionary.common.Utility" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -41,7 +39,7 @@ request.setCharacterEncoding("UTF-8");
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
 				<a href="heritage_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_view.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="biology_theme.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -129,8 +127,8 @@ request.setCharacterEncoding("UTF-8");
 							<c:set var="i" value="${i + 1}" scope="page"/>
 							<tr>
 								<td><c:out value="${i}" /></td>
-								<td><a href="heritage_view.do">사적 제 32호</a></td>
-								<td><a href="heritage_view.do"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitle}" /></a></td>
+								<td><a href="heritage_view2.do?cat=2&idx=${lists.idx}">${utility.getLastWordFromString(lists.tag, ",")}</a></td>
+								<td><a href="heritage_view2.do?cat=2&idx=${lists.idx}"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitleC}" /></a></td>
 								<td><c:out value="${lists.ucicode}" /></td>
 							</tr>
 						</c:forEach>
@@ -138,7 +136,7 @@ request.setCharacterEncoding("UTF-8");
 					</table>
 				</div><!-- //board -->
 
-				<div class="paging">
+				<!-- div class="paging">
 					<span class="prev"><a href="#">이전 보기</a></span>
 					<a href="#" class="now">1</a>
 					<a href="#">2</a>
@@ -151,7 +149,7 @@ request.setCharacterEncoding("UTF-8");
 					<a href="#">9</a>
 					<a href="#">10</a>
 					<span class="next"><a href="#">다음 보기</a></span>
-				</div>
+				</div -->
 			</div>
 		</div>
 	</div>

@@ -58,34 +58,34 @@
 
 				<div class="cultureList">
 					<div class="cultureT first">
-						<a href="heritage_view2.do?idx=57412"><img src="${croot}images/108_1.jpg" alt=""> <span>무령왕릉으로 보는 백제의 모습</span></a>
+						<a href="heritage_view2.do?cat=1&idx=57412"><img src="${croot}images/108_1.jpg" alt=""> <span>무령왕릉으로 보는 백제의 모습</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="heritage_view2.do?idx=64126"><img src="${croot}images/108_2.jpg" alt=""> <span>신라의 불교문화</span></a>
+						<a href="heritage_view2.do?cat=1&idx=64126"><img src="${croot}images/108_2.jpg" alt=""> <span>신라의 불교문화</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="heritage_view2.do?idx=64127"><img src="${croot}images/109_1.jpg" alt=""> <span>고인돌</span></a>
+						<a href="heritage_view2.do?cat=1&idx=64127"><img src="${croot}images/109_1.jpg" alt=""> <span>고인돌</span></a>
 					</div>
 					<div class="cultureT first">
-						<a href="heritage_view2.do?idx=64128"><img src="${croot}images/109_2.jpg" alt=""> <span>고려청자</span></a>
+						<a href="heritage_view2.do?cat=1&idx=64128"><img src="${croot}images/109_2.jpg" alt=""> <span>고려청자</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="heritage_view2.do?idx=64129"><img src="${croot}images/109_3.jpg" alt=""> <span>고려 팔만대장경</span></a>
+						<a href="heritage_view2.do?cat=1&idx=64129"><img src="${croot}images/109_3.jpg" alt=""> <span>고려 팔만대장경</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="heritage_view2.do?idx=64134"><img src="${croot}images/110_1.jpg" alt=""> <span>기념비로 살펴보는 고구려 영토</span></a>
+						<a href="heritage_view2.do?cat=1&idx=64134"><img src="${croot}images/110_1.jpg" alt=""> <span>기념비로 살펴보는 고구려 영토</span></a>
 					</div>
 					<div class="cultureT first">
-						<a href="heritage_view2.do?idx=64155"><img src="${croot}images/123_1.jpg" alt=""> <span>일본의 침략에 맞선 임진왜란</span></a>
+						<a href="heritage_view2.do?cat=1&idx=64155"><img src="${croot}images/123_1.jpg" alt=""> <span>일본의 침략에 맞선 임진왜란</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="heritage_view2.do?idx=64156"><img src="${croot}images/123_2.jpg" alt=""> <span>오백년 역사가 잠든 조선왕릉</span></a>
+						<a href="heritage_view2.do?cat=1&idx=64156"><img src="${croot}images/123_2.jpg" alt=""> <span>오백년 역사가 잠든 조선왕릉</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="heritage_view2.do?idx=64172"><img src="${croot}images/132_1.jpg" alt=""> <span>세계문화유산 수원 화성</span></a>
+						<a href="heritage_view2.do?cat=1&idx=64172"><img src="${croot}images/132_1.jpg" alt=""> <span>세계문화유산 수원 화성</span></a>
 					</div>
 					<div class="cultureT first">
-						<a href="heritage_view2.do?idx=81975"><img src="${croot}images/232_1.jpg" alt=""> <span>경복궁</span></a>
+						<a href="heritage_view2.do?cat=1&idx=81975"><img src="${croot}images/232_1.jpg" alt=""> <span>경복궁</span></a>
 					</div>
 
 				</div>

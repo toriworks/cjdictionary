@@ -15,10 +15,15 @@
 <script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
 <script type="text/javascript" src="${croot}js/common.js"></script>
-<script type="text/javascript">
-	goPage = function(url) {
-		location.href = url;
-	}
+	<script type="text/javascript">
+		searchBiology = function() {
+			var munitidx = $("#munitidx option:selected").val();
+			var entryTitle = $("#entryTitle").val();	// search keyword
+
+			var form = $("#search_form");
+			form.action = "/biology_search.do";
+			form.submit();
+		}
 	</script>
 </head>
 
@@ -33,18 +38,18 @@
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_theme.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_theme.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
 			<h2><img src="${croot}images/common/logo_uci.png" alt="UCI"></h2>
 		</div>
-		<div class="subNav"><!-- 문화유산 // sub menu -->
+		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="#" class="focus">테마 별 문화유산</a>
-				<a href="heritage_research.do">기획자료</a>
-				<a href="heritage_search.do">문화유산 검색</a>
+				<a href="biology_theme.do">테마 별 생물정보</a>
+				<a href="biology_research.do">학습자료</a>
+				<a href="#" class="focus">생물정보 검색</a>
 			</div>
 		</div>
 	</div>
@@ -52,18 +57,38 @@
 	<div id="container">
 		<div class="subTit">
 			<div class="section menuCulture">
-				<p>테마 별 문화유산</p>
-				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마 별 문화유산</span></div>
+				<p>생물정보 검색</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">생물정보</a><span>검색</span></div>
 			</div>
 		</div>
 		<div class="subCnt">
 			<div class="section">
-				<div class="themeTit">
-					<p>${title}</p>
+				<div class="searchTit">
+					<p>검색에 대한 설명 영역</p>
 				</div>
-				<div class="sectionBoard">
-					<div class="sideL"><span class="total">문화재 수 : ${list_size}개</span></div>
-					<div class="sideR"><button class="button type1" onclick="goPage('heritage_theme.do');">테마목록</button></div>
+
+				<div class="searchBox">
+					<form name="search_form" id="search_form" method="post">
+						<dl>
+							<dt>생물정보 검색</dt>
+							<dd><select name="munitidx" id="munitidx">
+								<option value="">전체</option>
+								<option value="1034">포유류</option>
+								<option value="1035">조류</option>
+								<option value="1036">식물</option>
+								<option value="1037">균류</option>
+								<option value="1038">곤충</option>
+							</select>
+							</dd>
+							<dd class="middle"><input type="text" class="text" id="entryTitle" name="entryTitle" /></dd>
+						</dl>
+					</form>
+					<a href="javascript:searchBiology();" class="searhBtn">검색</a>
+				</div>
+
+				<div class="searchResultTab">
+					<a href="#" class="selTab">“<c:out value="${refineEntryTitle}"/>” 검색 결과 (<c:out value="${totalCount}"/>건)</a>
+					<a href="heritage_search_img.do">“<c:out value="${refineEntryTitle}"/>” 관련 이미지 검색결과 (1,123건)</a>
 				</div>
 
 				<div class="board boardList"><!-- board -->
@@ -71,17 +96,15 @@
 						<caption>게시판 리스트</caption>
 						<colgroup>
 							<col style="width:10%" />
-							<col style="width:30%" />
 							<col style="width:*" />
-							<!-- col style="width:20%" / -->
+							<col style="width:50%" />
 							<col style="width:22%" />
 						</colgroup>
 						<thead>
 							<tr>
 								<th scope="col">번호</th>
-								<th scope="col">등록</th>
+								<th scope="col">분류</th>
 								<th scope="col">명칭</th>
-								<!-- th scope="col">소재지</th -->
 								<th scope="col">UCI</th>
 							</tr>
 						</thead>
@@ -91,9 +114,8 @@
 							<c:set var="i" value="${i + 1}" scope="page"/>
 							<tr>
 								<td><c:out value="${i}" /></td>
-								<td><a href="heritage_view.do?idx=${lists.idx}&title=${title}">${utility.getLastWordFromString(lists.tag, ",")}</a></td>
-								<td><a href="heritage_view.do?idx=${lists.idx}&title=${title}"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitleC}" /></a></td>
-								<!-- td>서울 서대문구</td -->
+								<td><a href="biology_view2.do?cat=2&idx=${lists.idx}">${utility.getLastWordFromString(lists.tag, ",")}</a></td>
+								<td><a href="biology_view2.do?cat=2&idx=${lists.idx}"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitleC}" /></a></td>
 								<td><c:out value="${lists.ucicode}" /></td>
 							</tr>
 						</c:forEach>
@@ -101,21 +123,21 @@
 					</table>
 				</div><!-- //board -->
 
+				<!-- div class="paging">
+					<span class="prev"><a href="#">이전 보기</a></span>
+					<a href="#" class="now">1</a>
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">5</a>
+					<a href="#">6</a>
+					<a href="#">7</a>
+					<a href="#">8</a>
+					<a href="#">9</a>
+					<a href="#">10</a>
+					<span class="next"><a href="#">다음 보기</a></span>
+				</div -->
 			</div>
-			<!-- div class="paging">
-				<span class="prev"><a href="#">이전 보기</a></span>
-				<a href="#" class="now">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">5</a>
-				<a href="#">6</a>
-				<a href="#">7</a>
-				<a href="#">8</a>
-				<a href="#">9</a>
-				<a href="#">10</a>
-				<span class="next"><a href="#">다음 보기</a></span>
-			</div -->
 		</div>
 	</div>
 	<div id="footer">

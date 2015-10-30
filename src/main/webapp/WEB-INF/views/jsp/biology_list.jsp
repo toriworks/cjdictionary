@@ -40,11 +40,11 @@
 			</div>
 			<h2><img src="${croot}images/common/logo_uci.png" alt="UCI"></h2>
 		</div>
-		<div class="subNav"><!-- 문화유산 // sub menu -->
+		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="#" class="focus">테마 별 문화유산</a>
-				<a href="heritage_research.do">기획자료</a>
-				<a href="heritage_search.do">문화유산 검색</a>
+				<a href="#" class="focus">테마 별 생물정보</a>
+				<a href="biology_research.do">학습자료</a>
+				<a href="biology_search.do">생물정보 검색</a>
 			</div>
 		</div>
 	</div>
@@ -52,8 +52,8 @@
 	<div id="container">
 		<div class="subTit">
 			<div class="section menuCulture">
-				<p>테마 별 문화유산</p>
-				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마 별 문화유산</span></div>
+				<p>테마 별 생물정보</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마 별 생물정보</span></div>
 			</div>
 		</div>
 		<div class="subCnt">
@@ -62,8 +62,8 @@
 					<p>${title}</p>
 				</div>
 				<div class="sectionBoard">
-					<div class="sideL"><span class="total">문화재 수 : ${list_size}개</span></div>
-					<div class="sideR"><button class="button type1" onclick="goPage('heritage_theme.do');">테마목록</button></div>
+					<div class="sideL"><span class="total">생물정보 수 : ${list_size}개</span></div>
+					<div class="sideR"><button class="button type1" onclick="goPage('biology_theme.do');">테마목록</button></div>
 				</div>
 
 				<div class="board boardList"><!-- board -->
@@ -79,7 +79,7 @@
 						<thead>
 							<tr>
 								<th scope="col">번호</th>
-								<th scope="col">등록</th>
+								<th scope="col">분류</th>
 								<th scope="col">명칭</th>
 								<!-- th scope="col">소재지</th -->
 								<th scope="col">UCI</th>
@@ -91,8 +91,8 @@
 							<c:set var="i" value="${i + 1}" scope="page"/>
 							<tr>
 								<td><c:out value="${i}" /></td>
-								<td><a href="heritage_view.do?idx=${lists.idx}&title=${title}">${utility.getLastWordFromString(lists.tag, ",")}</a></td>
-								<td><a href="heritage_view.do?idx=${lists.idx}&title=${title}"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitleC}" /></a></td>
+								<td><a href="biology_view.do?idx=${lists.idx}&title=${title}">${utility.replaceBiologyGubun(lists.munitidx)}</a></td>
+								<td><a href="biology_view.do?idx=${lists.idx}&title=${title}"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitleC}" /></a></td>
 								<!-- td>서울 서대문구</td -->
 								<td><c:out value="${lists.ucicode}" /></td>
 							</tr>

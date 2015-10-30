@@ -14,6 +14,11 @@
 	<script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
 	<script type="text/javascript" src="${croot}js/common.js"></script>
+	<script type="text/javascript">
+		goPage = function(binderIdx, title) {
+			location.href = "heritage_list.do?binderIdx=" + binderIdx + "&title=" + title;
+		}
+	</script>
 </head>
 
 <body>
@@ -76,44 +81,44 @@
 				</div>
 				<ul class="themeT">
 					<li>
-						<a href="heritage_list.do"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
+						<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
+						<a href="javascript:goPage(44, '중학교 1학년 역사교과서에 나오는 문화재');"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>광복 70주년 독립운동 문화유산</p>
+						<a href="javascript:goPage(45, '광복 70주년 독립운동 문화유산');"><p>광복 70주년 독립운동 문화유산</p>
 						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
+						<a href="javascript:goPage(46, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
+						<a href="javascript:goPage(47, '중학교 1학년 역사교과서에 나오는 문화재');"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>광복 70주년 독립운동 문화유산</p>
+						<a href="javascript:goPage(1, '광복 70주년 독립운동 문화유산');"><p>광복 70주년 독립운동 문화유산</p>
 						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
+						<a href="javascript:goPage(1, '초등학생이 꼭 알아야할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
+						<a href="javascript:goPage(1, '중학교 1학년 역사교과서에 나오는 문화재');"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>광복 70주년 독립운동 문화유산</p>
+						<a href="javascript:goPage(1, '광복 70주년 독립운동 문화유산');"><p>광복 70주년 독립운동 문화유산</p>
 						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
 					</li>
 				</ul>
 			</div>
-			<div class="paging">
+			<!-- div class="paging">
 				<span class="prev"><a href="#">이전 보기</a></span>
 				<a href="#" class="now">1</a>
 				<a href="#">2</a>
@@ -126,7 +131,7 @@
 				<a href="#">9</a>
 				<a href="#">10</a>
 				<span class="next"><a href="#">다음 보기</a></span>
-			</div>
+			</div -->
 		</div>
 	</div>
 	<div id="footer">

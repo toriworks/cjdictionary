@@ -6,6 +6,8 @@ public class HeritageSearchResult {
     private String munitidx;
     private String entryTitle;
     private String ucicode;
+    private String entryTitleC;
+    private String tag;
 
     public int getIdx() {
         return idx;
@@ -39,6 +41,22 @@ public class HeritageSearchResult {
         this.ucicode = ucicode;
     }
 
+    public String getEntryTitleC() {
+        return entryTitleC;
+    }
+
+    public void setEntryTitleC(String entryTitleC) {
+        this.entryTitleC = entryTitleC;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
     @Override
     public String toString() {
         return "HeritageSearchResult{" +
@@ -46,6 +64,8 @@ public class HeritageSearchResult {
                 ", munitidx='" + munitidx + '\'' +
                 ", entryTitle='" + entryTitle + '\'' +
                 ", ucicode='" + ucicode + '\'' +
+                ", entryTitleC='" + entryTitleC + '\'' +
+                ", tag='" + tag + '\'' +
                 '}';
     }
 }

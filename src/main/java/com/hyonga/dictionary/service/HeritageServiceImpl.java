@@ -56,4 +56,20 @@ public class HeritageServiceImpl implements IHeritageService {
         return this.sqlSessionTemplate.selectList(NAMESPACE + ".searchHeritageBasic", entryIdx);
     }
 
+    @Override
+    public List<HeritageSearchResult> listHeritageThemeSearchResult(String entryIdx) {
+        return this.sqlSessionTemplate.selectList(NAMESPACE + ".searchHeritageThemeList", entryIdx);
+    }
+
+    @Override
+    public List<HeritageSearchResult> listHeritageTheme(String binderIdx) {
+        return this.sqlSessionTemplate.selectList(NAMESPACE + ".selectHeritageThemeList", binderIdx);
+    }
+
+    @Override
+    public List<HeritageSearchResult> listBiologySearchResult(HeritageSearchCondition condition) {
+        List<HeritageSearchResult> lists = this.sqlSessionTemplate.selectList(NAMESPACE + ".searchBiology", condition);
+        return lists;
+    }
+
 }

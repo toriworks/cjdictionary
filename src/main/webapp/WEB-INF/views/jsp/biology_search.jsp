@@ -37,8 +37,8 @@
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="biology_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_view.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_theme.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -47,7 +47,7 @@
 		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
 				<a href="biology_theme.do">테마 별 생물정보</a>
-				<a href="biology_research.do">기획자료</a>
+				<a href="biology_research.do">학습자료</a>
 				<a href="#" class="focus">생물정보 검색</a>
 			</div>
 		</div>
@@ -69,7 +69,7 @@
 				<div class="searchBox">
 					<form name="search_form" id="search_form" method="post">
 					<dl>
-						<dt>문화재검색</dt>
+						<dt>생물정보 검색</dt>
 						<dd><select name="munitidx" id="munitidx">
 							<option value="">전체</option>
 								<option value="1034">포유류</option>

@@ -10,11 +10,11 @@
         <result javaType="java.lang.String" column="outlineName" property="outlineName" />
     </resultMap>
 
-    <!-- 문화재 검색 -->
+    <!-- 문화유산 검색 -->
     <select id="searchHeritage"
             parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
             resultType="com.hyonga.dictionary.domain.HeritageSearchResult">
-        SELECT a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode
+        SELECT a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode, a.entryTitleC, a.tag
         FROM TEntry a, TEntryUCI b
         WHERE 1=1
         AND a.Idx = b.EntryIdx
@@ -27,6 +27,18 @@
         <if test="munitidx ==''">
         AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
         </if>
+        ORDER BY a.EntryTitle ASC
+    </select>
+    
+    <!-- 문화유산 테마 검색 -->
+    <select id="searchHeritageThemeList"
+            parameterType="java.lang.String"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchBasic">
+        SELECT a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode, a.entryTitleC, a.tag
+        FROM TEntry a, TEntryUCI b
+        WHERE 1=1
+        AND a.Idx = b.EntryIdx
+        AND a.EntryIdx = #{entryIdx}
         ORDER BY a.EntryTitle ASC
     </select>
 
@@ -86,6 +98,37 @@
         SELECT outlineIdx, outlineData, outlineName
         FROM TOutlineEntry A join TOutline B on A.OutlineIdx=B.Idx
         WHERE EntryIdx = #{entryIdx}
+    </select>
+
+    <!-- 문화유산 테마 목록에 속한 엔트리 값 추출 -->
+    <select id="selectHeritageThemeList"
+            parameterType="java.lang.String"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchResult">
+        SELECT a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode, a.entryTitleC, a.tag
+        FROM TEntry a, TEntryUCI b
+        WHERE a.Idx = b.EntryIdx
+        AND a.Idx in (SELECT EntryIdx FROM TBinderEntry WHERE BinderIdx=#{binderIdx})
+        ORDER BY a.EntryTitle ASC
+    </select>
+
+    <!-- 생물정보 검색 -->
+    <select id="searchBiology"
+            parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchResult">
+        SELECT a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode, a.entryTitleC, a.tag
+        FROM TEntry a, TEntryUCI b
+        WHERE 1=1
+        AND a.Idx = b.EntryIdx
+        <if test="entryTitle != null">
+            AND (a.EntryTitle LIKE '%'+#{entryTitle}+'%' OR a.Tag LIKE '%'+#{entryTitle}+'%')
+        </if>
+        <if test="munitidx != ''">
+            AND MUnitIdx = #{munitidx}
+        </if>
+        <if test="munitidx ==''">
+            AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
+        </if>
+        ORDER BY a.EntryTitle ASC
     </select>
 
 </mapper>

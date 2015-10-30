@@ -1,6 +1,8 @@
 package com.hyonga.dictionary.common;
 
 import com.hyonga.dictionary.domain.CommonBasicXML;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -20,12 +22,14 @@ import java.util.Map;
 
 public class Utility {
 
+    /** Logger object */
+    private static final Logger logger = LoggerFactory.getLogger(Utility.class);
+
     public static String addComma(String str) {
         int iStr = Integer.parseInt(str);
         DecimalFormat df = new DecimalFormat("#,###");
         return df.format(iStr);
     }
-
 
     /**
      * 문자열로 된 XML을 객체로 얻는다.
@@ -129,6 +133,9 @@ public class Utility {
                 bodySecond = replaceHightlight(bodySecond);
             }
 
+            logger.debug("bodySecond is :" + bodySecond + "<<END");
+
+
             // 이미지 얻기
             NodeList nodeListOfImgs = doc.getElementsByTagName("IMGS");
             if (nodeListOfImgs.getLength() > 0) {
@@ -164,5 +171,74 @@ public class Utility {
         ori = ori.replaceAll("(\\$>)", "</a>");
 
         return ori;
+    }
+
+    /**
+     * 생물정보 분류 구분값 변경
+     * @param ori
+     * @return
+     */
+    public static String replaceBiologyGubun(String ori) {
+        String ret = "";
+        if(ori.equals("1000")) {
+            ret = "기타";
+        } else if(ori.equals("1034")) {
+            ret = "포유류";
+        } else if(ori.equals("1035")) {
+            ret = "조류";
+        } else if(ori.equals("1036")) {
+            ret = "식물";
+        } else if(ori.equals("1037")) {
+            ret = "균류";
+        } else if(ori.equals("1038")) {
+            ret = "곤충";
+        } else {
+            ret = "해당없음";
+        }
+
+        return ret;
+    }
+
+    /**
+     * 인덱스별 문자열 출력
+     * @param munitidx
+     * @return
+     */
+    public static String getStrMUnitIdx(String munitidx) {
+        String strMUnitIdx = "";
+        if (munitidx.equals("")) {
+            strMUnitIdx = "전체";
+        } else if (munitidx.equals("995")) {
+            strMUnitIdx = "국보";
+        } else if (munitidx.equals("996")) {
+            strMUnitIdx = "보물";
+        } else if (munitidx.equals("997")) {
+            strMUnitIdx = "사적";
+        } else if (munitidx.equals("998")) {
+            strMUnitIdx = "중요무형문화재";
+        } else if (munitidx.equals("999")) {
+            strMUnitIdx = "천연기념물";
+        } else if (munitidx.equals("1000")) {
+            strMUnitIdx = "기타";
+        }
+
+        return strMUnitIdx;
+    }
+
+    /**
+     * 검색어 변경 출력을 위한 문자열 변경
+     * @param munitidx
+     * @param entryTitle
+     * @return
+     */
+    public static String getRefineEntryTitle(String munitidx, String entryTitle) {
+        String refineEntryTitle = "";
+        if (entryTitle.equals("") || entryTitle == "") {
+            refineEntryTitle = Utility.getStrMUnitIdx(munitidx);
+        } else {
+            refineEntryTitle = entryTitle;
+        }
+
+        return refineEntryTitle;
     }
 }

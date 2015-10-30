@@ -20,4 +20,9 @@ public interface IHeritageService {
 
     public List<HeritageSearchBasic> listHeritageSearchBasic(String entryIdx);
 
+    public List<HeritageSearchResult> listHeritageThemeSearchResult(String entryIdx);
+
+    public List<HeritageSearchResult> listHeritageTheme(String binderIdx);
+
+    public List<HeritageSearchResult> listBiologySearchResult(HeritageSearchCondition condition);
 }

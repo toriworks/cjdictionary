@@ -28,7 +28,7 @@
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
 				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_view.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="biology_theme.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -58,34 +58,34 @@
 
 				<div class="cultureList">
 					<div class="cultureT first">
-						<a href="biology_view.do?idx=78872"><img src="${croot}images/173_1.jpg" alt=""> <span>연못이나 강가에 사는 식물</span></a>
+						<a href="biology_view2.do?cat=1&idx=78872"><img src="${croot}images/173_1.jpg" alt=""> <span>연못이나 강가에 사는 식물</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="biology_view.do?idx=78876"><img src="${croot}images/173_2.jpg" alt=""> <span>곤충의 먹이</span></a>
+						<a href="biology_view2.do?cat=1&idx=78876"><img src="${croot}images/173_2.jpg" alt=""> <span>곤충의 먹이</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="biology_view.do?idx=78879"><img src="${croot}images/183_1.jpg" alt=""> <span>여러 가지 식물의 한살이</span></a>
+						<a href="biology_view2.do?cat=1&idx=78879"><img src="${croot}images/183_1.jpg" alt=""> <span>여러 가지 식물의 한살이</span></a>
 					</div>
 					<div class="cultureT first">
-						<a href="biology_view.do?idx=78880"><img src="${croot}images/183_2.jpg" alt=""> <span>우리땅 독도의 생태계</span></a>
+						<a href="biology_view2.do?cat=1&idx=78880"><img src="${croot}images/183_2.jpg" alt=""> <span>우리땅 독도의 생태계</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="biology_view.do?idx=78881"><img src="${croot}images/184_1.jpg" alt=""> <span>희귀한 우리나라 꽃</span></a>
+						<a href="biology_view2.do?cat=1&idx=78881"><img src="${croot}images/184_1.jpg" alt=""> <span>희귀한 우리나라 꽃</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="biology_view.do?idx=78882"><img src="${croot}images/184_2.jpg" alt=""> <span>식물이 자라는 데 필요한 조건</span></a>
+						<a href="biology_view2.do?cat=1&idx=78882"><img src="${croot}images/184_2.jpg" alt=""> <span>식물이 자라는 데 필요한 조건</span></a>
 					</div>
 					<div class="cultureT first">
-						<a href="biology_view.do?idx=79246"><img src="${croot}images/214_1.jpg" alt=""> <span>곤충의 한살이</span></a>
+						<a href="biology_view2.do?cat=1&idx=79246"><img src="${croot}images/214_1.jpg" alt=""> <span>곤충의 한살이</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="biology_view.do?idx=79247"><img src="${croot}images/214_2.jpg" alt=""> <span>곤충들의 숨바꼭질</span></a>
+						<a href="biology_view2.do?cat=1&idx=79247"><img src="${croot}images/214_2.jpg" alt=""> <span>곤충들의 숨바꼭질</span></a>
 					</div>
 					<div class="cultureT">
-						<a href="biology_view.do?idx=79248"><img src="${croot}images/214_3.jpg" alt=""> <span>물에 사는 동물의 특징</span></a>
+						<a href="biology_view2.do?cat=1&idx=79248"><img src="${croot}images/214_3.jpg" alt=""> <span>물에 사는 동물의 특징</span></a>
 					</div>
 					<div class="cultureT first">
-						<a href="biology_view.do?idx=79249"><img src="${croot}images/214_3.jpg" alt=""> <span>식물의 구조와 기능</span></a>
+						<a href="biology_view2.do?cat=1&idx=79249"><img src="${croot}images/214_3.jpg" alt=""> <span>식물의 구조와 기능</span></a>
 					</div>
 				</div>
 			</div>

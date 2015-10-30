@@ -14,6 +14,11 @@
 	<script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
 	<script type="text/javascript" src="${croot}js/common.js"></script>
+	<script type="text/javascript">
+		goPage = function(binderIdx, title) {
+			location.href = "biology_list.do?binderIdx=" + binderIdx + "&title=" + title;
+		}
+	</script>
 </head>
 
 <body>
@@ -28,7 +33,7 @@
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
 				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_view.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="biology_theme.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -76,44 +81,44 @@
 				</div>
 				<ul class="themeT">
 					<li>
-						<a href="heritage_list.do"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
+						<a href="javascript:goPage(48, '생물정보 테마48');"><p>생물정보 테마48</p></a>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
+						<a href="javascript:goPage(49, '생물정보 테마49');"><p>생물정보 테마49</p></a>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>광복 70주년 독립운동 문화유산</p>
+						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
 						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
+						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
+						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>광복 70주년 독립운동 문화유산</p>
+						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
 						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
+						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
+						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
 					</li>
 					<li>
-						<a href="heritage_list.do"><p>광복 70주년 독립운동 문화유산</p>
+						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
 						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
 					</li>
 				</ul>
 			</div>
-			<div class="paging">
+			<!-- div class="paging">
 				<span class="prev"><a href="#">이전 보기</a></span>
 				<a href="#" class="now">1</a>
 				<a href="#">2</a>
@@ -126,7 +131,7 @@
 				<a href="#">9</a>
 				<a href="#">10</a>
 				<span class="next"><a href="#">다음 보기</a></span>
-			</div>
+			</div -->
 		</div>
 	</div>
 	<div id="footer">

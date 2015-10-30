@@ -14,6 +14,34 @@
 <script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
 <script type="text/javascript" src="${croot}js/common.js"></script>
+<script type="text/javascript">
+	goHeritagePage = function(binderIdx, title) {
+		location.href = "heritage_list.do?binderIdx=" + binderIdx + "&title=" + title;
+	}
+
+	searchSth = function(id) {
+		var keyword = "";
+		var action = "";
+		if(id == 1) {
+			keyword = $("#hSearchText").val();
+			action = "heritage_search.do";
+		} else {
+			keyword = $("#bSearchText").val();
+			action = "biology_search.do";
+		}
+
+		if(keyword == "") {
+			var alertMsg = (id == 1) ? "문화유산 " : "생물정보 ";
+			alert(alertMsg + "검색어를 입력해 주세요.");
+			return;
+		}
+
+		var form = $('#search_form');
+		form.action = action;
+		form.entryTitle.value = keyword;
+		form.submit();
+	}
+</script>
 </head>
 
 <body>
@@ -55,7 +83,7 @@
 				<div class="section">
 					<div class="heritageSearch">
 						<p>문화재청에서 제공하는 <strong>4,500여건</strong>의 문화유산 정보를 검색하실 수 있습니다.</p>
-						<input type="text" class="searchText" /><button>문화유산 검색</button>
+						<input type="text" id="hSearchText" name="hSearchText" class="searchText" /><button onclick="searchSth(1);">문화유산 검색</button>
 					</div>
 				</div>
 			</div>
@@ -63,7 +91,7 @@
 				<div class="section">
 					<div class="heritageSearch">
 						<p><strong>24,500여건</strong>의 생물정보 정보를 검색하실 수 있습니다.</p>
-						<input type="text" class="searchText" /><button>생물정보 검색</button>
+						<input type="text" id="bSearchText" name="bSearchText" class="searchText" /><button onclick="searchSth(2);">생물정보 검색</button>
 					</div>
 				</div>
 			</div>
@@ -71,16 +99,16 @@
 				<div class="section">
 					<p class="sectionTit theme">테마 별 문화유산 <a class="moreBtn" href="heritage_theme.do">테마 전체보기 ▶</a></p>
 
-					<div class="themeT bg1 first">
-						<p>초등학생이 꼭 알아야 할 국보 10가지</p>
+					<div class="themeT bg1 first" onclick="goHeritagePage(1, '초등학생이 꼭 알아야 할 국보 10가지');">
+						<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p></a>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
 					</div>
-					<div class="themeT bg2">
-						<p>중학교 1학년 역사교과서에 나오는 문화재</p>
+					<div class="themeT bg2" onclick="goHeritagePage(44, '중학교 1학년 역사교과서에 나오는 문화재');">
+						<a href="javascript:goPage(44, '초등학생이 꼭 알아야 할 국보 10가지');"><p>중학교 1학년 역사교과서에 나오는 문화재</p></a>
 						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
 					</div>
-					<div class="themeT bg3">
-						<p>광복 70주년 독립운동 문화유산</p>
+					<div class="themeT bg3"onclick="goHeritagePage(45, '광복 70주년 독립운동 문화유산');">
+						<a href="javascript:goPage(45, '초등학생이 꼭 알아야 할 국보 10가지');"><p>광복 70주년 독립운동 문화유산</p></a>
 						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span>
 					</div>
 				</div>
@@ -116,6 +144,9 @@
 		</div>
 	</div>
 </div>
-
+<form name="search_form" id="search_form" method="post">
+	<input type="hidden" id="munitidx" name="munitidx" value="" />
+	<input type="hidden" id="entryTitle" name="entryTitle" value="" />
+</form>
 </body>
 </html>

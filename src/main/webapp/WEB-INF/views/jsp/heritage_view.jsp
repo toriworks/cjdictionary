@@ -14,6 +14,18 @@
 <script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
 <script type="text/javascript" src="${croot}js/common.js"></script>
+<script type="text/javascript">
+	goPage = function(url) {
+//		location.href = url;
+		history.back(-1);
+	}
+
+	popupUCI = function(uci) {
+		uci = "A-O34-00-42-38";
+		var tUCI = "http://uci.or.kr/I421:" + uci + "@N2C";
+		window.open(tUCI, "UCI 정보", "width=540, height=405, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	}
+</script>
 </head>
 
 <body>
@@ -28,7 +40,7 @@
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
 				<a href="heritage_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_view.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="biology_theme.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -37,8 +49,8 @@
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
 				<a href="#" class="focus">테마 별 문화유산</a>
-				<a href="#">기획자료</a>
-				<a href="#">문화유산 검색</a>
+				<a href="heritage_research.do">기획자료</a>
+				<a href="heritage_search.do">문화유산 검색</a>
 			</div>
 		</div>
 	</div>
@@ -55,24 +67,20 @@
 				<!-- 좌측 본문 -->
 				<div class="textSection">
 					<div class="themeTit">
-						<p>광복 70주년 독립운동 문화유산</p>
+						<p>${title}</p>
 					</div>
-					<h2>서울 숭례문</h2>
-					<p>조선시대 서울도성을 둘러싸고 있던 성곽의 정문으로 원래 이름은 숭례문이며, 남쪽에 있다고 해서 남대문이라고도 불렀다. 현재 서울에 남아 있는 목조 건물 중 가장 오래된 것으로 태조 5년(1396)에 짓기 시작하여 태조 7년(1398)에 완성하였다. </p>
+					<h2>${entry.entryTitle}</h2>
+					<p>${basic.bodyFirst}</p>
 					<figure>
 						<img src="${croot}images/@pic01.jpg" alt="" />
 					</figure>
-					<p>이 건물은 세종 30년(1448)에 고쳐 지은 것인데 1961∼1963년 해체·수리 때 성종 10년 (1479)에도 큰 공사가 있었다는 사실이 밝혀졌다. 이후, 2008년 2월 10일 숭례문 방화 화재로 <a class="term" id="term2">누각</a> 2층 지붕이 붕괴되고 1층 지붕도 일부 소실되는 등 큰 피해를 입었으며, 5년 2개월에 걸친 복원공사 끝에 2013년 5월 4일 준공되어 일반에 공개되고 있다.<br />
-					이 문은 돌을 높이 쌓아 만든 <a class="term" id="term3">석축</a> 가운데에 무지개 모양의 <a class="term" id="term1">홍예문</a>을 두고, 그 위에 앞면 5칸·옆면 2칸 크기로 지은 <a class="term" id="term2">누각</a>형 2층 건물이다. 지붕은 앞면에서 볼 때 사다리꼴 형태를 하고 있는데, 이러한 지붕을 우진각지붕이라 한다. 지붕 처마를 받치기 위해 기둥 위부분에 장식하여 짠 구조가 기둥 위뿐만 아니라 기둥 사이에도 있는 다포 양식으로, 그 형태가 곡이 심하지 않고 짜임도 건실해 조선 전기의 특징을 잘 보여주고 있다.<br />
-					『지봉유설』의 기록에는 ‘숭례문’이라고 쓴 현판을 양녕대군이 썼다고 한다. 지어진 연대를 정확히 알 수 있는 서울 성곽 중에서 제일 오래된 목조 건축물이다.</p>
-					<p><strong>숭례문 방화 화재(2008.2.10)</strong><br />
-					2008년 숭례문 방화 사건(崇禮門放火事件)은 2008년 2월 10일 ~ 2월 11일 숭례문 건물이 방화로 타 무너진 사건이다. 화재는 2008년 2월 10일 오후 8시 40분 전후에 발생하여 다음날인 2008년 2월 11일 오전 0시 40분경 숭례문의 <a class="term" id="term2">누각</a> 2층 지붕이 붕괴하였고 이어 1층에도 불이 붙어 화재 5시간 만인 오전 1시 55분쯤 <a class="term" id="term3">석축</a> 을 제외한 건물이 훼손되었다.</p>
+					<p>${basic.bodySecond}</p>
 
-					<div class="sideR"><button class="button type1">목록</button></div>
+					<div class="sideR"><button class="button type1" onclick="goPage('heritage_search.do');">목록</button></div>
 				</div>
 				<!-- 우측 본문 -->
 				<div class="descSection">
-					<h2 class="uci">I421: C001-01-00001 <button class="button type2">Info</button></h2>
+					<h2 class="uci"><c:out value="${uciresult.uciCode}" /> <button class="button type2" onclick="popupUCI('${uciresult.uciCode}');">Info</button></h2>
 
 					<h3>개요</h3>
 					<div class="boardTb">
@@ -85,39 +93,39 @@
 							<tbody>
 								<tr>
 									<th>종목</th>
-									<td>국보 제 1호</td>
+									<td>${informations[0].outlineData}</td>
 								</tr>
 								<tr>
 									<th>명칭</th>
-									<td>서울 숭례문 (서울 崇禮門)</td>
+									<td>${entry.entryTitle} <c:if test="${entry.entryTitleC != ''}">(<c:out value="${entry.entryTitleC}" />)</c:if></td>
 								</tr>
 								<tr>
 									<th>분류</th>
-									<td>유적건조물 / 정치국방 / 성 / 성곽시설</td>
+									<td>${informations[1].outlineData}</td>
 								</tr>
 								<tr>
 									<th>수량/면적</th>
-									<td>1동</td>
+									<td>${informations[2].outlineData}</td>
 								</tr>
 								<tr>
 									<th>지정(등록)일</th>
-									<td>1962.12.20</td>
+									<td>${informations[3].outlineData}</td>
 								</tr>
 								<tr>
 									<th>소재지</th>
-									<td>서울 중구 세종대로 40 (남대문로 4가)</td>
+									<td>${informations[4].outlineData}</td>
 								</tr>
 								<tr>
 									<th>시대</th>
-									<td>조선시대</td>
+									<td>${informations[5].outlineData}</td>
 								</tr>
 								<tr>
 									<th>소유자<br /><em>(소유단체)</em></th>
-									<td>국유</td>
+									<td>${informations[6].outlineData}</td>
 								</tr>
 								<tr>
 									<th>관리자<br /><em>(관리단체)</em></th>
-									<td>문화재청 숭례문관리소</td>
+									<td>${informations[7].outlineData}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -133,16 +141,13 @@
 								<col style="width:32%" />
 							</colgroup>
 							<tbody>
+							<c:forEach var="data_relations" items="${list_relations}">
 								<tr>
-									<th class="figure"><img src="${croot}images/@pic03.jpg" alt=""></th>
-									<td>흥인지문</td>
-									<td>보물 제 1호</td>
+									<th class="figure"><img src="${croot}images/${data_relations.filename}" alt=""></th>
+									<td>${data_relations.entryTitle}</td>
+									<td>${data_relations.tag}</td>
 								</tr>
-								<tr>
-									<th class="figure"><img src="${croot}images/@pic02.jpg" alt=""></th>
-									<td>경복궁 (景福宮)</td>
-									<td>사적 제 117호</td>
-								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -155,12 +160,13 @@
 								<col style="width:100%" />
 							</colgroup>
 							<tbody>
+							<c:set var="i" value="0" scope="page" />
+							<c:forEach var="data" items="${arr_chapterdata}">
 								<tr>
-									<td class="subject">중1 &gt; 역사① &gt; 조선의 성립과 발전</td>
+									<td class="subject">${data}</td>
 								</tr>
-								<tr>
-									<td class="subject">고1 &gt; 역사① &gt; 조선 사회의 변동</td>
-								</tr>
+								<c:set var="i" value="${i + 1}" scope="page"/>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -175,11 +181,17 @@
 								<col style="width:33%" />
 							</colgroup>
 							<tbody>
-								<tr>
-									<td><a class="termWord" href="#term1pop">홍예문</a></td>
-									<td><a class="termWord" href="#term2pop">누각</a></td>
-									<td><a class="termWord" href="#term3pop">석축</a></td>
-								</tr>
+							<c:set var="j" value="0" scope="page" />
+							<c:forEach var="terms_data" items="${list_terms}">
+								<c:if test="${j mod 3 eq 0}">
+									<tr>
+								</c:if>
+								<td><a href="heritage_view2.do?idx=${list_terms.get(j).idx}">${list_terms.get(j).entryTitle}</a></td>
+								<c:if test="${j mod 3 eq 0}">
+									</tr>
+								</c:if>
+								<c:set var="j" value="${j + 1}" scope="page"/>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>

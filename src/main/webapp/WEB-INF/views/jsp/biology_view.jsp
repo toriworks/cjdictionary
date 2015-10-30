@@ -18,6 +18,12 @@
     goPage = function(url) {
       location.href = url;
     }
+
+    popupUCI = function(uci) {
+      uci = "A-O34-00-42-38";
+      var tUCI = "http://uci.or.kr/I421:" + uci + "@N2C";
+      window.open(tUCI, "UCI 정보", "width=540, height=405, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+    }
   </script>
 </head>
 
@@ -33,7 +39,7 @@
       <h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
       <div id="nav">
         <a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-        <a href="biology_view.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+        <a href="biology_theme.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
         <a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
         <a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
       </div>
@@ -41,9 +47,9 @@
     </div>
     <div class="subNav menu2"><!-- 생물정보 // sub menu -->
       <div class="section">
-        <a href="#">테마 별 생물정보</a>
-        <a href="#">기획자료</a>
-        <a href="#" class="focus">생물정보 검색</a>
+        <a href="#" class="focus">테마 별 생물정보</a>
+        <a href="biology_research.do">학습자료</a>
+        <a href="biology_search.do">생물정보 검색</a>
       </div>
     </div>
   </div>
@@ -59,6 +65,9 @@
       <div class="subBodyArea">
         <!-- 좌측 본문 -->
         <div class="textSection">
+          <div class="themeTit">
+            <p>${title}</p>
+          </div>
           <h2>${entry.entryTitle}</h2>
           <p>${basic.bodyFirst}</p>
           <figure>
@@ -66,22 +75,48 @@
           </figure>
           <p>${basic.bodySecond}</p>
 
-          <div class="sideR"><button class="button type1" onclick="goPage('biology_research.do');">목록</button></div>
+          <div class="sideR"><button class="button type1" onclick="goPage('biology_theme.do');">목록</button></div>
         </div>
         <!-- 우측 본문 -->
         <div class="descSection">
-          <h2 class="uci">I421: C001-01-00001 <button class="button type2">Info</button></h2>
+          <h2 class="uci"><c:out value="${uciresult.uciCode}" /> <button class="button type2" onclick="popupUCI('${uciresult.uciCode}');">Info</button></h2>
+
+          <h3>개요</h3>
+          <div class="boardTb">
+            <table>
+              <caption>개요 설명</caption>
+              <colgroup>
+                <col style="width:30%" />
+                <col style="width:70%" />
+              </colgroup>
+              <tbody>
+              <tr>
+                <th>${informations[0].outlineName}</th>
+                <td>${informations[0].outlineData}</td>
+              </tr>
+              <tr>
+                <th>${informations[1].outlineName}</th>
+                <td>${informations[1].outlineData}</td>
+              </tr>
+              <tr>
+                <th>${informations[2].outlineName}</th>
+                <td>${informations[2].outlineData}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
 
           <h3>관련 생물종</h3>
-
           <div class="board bioList"><!-- board -->
             <ul>
-              <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Potamogetonaceae/Potamogeton/12211/12211_4.JPG" alt=""> <span>가는가래</span></a></li>
-              <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Lemnaceae/Spirodela/12005/12005_1.jpg" alt=""> <span>개구리밥</span></a></li>
+              <c:forEach var="data_relations" items="${list_relations}">
+              <li><a href="biology_view.do?idx=${data_relations.idx}&title=${title}"><img src="${croot}images/${data_relations.filename}" alt=""> <span>${data_relations.entryTitle}</span></a></li>
+              </c:forEach>
+              <!-- li><a href="biology_view.do?idx="><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Lemnaceae/Spirodela/12005/12005_1.jpg" alt=""> <span>개구리밥</span></a></li>
               <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Nymphaeaceae/Nymphaea/12024/1.JPG" alt=""> <span>수련</span></a></li>
               <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Hydrocharitaceae/Hydrilla/12061/5.JPG" alt=""> <span>검정말</span></a></li>
               <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Gramineae/Phragmites/14649/1.JPG" alt=""> <span>갈대</span></a></li>
-              <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Typhaceae/Typha/12079/1.JPG" alt=""> <span>부들</span></a></li>
+              <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Typhaceae/Typha/12079/1.JPG" alt=""> <span>부들</span></a></li-->
             </ul>
           </div>
 
@@ -93,14 +128,16 @@
                 <col style="width:100%" />
               </colgroup>
               <tbody>
-              <tr>
-                <td class="subject">초등 4-2 &gt; 과학 &gt; 1. 식물의 생활</td>
-              </tr>
+              <c:set var="i" value="0" scope="page" />
+              <c:forEach var="data" items="${arr_chapterdata}">
+                <tr>
+                  <td class="subject">${data}</td>
+                </tr>
+                <c:set var="i" value="${i + 1}" scope="page"/>
+              </c:forEach>
               </tbody>
             </table>
           </div>
-
-
         </div>
       </div>
     </div>

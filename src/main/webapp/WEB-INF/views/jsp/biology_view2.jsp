@@ -38,18 +38,18 @@
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_theme.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_theme.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
 			<h2><img src="${croot}images/common/logo_uci.png" alt="UCI"></h2>
 		</div>
-		<div class="subNav"><!-- 문화유산 // sub menu -->
+		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="heritage_theme.do">테마 별 문화유산</a>
-				<a href="heritage_research.do" class="focus">기획자료</a>
-				<a href="heritage_search.do">문화유산 검색</a>
+				<a href="biology_theme.do">테마 별 생물정보</a>
+				<a href="#" class="focus">학습자료</a>
+				<a href="biology_search.do">생물정보 검색</a>
 			</div>
 		</div>
 	</div>
@@ -57,17 +57,14 @@
 	<div id="container">
 		<div class="subTit">
 			<div class="section menuCulture">
-				<p>기획자료</p>
-				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>기획자료</span></div>
+				<p>학습자료</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">생물정보</a><span>학습자료</span></div>
 			</div>
 		</div>
 		<div class="subBody">
 			<div class="subBodyArea">
 				<!-- 좌측 본문 -->
 				<div class="textSection">
-					<!-- <div class="themeTit">
-						<p>광복 70주년 독립운동 문화유산</p>
-					</div> -->
 					<h2>${entry.entryTitle}</h2>
 					<p>${basic.bodyFirst}</p>
 					<figure>
@@ -75,8 +72,8 @@
 					</figure>
 					<p>${basic.bodySecond}</p>
 					<c:set var="referer" value="" />
-					<c:if test="${cat == '1'}"><c:set var="referer" value="heritage_research.do" /></c:if>
-					<c:if test="${cat == '2'}"><c:set var="referer" value="heritage_search.do" /></c:if>
+					<c:if test="${cat == '1'}"><c:set var="referer" value="biology_research.do" /></c:if>
+					<c:if test="${cat == '2'}"><c:set var="referer" value="biology_search.do" /></c:if>
 					<div class="sideR"><button class="button type1" onclick="goPage('${referer}');">목록</button></div>
 				</div>
 				<!-- 우측 본문 -->
@@ -93,64 +90,33 @@
 							</colgroup>
 							<tbody>
 							<tr>
-								<th>종목</th>
+								<th>${informations[0].outlineName}</th>
 								<td>${informations[0].outlineData}</td>
 							</tr>
 							<tr>
-								<th>명칭</th>
-								<td>${entry.entryTitle} <c:if test="${entry.entryTitleC != ''}">(<c:out value="${entry.entryTitleC}" />)</c:if></td>
-							</tr>
-							<tr>
-								<th>분류</th>
+								<th>${informations[1].outlineName}</th>
 								<td>${informations[1].outlineData}</td>
 							</tr>
 							<tr>
-								<th>수량/면적</th>
+								<th>${informations[2].outlineName}</th>
 								<td>${informations[2].outlineData}</td>
-							</tr>
-							<tr>
-								<th>지정(등록)일</th>
-								<td>${informations[3].outlineData}</td>
-							</tr>
-							<tr>
-								<th>소재지</th>
-								<td>${informations[4].outlineData}</td>
-							</tr>
-							<tr>
-								<th>시대</th>
-								<td>${informations[5].outlineData}</td>
-							</tr>
-							<tr>
-								<th>소유자<br /><em>(소유단체)</em></th>
-								<td>${informations[6].outlineData}</td>
-							</tr>
-							<tr>
-								<th>관리자<br /><em>(관리단체)</em></th>
-								<td>${informations[7].outlineData}</td>
 							</tr>
 							</tbody>
 						</table>
 					</div>
 
-					<h3>관련 문화재</h3>
-					<div class="boardTb">
-						<table>
-							<caption>관련 문화재 설명</caption>
-							<colgroup>
-								<col style="width:30%" />
-								<col style="width:38%" />
-								<col style="width:32%" />
-							</colgroup>
-							<tbody>
+					<h3>관련 생물종</h3>
+					<div class="board bioList"><!-- board -->
+						<ul>
 							<c:forEach var="data_relations" items="${list_relations}">
-								<tr>
-									<th class="figure"><img src="${croot}images/${data_relations.filename}" alt=""></th>
-									<td>${data_relations.entryTitle}</td>
-									<td>${data_relations.tag}</td>
-								</tr>
+								<li><a href="biology_view.do?idx=${data_relations.idx}&title=${title}"><img src="${croot}images/${data_relations.filename}" alt=""> <span>${data_relations.entryTitle}</span></a></li>
 							</c:forEach>
-							</tbody>
-						</table>
+							<!-- li><a href="biology_view.do?idx="><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Lemnaceae/Spirodela/12005/12005_1.jpg" alt=""> <span>개구리밥</span></a></li>
+                              <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Nymphaeaceae/Nymphaea/12024/1.JPG" alt=""> <span>수련</span></a></li>
+                              <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Hydrocharitaceae/Hydrilla/12061/5.JPG" alt=""> <span>검정말</span></a></li>
+                              <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Gramineae/Phragmites/14649/1.JPG" alt=""> <span>갈대</span></a></li>
+                              <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Typhaceae/Typha/12079/1.JPG" alt=""> <span>부들</span></a></li-->
+						</ul>
 					</div>
 
 					<h3>관련 교과</h3>
@@ -171,32 +137,6 @@
 							</tbody>
 						</table>
 					</div>
-
-					<h3>용어 해설</h3>
-					<div class="boardTb">
-						<table>
-							<caption>용어 해설</caption>
-							<colgroup>
-								<col style="width:33%" />
-								<col style="width:33%" />
-								<col style="width:33%" />
-							</colgroup>
-							<tbody>
-							<c:set var="j" value="0" scope="page" />
-							<c:forEach var="terms_data" items="${list_terms}">
-								<c:if test="${j mod 3 eq 0}">
-									<tr>
-								</c:if>
-								<td><a href="heritage_view2.do?idx=${list_terms.get(j).idx}">${list_terms.get(j).entryTitle}</a></td>
-								<c:if test="${j mod 3 eq 0}">
-									</tr>
-								</c:if>
-								<c:set var="j" value="${j + 1}" scope="page"/>
-							</c:forEach>
-							</tbody>
-						</table>
-					</div>
-
 				</div>
 			</div>
 		</div>

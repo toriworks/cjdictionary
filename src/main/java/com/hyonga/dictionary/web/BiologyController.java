@@ -299,19 +299,24 @@ public class BiologyController {
      * @return
      */
     @RequestMapping(value = "/biology_search.do", method = RequestMethod.POST)
-    public ModelAndView biologySearchResult(@ModelAttribute HeritageSearchCondition model) {
+    public ModelAndView biologySearchResult(@RequestParam Map<String, String> model) {
         logger.debug("biologySearchResult() is executed!");
+        String munitIdx = model.get("munitIdx");
+        String entryTitle = model.get("entryTitle");
+
+        HeritageSearchCondition searchCondition = new HeritageSearchCondition();
+        searchCondition.setEntryTitle(entryTitle);
         logger.debug("파라미터 : " + model.toString() + "<<END");
 
-        List<HeritageSearchResult> lists = iHeritageService.listBiologySearchResult(model);
+        List<HeritageSearchResult> lists = iHeritageService.listBiologySearchResult(searchCondition);
         int countOfLists = lists.size();
         logger.debug("listHeritageSearchResult size : " + countOfLists + "<<END");
 
         ModelAndView mav = new ModelAndView();
-        mav.addObject("munitidx", model.getMunitidx());
-        mav.addObject("strMUnitIdx", Utility.getStrMUnitIdx(model.getMunitidx()));
-        mav.addObject("entryTitle", model.getEntryTitle());
-        mav.addObject("refineEntryTitle", Utility.getRefineEntryTitle(model.getMunitidx(), model.getEntryTitle()));
+        mav.addObject("munitidx", searchCondition.getMunitidx());
+        mav.addObject("strMUnitIdx", Utility.getStrMUnitIdx(searchCondition.getMunitidx()));
+        mav.addObject("entryTitle", searchCondition.getEntryTitle());
+        mav.addObject("refineEntryTitle", Utility.getRefineEntryTitle(searchCondition.getMunitidx(), searchCondition.getEntryTitle()));
         mav.addObject("data", lists);
         mav.addObject("totalCount", Utility.addComma("0" + countOfLists));
 

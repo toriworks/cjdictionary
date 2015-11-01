@@ -36,10 +36,14 @@
 			return;
 		}
 
-		var form = $('#search_form');
+//		$('#search_form').attr('action', action);
+//		$('#entryTitle').val = keyword;
+//		$('#search_form').submit();
+		var form = document.forms[0];
 		form.action = action;
 		form.entryTitle.value = keyword;
-		form.submit();
+		form.submit()
+
 	}
 </script>
 </head>

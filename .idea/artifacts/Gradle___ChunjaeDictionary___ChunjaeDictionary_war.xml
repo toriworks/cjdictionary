@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="Gradle : ChunjaeDictionary : ChunjaeDictionary.war">
+  <artifact type="war" build-on-make="true" name="Gradle : ChunjaeDictionary : ChunjaeDictionary.war">
     <output-path>$PROJECT_DIR$/build/classes/artifacts/ChunjaeDictionary</output-path>
     <properties id="gradle-properties">
       <options external-project-path="$PROJECT_DIR$" />
@@ -30,6 +30,7 @@
           <element id="library" level="project" name="Gradle: org.mybatis:mybatis:3.2.2" />
           <element id="library" level="project" name="Gradle: org.mybatis:mybatis-spring:1.2.0" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-orm:4.1.6.RELEASE" />
+          <element id="library" level="project" name="sqljdbc4" />
         </element>
       </element>
       <element id="directory" name="META-INF">

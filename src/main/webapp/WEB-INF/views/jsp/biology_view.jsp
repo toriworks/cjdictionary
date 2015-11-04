@@ -1,6 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <spring:url value="/resources/" var="croot" />
+<spring:url value="http://hyonga.iptime.org:28080/CMS100Data/EntryData" var="cms_url" />
+<spring:url value="/resources/images/highlight" var="pop_url" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,13 +18,22 @@
   <script type="text/javascript" src="${croot}js/common.js"></script>
   <script type="text/javascript">
     goPage = function(url) {
-      location.href = url;
+//      location.href = url;
+      history.back(-1);
     }
 
     popupUCI = function(uci) {
       uci = "A-O34-00-42-38";
       var tUCI = "http://uci.or.kr/I421:" + uci + "@N2C";
       window.open(tUCI, "UCI 정보", "width=540, height=405, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+    }
+
+    showLayer = function(a, b) {
+      var caption = a;
+      var img = "${pop_url}/" + b;
+      $("#pop_img_src").attr("src", img);
+      $("#pop_p_str").html(caption);
+      $("#term1pop").show();
     }
   </script>
 </head>
@@ -47,7 +58,7 @@
     </div>
     <div class="subNav menu2"><!-- 생물정보 // sub menu -->
       <div class="section">
-        <a href="#" class="focus">테마 별 생물정보</a>
+        <a href="#" class="focus">테마별 생물정보</a>
         <a href="biology_research.do">학습자료</a>
         <a href="biology_search.do">생물정보 검색</a>
       </div>
@@ -65,17 +76,12 @@
       <div class="subBodyArea">
         <!-- 좌측 본문 -->
         <div class="textSection">
-          <div class="themeTit">
-            <p>${title}</p>
-          </div>
           <h2>${entry.entryTitle}</h2>
-          <p>${basic.bodyFirst}</p>
-          <figure>
-            <img src="${croot}images/@pic01.jpg" alt="" />
-          </figure>
-          <p>${basic.bodySecond}</p>
-
-          <div class="sideR"><button class="button type1" onclick="goPage('biology_theme.do');">목록</button></div>
+          <c:out value="${basic}" escapeXml="false" />
+          <c:set var="referer" value="" />
+          <c:if test="${cat == '1'}"><c:set var="referer" value="biology_research.do" /></c:if>
+          <c:if test="${cat == '2'}"><c:set var="referer" value="biology_search.do" /></c:if>
+          <div class="sideR"><button class="button type1" onclick="goPage('${referer}');">목록</button></div>
         </div>
         <!-- 우측 본문 -->
         <div class="descSection">
@@ -156,6 +162,9 @@
     </div>
   </div>
 </div>
+
+<!-- 용어 레이어 -->
+<span id="term1pop" style="display:block;"><span class="term miniPop"><p class="miniPop_title">홍예문</p><figure><img src="${croot}images/@pic02.jpg" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><img src="${croot}images/bg_po.png" class="pointDot"></span>
 
 </body>
 </html>

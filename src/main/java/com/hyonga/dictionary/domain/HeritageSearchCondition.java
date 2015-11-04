@@ -4,6 +4,7 @@ public class HeritageSearchCondition {
 
     private String munitidx = "";
     private String entryTitle = "";
+    private int startPage = 1;
 
     public String getEntryTitle() {
         return entryTitle;
@@ -21,11 +22,20 @@ public class HeritageSearchCondition {
         this.munitidx = munitidx;
     }
 
+    public int getStartPage() {
+        return startPage;
+    }
+
+    public void setStartPage(int startPage) {
+        this.startPage = startPage;
+    }
+
     @Override
     public String toString() {
         return "HeritageSearchCondition{" +
                 "munitidx='" + munitidx + '\'' +
                 ", entryTitle='" + entryTitle + '\'' +
+                ", startPage=" + startPage +
                 '}';
     }
 }

@@ -72,4 +72,36 @@ public class HeritageServiceImpl implements IHeritageService {
         return lists;
     }
 
+    @Override
+    public int sizeOfBiologySearchResult(HeritageSearchCondition condition) {
+        return this.sqlSessionTemplate.selectOne(NAMESPACE + ".searchBiologyCount", condition);
+    }
+
+    @Override
+    public List<HeritageSearchImgResult> listHeritageSearchImg(HeritageSearchCondition condition) {
+        List<HeritageSearchImgResult> lists = this.sqlSessionTemplate.selectList(NAMESPACE + ".searchHeritageImg", condition);
+        return lists;
+    }
+
+    @Override
+    public int sizeOfHeritageSearchResult(HeritageSearchCondition condition) {
+        return this.sqlSessionTemplate.selectOne(NAMESPACE + ".searchHeritageCount", condition);
+    }
+
+    @Override
+    public int sizeOfHeritageImgSearchResult(HeritageSearchCondition condition) {
+        return this.sqlSessionTemplate.selectOne(NAMESPACE + ".searchHeritageImgCount", condition);
+    }
+
+    @Override
+    public int sizeOfBiologyImgSearchResult(HeritageSearchCondition condition) {
+        return this.sqlSessionTemplate.selectOne(NAMESPACE + ".searchBiologyImgCount", condition);
+    }
+
+    @Override
+    public List<HeritageSearchImgResult> listBiologySearchImg(HeritageSearchCondition condition) {
+        List<HeritageSearchImgResult> lists = this.sqlSessionTemplate.selectList(NAMESPACE + ".searchBiologyImg", condition);
+        return lists;
+    }
+
 }

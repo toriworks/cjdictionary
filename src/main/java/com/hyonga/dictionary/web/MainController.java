@@ -17,7 +17,7 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView indexPage(Map<String, Object> model) {
-        logger.debug("indexPage() is executed!");
+        logger.debug("---->indexPage() is executed!");
 
         String url = "redirect:/main";
         return new ModelAndView(url);
@@ -25,7 +25,7 @@ public class MainController {
 
     @RequestMapping(value = "/main.do", method = RequestMethod.GET)
     public String mainPage(Map<String, Object> model) {
-        logger.debug("mainPage() is executed!");
+        logger.debug("---->mainPage() is executed!");
 
 
         return "main";

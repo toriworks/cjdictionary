@@ -10,6 +10,7 @@ public class HeritageSearchEntry {
     private String entryTitleE;
     private String entryTitleC;
     private String tag;
+    private String taskidx;
 
     public String getIdx() {
         return idx;
@@ -75,6 +76,14 @@ public class HeritageSearchEntry {
         this.tag = tag;
     }
 
+    public String getTaskidx() {
+        return taskidx;
+    }
+
+    public void setTaskidx(String taskidx) {
+        this.taskidx = taskidx;
+    }
+
     @Override
     public String toString() {
         return "HeritageSearchEntry{" +
@@ -86,6 +95,7 @@ public class HeritageSearchEntry {
                 ", entryTitleE='" + entryTitleE + '\'' +
                 ", entryTitleC='" + entryTitleC + '\'' +
                 ", tag='" + tag + '\'' +
+                ", taskidx='" + taskidx + '\'' +
                 '}';
     }
 }

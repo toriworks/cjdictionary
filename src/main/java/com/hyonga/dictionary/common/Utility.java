@@ -25,6 +25,8 @@ public class Utility {
     /** Logger object */
     private static final Logger logger = LoggerFactory.getLogger(Utility.class);
 
+    private static final String CMS_URL = "http://hyonga.iptime.org:28080/CMS100Data/EntryData";
+
     public static String addComma(String str) {
         int iStr = Integer.parseInt(str);
         DecimalFormat df = new DecimalFormat("#,###");
@@ -114,27 +116,24 @@ public class Utility {
         Element elementOfBasic = null;
 
         // 상단설명부 얻기
+        List<String> listBodySecond = new ArrayList<String>();
         if (doc != null) {
             nodeLisfOfBasic = doc.getElementsByTagName("BASIC");
-            elementOfBasic = (Element) nodeLisfOfBasic.item(0);
-            if (elementOfBasic != null) {
+
+            logger.debug("---->nodeListOfBasic 태그수 : " + nodeLisfOfBasic.getLength() + "<<END");
+
+            for (int i=0; i<nodeLisfOfBasic.getLength(); i++) {
+                String temp = "";
+
+                elementOfBasic = (Element) nodeLisfOfBasic.item(i);
                 NodeList nodeListOfText = elementOfBasic.getElementsByTagName("TEXT");
                 Element elementOfText = (Element) nodeListOfText.item(0);
-                bodyFirst = elementOfText.getFirstChild().getNodeValue();
-                bodyFirst = replaceHightlight(bodyFirst);
+                temp = elementOfText.getFirstChild().getNodeValue();
+                temp = replaceHightlight(temp);
+
+                logger.debug("---->temp : " + temp + "<<END");
+                listBodySecond.add(temp);
             }
-
-            // 하단설명부 얻기
-            if (nodeLisfOfBasic.getLength() > 1) {
-                Element elementOfSecondBasic = (Element) nodeLisfOfBasic.item(1);
-                NodeList nodeListOfSecondText = elementOfSecondBasic.getElementsByTagName("TEXT");
-                Element elementOfSecondText = (Element) nodeListOfSecondText.item(0);
-                bodySecond = elementOfSecondText.getFirstChild().getNodeValue();
-                bodySecond = replaceHightlight(bodySecond);
-            }
-
-            logger.debug("bodySecond is :" + bodySecond + "<<END");
-
 
             // 이미지 얻기
             NodeList nodeListOfImgs = doc.getElementsByTagName("IMGS");
@@ -148,7 +147,7 @@ public class Utility {
 
         CommonBasicXML CommonBasicXML = new CommonBasicXML();
         CommonBasicXML.setBodyFirst(bodyFirst);
-        CommonBasicXML.setBodySecond(bodySecond);
+        CommonBasicXML.setBodySecond(listBodySecond);
         CommonBasicXML.setBodyImg(bodyImg);
 
         return CommonBasicXML;
@@ -165,11 +164,22 @@ public class Utility {
         // 두번째 문자열 매칭 - #  => ','
         // 세번째 문자열 매칭 - ^  => ’);>
         // 네번째 문자열 매칭 - (\$>)  => </a>
-        ori = ori.replaceAll("^<\\$", "<a href=\"showLayer('");
-        ori = ori.replaceAll("#", "','");
-        ori = ori.replaceAll("\\^", "\");");
-        ori = ori.replaceAll("(\\$>)", "</a>");
+        System.out.println("원본:" + ori + "<<END");
 
+        // 정상동작하나 경우에 따라서 안될 수 있음
+//        ori = ori.replaceAll("<\\$", "<a href=\"javascript:showLayer('");
+//        ori = ori.replaceAll("#", "','");
+//        ori = ori.replaceAll("\\^", "\');\">");
+//        ori = ori.replaceAll("(\\$>)", "</a>");
+
+        ori = ori.replaceAll("[$]", "");
+        ori = ori.replaceAll("#", "\" value=\"/resources/images/highlight/");
+        ori = ori.replaceAll("&lt;", "<a href=\"#term1pop\" class=\"termWord\" title=\"");
+        ori = ori.replaceAll("\\^", "\">");
+        ori = ori.replaceAll("&gt;", "</a>");
+        ori = ori.replaceAll("href=\"\"", "href=\"#term1pop\"");
+
+        System.out.println("변환본:" + ori + "<<END");
         return ori;
     }
 
@@ -240,5 +250,72 @@ public class Utility {
         }
 
         return refineEntryTitle;
+    }
+
+    /**
+     * XML을 문자로 변경 
+     * @param xml
+     * @return
+     */
+    public static String parseBasicText2Html(String xml) {
+        String ori = "<?xml version='1.0' encoding='UTF-8' ?><ROOT>";
+        ori += xml;
+        ori += "</ROOT>";
+
+        logger.debug(ori);
+        Document doc = convertStringToDocument(ori);
+        NodeList nodeLisfOfBasic = null;
+        Element elementOfBasic = null;
+        String strRet = "";
+        if (doc != null) {
+            nodeLisfOfBasic = doc.getElementsByTagName("TEXT");
+            int sizeOfNodeListText = nodeLisfOfBasic.getLength();
+            logger.debug("---->sizeOfNodeListText:" + sizeOfNodeListText);
+
+            for (int i=0; i<sizeOfNodeListText; i++) {
+                elementOfBasic = (Element) nodeLisfOfBasic.item(i);
+                strRet += "<p>" + elementOfBasic.getFirstChild().getNodeValue() + "</p>";
+            }
+        }
+
+        strRet = replaceHightlight(strRet);
+
+        logger.debug("---->최종 문자열 변환 : " + strRet + "<<END");
+        return strRet;
+    }
+
+    /**
+     * XML을 이미지로 변경
+     * @param xml
+     * @return
+     */
+    public static String parseBasicImg2Html(String xml, String taskId) {
+        String ori = "<?xml version='1.0' encoding='UTF-8' ?><ROOT>";
+        ori += xml;
+        ori += "</ROOT>";
+
+        logger.debug(ori);
+        Document doc = convertStringToDocument(ori);
+        NodeList nodeLisfOfBasic = null;
+        Element elementOfBasic = null;
+        String strRet = "";
+        if (doc != null) {
+            nodeLisfOfBasic = doc.getElementsByTagName("IMG");
+            int sizeOfNodeListText = nodeLisfOfBasic.getLength();
+            logger.debug("---->sizeOfNodeListText:" + sizeOfNodeListText);
+
+            for (int i=0; i<sizeOfNodeListText; i++) {
+                Element elementOfImgs = (Element) nodeLisfOfBasic.item(i);
+                NodeList nodeListOfFilename = elementOfImgs.getElementsByTagName("FILENAME");
+                Element elementOfFilename = (Element) nodeListOfFilename.item(0);
+                strRet += "<figure><img src=\"#CMS_URL#/#ENTRY_TASKID#/" + elementOfFilename.getFirstChild().getNodeValue() + "\"></figure>";
+            }
+        }
+
+        strRet = strRet.replaceAll("#CMS_URL#", CMS_URL);
+        strRet = strRet.replaceAll("#ENTRY_TASKID#", taskId);
+
+        logger.debug(strRet);
+        return strRet;
     }
 }

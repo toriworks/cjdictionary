@@ -14,20 +14,43 @@
     <select id="searchHeritage"
             parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
             resultType="com.hyonga.dictionary.domain.HeritageSearchResult">
-        SELECT a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode, a.entryTitleC, a.tag
+        SELECT *
+        FROM (
+            SELECT row_number() over(order by a.EntryTitle) rownum, a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode, a.entryTitleC, a.tag
+            FROM TEntry a, TEntryUCI b
+            WHERE 1=1
+            AND a.Idx = b.EntryIdx
+             <if test="entryTitle != null">
+            AND (a.EntryTitle LIKE '%'+#{entryTitle}+'%' OR a.Tag LIKE '%'+#{entryTitle}+'%')
+             </if>
+            <if test="munitidx != ''">
+            AND MUnitIdx = #{munitidx}
+            </if>
+            <if test="munitidx ==''">
+            AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
+            </if>
+        ) pagetable
+        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 19
+        ORDER BY EntryTitle ASC
+    </select>
+
+    <!-- 문화유산 검색시 전체 카운트 -->
+    <select id="searchHeritageCount"
+            parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
+            resultType="java.lang.Integer">
+        SELECT COUNT(0) AS cnt
         FROM TEntry a, TEntryUCI b
         WHERE 1=1
         AND a.Idx = b.EntryIdx
-         <if test="entryTitle != null">
-        AND (a.EntryTitle LIKE '%'+#{entryTitle}+'%' OR a.Tag LIKE '%'+#{entryTitle}+'%')
-         </if>
+        <if test="entryTitle != null">
+            AND (a.EntryTitle LIKE '%'+#{entryTitle}+'%' OR a.Tag LIKE '%'+#{entryTitle}+'%')
+        </if>
         <if test="munitidx != ''">
-        AND MUnitIdx = #{munitidx}
+            AND MUnitIdx = #{munitidx}
         </if>
         <if test="munitidx ==''">
-        AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
+            AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
         </if>
-        ORDER BY a.EntryTitle ASC
     </select>
     
     <!-- 문화유산 테마 검색 -->
@@ -50,7 +73,7 @@
         SELECT recType, content
         FROM TEntryData
         WHERE entryIdx = #{entryIdx}
-        AND parentIdx=0
+        AND parentIdx &lt;&gt;0
         AND delFlag=0
         ORDER BY sortNo ASC
     </select>
@@ -59,9 +82,11 @@
     <select id="searchHeritageEntry"
             parameterType="java.lang.String"
             resultType="com.hyonga.dictionary.domain.HeritageSearchEntry">
-        SELECT idx, schoolIdx, munitIdx, entryTitle, entryTitleK, entryTitleE, entryTitleC, tag
-        FROM TEntry
-        WHERE idx = #{idx}
+        SELECT
+          idx, schoolIdx, munitIdx, entryTitle, entryTitleK, entryTitleE, entryTitleC, tag,
+          (SELECT top 1 taskidx FROM TFiledata b WHERE a.idx = b.entryidx) AS taskidx
+        FROM TEntry a
+        WHERE a.idx = #{idx}
     </select>
 
     <!-- 문화유산 기획 상세(uci, 관련교과, 연관엔트리) -->
@@ -81,7 +106,8 @@
             entryTitle,
             idx,
             tag,
-	        (SELECT top 1 filename FROM TFiledata b WHERE a.idx = b.entryidx) AS filename
+	        (SELECT top 1 filename FROM TFiledata b WHERE a.idx = b.entryidx) AS filename,
+            (SELECT top 1 taskidx FROM TFiledata b WHERE a.idx = b.entryidx) AS taskidx
         FROM TEntry a
         WHERE
 	        idx IN
@@ -115,20 +141,128 @@
     <select id="searchBiology"
             parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
             resultType="com.hyonga.dictionary.domain.HeritageSearchResult">
-        SELECT a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode, a.entryTitleC, a.tag
+        <!--SELECT a.Idx AS idx,  a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode, a.entryTitleC, a.tag-->
+        <!--FROM TEntry a, TEntryUCI b-->
+        <!--WHERE 1=1-->
+        <!--AND a.Idx = b.EntryIdx-->
+        <!--<if test="entryTitle != null">-->
+            <!--AND (a.EntryTitle LIKE '%'+#{entryTitle}+'%' OR a.Tag LIKE '%'+#{entryTitle}+'%')-->
+        <!--</if>-->
+        <!--<if test="munitidx != ''">-->
+            <!--AND MUnitIdx = #{munitidx}-->
+        <!--</if>-->
+        <!--<if test="munitidx ==''">-->
+            <!--AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)-->
+        <!--</if>-->
+        <!--ORDER BY a.EntryTitle ASC-->
+        SELECT *
+        FROM (
+            SELECT
+              row_number() over(order by a.EntryTitle) rownum, a.Idx AS idx, a.MUnitIdx AS munitidx, a.EntryTitle AS entryTitle, b.UCICODE AS ucicode, a.entryTitleC, a.tag
+            FROM TEntry a, TEntryUCI b WHERE 1=1
+            AND a.Idx = b.EntryIdx
+            <if test="entryTitle != null">
+                AND (a.EntryTitle LIKE '%'+#{entryTitle}+'%' OR a.Tag LIKE '%'+#{entryTitle}+'%')
+            </if>
+            <if test="munitidx != ''">
+                AND MUnitIdx = #{munitidx}
+            </if>
+            <if test="munitidx ==''">
+                AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
+            </if>
+        ) pagetable
+        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 19
+        ORDER BY EntryTitle ASC
+    </select>
+
+    <!-- 생물정보 검색시 전체 카운트 -->
+    <select id="searchBiologyCount"
+            parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
+            resultType="java.lang.Integer">
+        SELECT COUNT(0) AS cnt
         FROM TEntry a, TEntryUCI b
         WHERE 1=1
         AND a.Idx = b.EntryIdx
         <if test="entryTitle != null">
-            AND (a.EntryTitle LIKE '%'+#{entryTitle}+'%' OR a.Tag LIKE '%'+#{entryTitle}+'%')
+        AND (a.EntryTitle LIKE '%'+#{entryTitle}+'%' OR a.Tag LIKE '%'+#{entryTitle}+'%')
         </if>
         <if test="munitidx != ''">
-            AND MUnitIdx = #{munitidx}
+        AND MUnitIdx = #{munitidx}
         </if>
         <if test="munitidx ==''">
-            AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
+        AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
         </if>
-        ORDER BY a.EntryTitle ASC
     </select>
 
+    <!-- 이미지 검색 결과 -->
+    <select id="searchHeritageImg"
+            parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchImgResult">
+        SELECT *
+        FROM (
+        SELECT row_number() over(order by ImageTitle) rownum, Idx, imageCaption, filename, ImageTitle
+            FROM TUCIImage
+            WHERE 1=1
+            <if test="entryTitle != null">
+            AND (ImageTitle like '%'+#{entryTitle}+'%' OR ImageCaption LIKE '%'+#{entryTitle}+'%' OR ImageTag LIKE '%'+#{entryTitle}+'%')
+            </if>
+            <if test="munitidx != ''">
+                AND MUnitIdx = #{munitidx}
+            </if>
+            <if test="munitidx ==''">
+                AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
+            </if>
+        ) pagetable
+        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 19
+        ORDER BY ImageTitle ASC
+    </select>
+
+    <select id="searchHeritageImgCount"
+            parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
+            resultType="java.lang.Integer">
+        SELECT COUNT(0) AS cnt
+        FROM TUCIImage
+        WHERE 1=1
+        <if test="entryTitle != null">
+            AND (ImageTitle like '%'+#{entryTitle}+'%' OR ImageCaption LIKE '%'+#{entryTitle}+'%' OR ImageTag LIKE  '%'+#{entryTitle}+'%')
+        </if>
+        <if test="munitidx != ''">AND MUnitIdx = #{munitidx} </if>
+        <if test="munitidx ==''">AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
+        </if>
+    </select>
+
+    <!-- 이미지 검색 결과(생물정보) -->
+    <select id="searchBiologyImg"
+            parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
+            resultType="com.hyonga.dictionary.domain.HeritageSearchImgResult">
+        SELECT *
+        FROM (
+            SELECT row_number() over(order by ImageTitle) rownum, Idx, imageCaption, filename, ImageTitle
+            FROM TUCIImage
+            WHERE 1=1
+            <if test="entryTitle != null">
+                AND (ImageTitle like '%'+#{entryTitle}+'%' OR ImageCaption LIKE '%'+#{entryTitle}+'%' OR ImageTag LIKE  '%'+#{entryTitle}+'%')
+            </if>
+            <if test="munitidx != ''">AND MUnitIdx = #{munitidx} </if>
+            <if test="munitidx ==''">AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
+            </if>
+        ) pagetable
+        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 19
+        ORDER BY ImageTitle ASC
+    </select>
+
+    <!-- 이미지 검색 결과 전체 카운트(생물정보) -->
+    <select id="searchBiologyImgCount"
+            parameterType="com.hyonga.dictionary.domain.HeritageSearchCondition"
+            resultType="java.lang.Integer">
+        SELECT COUNT(0) AS cnt
+        FROM TUCIImage
+        WHERE 1=1
+        <if test="entryTitle != null">
+            AND (ImageTitle like '%'+#{entryTitle}+'%' OR ImageCaption LIKE '%'+#{entryTitle}+'%' OR ImageTag LIKE  '%'+#{entryTitle}+'%')
+        </if>
+        <if test="munitidx != ''">AND MUnitIdx = #{munitidx} </if>
+        <if test="munitidx ==''">AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
+        </if>
+    </select>
 </mapper>

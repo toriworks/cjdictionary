@@ -1,6 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <spring:url value="/resources/" var="croot" />
+<spring:url value="http://hyonga.iptime.org:28080/CMS100Data/EntryData" var="cms_url" />
+<spring:url value="/resources/images/highlight" var="pop_url" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,13 +18,22 @@
 	<script type="text/javascript" src="${croot}js/common.js"></script>
 	<script type="text/javascript">
 		goPage = function(url) {
-			location.href = url;
+//			location.href = url;
+			history.back(-1);
 		}
 
 		popupUCI = function(uci) {
 			uci = "A-O34-00-42-38";
 			var tUCI = "http://uci.or.kr/I421:" + uci + "@N2C";
 			window.open(tUCI, "UCI 정보", "width=540, height=405, toolbar=no, menubar=no, scrollbars=no, resizable=no");
+		}
+
+		showLayer = function(a, b) {
+			var caption = a;
+			var img = "${pop_url}/" + b;
+			$("#pop_img_src").attr("src", img);
+			$("#pop_p_str").html(caption);
+			$("#term1pop").show();
 		}
 	</script>
 </head>
@@ -47,16 +58,23 @@
 		</div>
 		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="biology_theme.do">테마 별 생물정보</a>
-				<a href="#" class="focus">학습자료</a>
-				<a href="biology_search.do">생물정보 검색</a>
+				<a href="biology_theme.do">테마별 생물정보</a>
+				<c:set var="cat" value="${param.cat}" />
+				<c:if test="${cat == 1}">
+					<a href="#" class="focus">학습자료</a>
+					<a href="biology_search.do">생물정보 검색</a>
+				</c:if>
+				<c:if test="${cat == 2}">
+					<a href="biology_research.do">학습자료</a>
+					<a href="#" class="focus">생물정보 검색</a>
+				</c:if>
 			</div>
 		</div>
 	</div>
 
 	<div id="container">
 		<div class="subTit">
-			<div class="section menuCulture">
+			<div class="section menuBio">
 				<p>학습자료</p>
 				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">생물정보</a><span>학습자료</span></div>
 			</div>
@@ -66,11 +84,7 @@
 				<!-- 좌측 본문 -->
 				<div class="textSection">
 					<h2>${entry.entryTitle}</h2>
-					<p>${basic.bodyFirst}</p>
-					<figure>
-						<img src="${croot}images/@pic01.jpg" alt="" />
-					</figure>
-					<p>${basic.bodySecond}</p>
+					<c:out value="${basic}" escapeXml="false" />
 					<c:set var="referer" value="" />
 					<c:if test="${cat == '1'}"><c:set var="referer" value="biology_research.do" /></c:if>
 					<c:if test="${cat == '2'}"><c:set var="referer" value="biology_search.do" /></c:if>
@@ -89,18 +103,14 @@
 								<col style="width:70%" />
 							</colgroup>
 							<tbody>
-							<tr>
-								<th>${informations[0].outlineName}</th>
-								<td>${informations[0].outlineData}</td>
-							</tr>
-							<tr>
-								<th>${informations[1].outlineName}</th>
-								<td>${informations[1].outlineData}</td>
-							</tr>
-							<tr>
-								<th>${informations[2].outlineName}</th>
-								<td>${informations[2].outlineData}</td>
-							</tr>
+							<c:set var="i" value="0" scope="page" />
+							<c:forEach var="inform" items="${informations}">
+								<tr>
+									<th>${inform.outlineName}</th>
+									<td>${inform.outlineData}</td>
+								</tr>
+								<c:set var="i" value="${i + 1}" scope="page"/>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -109,7 +119,7 @@
 					<div class="board bioList"><!-- board -->
 						<ul>
 							<c:forEach var="data_relations" items="${list_relations}">
-								<li><a href="biology_view.do?idx=${data_relations.idx}&title=${title}"><img src="${croot}images/${data_relations.filename}" alt=""> <span>${data_relations.entryTitle}</span></a></li>
+								<li><a href="biology_view.do?idx=${data_relations.idx}&title=${title}"><img src="${cms_url}/${data_relations.taskidx}/${data_relations.filename}" alt=""> <span>${data_relations.entryTitle}</span></a></li>
 							</c:forEach>
 							<!-- li><a href="biology_view.do?idx="><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Lemnaceae/Spirodela/12005/12005_1.jpg" alt=""> <span>개구리밥</span></a></li>
                               <li><a href="#"><img src="http://www.nature.go.kr/newkfsweb/fileUpload/plants/basic/Nymphaeaceae/Nymphaea/12024/1.JPG" alt=""> <span>수련</span></a></li>
@@ -156,29 +166,7 @@
 	</div>
 
 	<!-- 용어 레이어 -->
-	<div id="term1pop" style="display:block;">
-		<div>
-			<figure><img src="${croot}images/@pic02.jpg" alt=""></figure>
-			<p>무지개처럼 생긴 문이라는 뜻의 홍예문은 철도 건설을 담당하고 있던 일본 공병대가  1906년 착공하여 1908년에 준공하였다.</p>
-		</div>
-		<img src="${croot}images/bg_po.png" class="pointDot">
-	</div>
-
-	<div>
-		<div>
-			<figure><img src="${croot}images/@pic03.jpg" alt=""></figure>
-			<p>누각은..........누각은.........</p>
-		</div>
-		<img src="${croot}images/bg_po.png" class="pointDot">
-	</div>
-
-	<div id="term3pop" style="display:block;">
-		<div class="term miniPop">
-			<figure><img src="${croot}images/@pic03.jpg" alt=""></figure>
-			<p>석축 석축석축석축 용어 설명</p>
-		</div>
-		<img src="${croot}images/bg_po.png" class="pointDot">
-	</div>
+	<span id="term1pop" style="display:block;"><span class="term miniPop"><p class="miniPop_title">홍예문</p><figure><img src="${croot}images/@pic02.jpg" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><img src="${croot}images/bg_po.png" class="pointDot"></span>
 
 </div>
 

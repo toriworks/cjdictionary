@@ -36,7 +36,7 @@
 		</div>
 		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="biology_theme.do">테마 별 생물정보</a>
+				<a href="biology_theme.do">테마별 생물정보</a>
 				<a href="#" class="focus">학습자료</a>
 				<a href="biology_search.do">생물정보 검색</a>
 			</div>
@@ -53,7 +53,7 @@
 		<div class="subCnt">
 			<div class="section">
 				<div class="subDesc">
-					생물정보 학습자료 설명영역
+					<p>생물정보 학습자료는 식물과 곤충 정보 등을 교과 과정과 연계하여 쉽게 이해할 수 있도록 구성하였습니다.</p>
 				</div>
 
 				<div class="cultureList">

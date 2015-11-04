@@ -42,7 +42,7 @@
 		</div>
 		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="#" class="focus">테마 별 생물정보</a>
+				<a href="#" class="focus">테마별 생물정보</a>
 				<a href="biology_research.do">학습자료</a>
 				<a href="biology_search.do">생물정보 검색</a>
 			</div>
@@ -51,9 +51,9 @@
 
 	<div id="container">
 		<div class="subTit">
-			<div class="section menuCulture">
-				<p>테마 별 생물정보</p>
-				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마 별 생물정보</span></div>
+			<div class="section menuBio">
+				<p>테마별 생물정보</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마별 생물정보</span></div>
 			</div>
 		</div>
 		<div class="subCnt">

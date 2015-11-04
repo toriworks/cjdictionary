@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <spring:url value="/resources/" var="croot" />
+<spring:url value="http://hyonga.iptime.org:28080/CMS100Data/EntryData" var="cms_url" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,7 +17,8 @@
 	<script type="text/javascript" src="${croot}js/common.js"></script>
 	<script type="text/javascript">
 		goPage = function(url) {
-			location.href = url;
+//			location.href = url;
+			history.back(-1);
 		}
 
 		popupUCI = function(uci) {
@@ -47,9 +49,16 @@
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="heritage_theme.do">테마 별 문화유산</a>
-				<a href="heritage_research.do" class="focus">기획자료</a>
-				<a href="heritage_search.do">문화유산 검색</a>
+				<a href="heritage_theme.do">테마별 문화유산</a>
+				<c:set var="cat" value="${param.cat}" />
+				<c:if test="${cat == 1}">
+					<a href="#" class="focus">학습자료</a>
+					<a href="heritage_search.do">문화유산 검색</a>
+				</c:if>
+				<c:if test="${cat == 2}">
+					<a href="heritage_research.do">학습자료</a>
+					<a href="#" class="focus">문화유산 검색</a>
+				</c:if>
 			</div>
 		</div>
 	</div>
@@ -57,8 +66,8 @@
 	<div id="container">
 		<div class="subTit">
 			<div class="section menuCulture">
-				<p>기획자료</p>
-				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>기획자료</span></div>
+				<p>학습자료</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>학습자료</span></div>
 			</div>
 		</div>
 		<div class="subBody">
@@ -69,11 +78,7 @@
 						<p>광복 70주년 독립운동 문화유산</p>
 					</div> -->
 					<h2>${entry.entryTitle}</h2>
-					<p>${basic.bodyFirst}</p>
-					<figure>
-						<img src="${croot}images/@pic01.jpg" alt="" />
-					</figure>
-					<p>${basic.bodySecond}</p>
+					<c:out value="${basic}" escapeXml="false" />
 					<c:set var="referer" value="" />
 					<c:if test="${cat == '1'}"><c:set var="referer" value="heritage_research.do" /></c:if>
 					<c:if test="${cat == '2'}"><c:set var="referer" value="heritage_search.do" /></c:if>
@@ -216,29 +221,8 @@
 	</div>
 
 	<!-- 용어 레이어 -->
-	<div id="term1pop" style="display:block;">
-		<div>
-			<figure><img src="${croot}images/@pic02.jpg" alt=""></figure>
-			<p>무지개처럼 생긴 문이라는 뜻의 홍예문은 철도 건설을 담당하고 있던 일본 공병대가  1906년 착공하여 1908년에 준공하였다.</p>
-		</div>
-		<img src="${croot}images/bg_po.png" class="pointDot">
-	</div>
+	<span id="term1pop" style="display:block;"><span class="term miniPop"><p class="miniPop_title">홍예문</p><figure><img src="${croot}images/@pic02.jpg" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><img src="${croot}images/bg_po.png" class="pointDot"></span>
 
-	<div>
-		<div>
-			<figure><img src="${croot}images/@pic03.jpg" alt=""></figure>
-			<p>누각은..........누각은.........</p>
-		</div>
-		<img src="${croot}images/bg_po.png" class="pointDot">
-	</div>
-
-	<div id="term3pop" style="display:block;">
-		<div class="term miniPop">
-			<figure><img src="${croot}images/@pic03.jpg" alt=""></figure>
-			<p>석축 석축석축석축 용어 설명</p>
-		</div>
-		<img src="${croot}images/bg_po.png" class="pointDot">
-	</div>
 
 </div>
 

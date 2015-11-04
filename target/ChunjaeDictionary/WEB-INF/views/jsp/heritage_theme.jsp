@@ -36,8 +36,8 @@
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="#" class="focus">테마 별 문화유산</a>
-				<a href="#">기획자료</a>
+				<a href="#" class="focus">테마별 문화유산</a>
+				<a href="#">학습자료</a>
 				<a href="#">문화유산 검색</a>
 			</div>
 		</div>
@@ -46,14 +46,14 @@
 	<div id="container">
 		<div class="subTit">
 			<div class="section menuCulture">
-				<p>테마 별 문화유산</p>
-				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마 별 문화유산</span></div>
+				<p>테마별 문화유산</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마별 문화유산</span></div>
 			</div>
 		</div>
 		<div class="subCnt">
 			<div class="section">
 				<div class="subDesc">
-					테마 별 문화유산에 대한 설명 영역
+					테마별 문화유산 정보는 문화유산 정보를 교과 수업과 관련된 주제별로 모아서 제공해 드리는 자료입니다.
 				</div>
 				<div class="sorting">
 					<div class="sideL"><span>학교구분</span>

@@ -36,8 +36,8 @@
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="heritage_theme.do">테마 별 문화유산</a>
-				<a href="#" class="focus">기획자료</a>
+				<a href="heritage_theme.do">테마별 문화유산</a>
+				<a href="#" class="focus">학습자료</a>
 				<a href="heritage_search.do">문화유산 검색</a>
 			</div>
 		</div>
@@ -46,19 +46,19 @@
 	<div id="container">
 		<div class="subTit">
 			<div class="section menuCulture">
-				<p>기획자료</p>
-				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>기획자료</span></div>
+				<p>학습자료</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>학습자료</span></div>
 			</div>
 		</div>
 		<div class="subCnt">
 			<div class="section">
 				<div class="subDesc">
-					기획자료에 대한 설명 영역
+					<p>문화유산 학습자료는 문화유산을 교과 과정과 연계하여 쉽게 이해할 수 있도록 구성하였습니다.</p>
 				</div>
 
 				<div class="cultureList">
 					<div class="cultureT first">
-						<a href="heritage_view2.do?cat=1&idx=57412"><img src="${croot}images/108_1.jpg" alt=""> <span>무령왕릉으로 보는 백제의 모습</span></a>
+						<a href="heritage_view2.do?cat=1&idx=64125"><img src="${croot}images/108_1.jpg" alt=""> <span>무령왕릉으로 보는 백제의 모습</span></a>
 					</div>
 					<div class="cultureT">
 						<a href="heritage_view2.do?cat=1&idx=64126"><img src="${croot}images/108_2.jpg" alt=""> <span>신라의 불교문화</span></a>

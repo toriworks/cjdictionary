@@ -42,8 +42,8 @@
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="#" class="focus">테마 별 문화유산</a>
-				<a href="heritage_research.do">기획자료</a>
+				<a href="#" class="focus">테마별 문화유산</a>
+				<a href="heritage_research.do">학습자료</a>
 				<a href="heritage_search.do">문화유산 검색</a>
 			</div>
 		</div>
@@ -52,8 +52,8 @@
 	<div id="container">
 		<div class="subTit">
 			<div class="section menuCulture">
-				<p>테마 별 문화유산</p>
-				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마 별 문화유산</span></div>
+				<p>테마별 문화유산</p>
+				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">문화유산</a><span>테마별 문화유산</span></div>
 			</div>
 		</div>
 		<div class="subCnt">

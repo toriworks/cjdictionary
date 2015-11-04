@@ -101,7 +101,7 @@ body {}
 #mainContent .themeHeritage .themeT.bg3 p{background:#dbb67e;}
 
 #mainContent .mainStudy{padding:40px 0 90px 0; overflow:hidden;}
-#mainContent .mainStudy .cultureT{display:inline-block; float:left; width:300px; height:200px; margin:15px 0 0 40px; text-align:center; overflow:hidden;}
+#mainContent .mainStudy .cultureT{display:inline-block; float:left; width:300px; height:235px; margin:15px 0 0 40px; text-align:center; overflow:hidden;}
 #mainContent .mainStudy .cultureT span{font-size:14px; color:#545454; display:inline-block; padding:10px 0;}
 #mainContent .mainStudy .cultureT.first{margin-left:0;}
 
@@ -112,7 +112,7 @@ body {}
 .sectionTit .moreBtn{float:right;}
 
 .moreBtn{background:#fff; border-radius:16px; border:1px solid #e6e7e9; text-align:center; display:inline-block; padding:9px 16px; font-size:13px; color:#464f56;
-line-height:14px; font-weight:700;}
+	line-height:14px; font-weight:700;}
 .moreBtn:hover{ text-decoration:none;}
 
 /*sub*/
@@ -128,10 +128,11 @@ line-height:14px; font-weight:700;}
 .subTit p{font-size:28px; color:#000; padding:50px 0 0 0; font-weight:700; height:60px;}
 
 .subCnt{padding:0 0 70px 0;}
-.subCnt .subDesc{width:980px; height:100px; background:#f4f4f4; margin:60px auto 30px auto;}
+/*.subCnt .subDesc{width:980px; height:30px; background:#f4f4f4; margin:60px auto 30px auto;}*/
+.subCnt .subDesc p{text-align:center;width:980px; height:30px; font-size:18px; font-weight:bold;margin:40px auto 30px auto;color:#538433;}
 .subCnt .themeTit{width:980px; height:20px; background:url('/resources/images/bg_themeTit.png') repeat 0 0; margin:60px auto 30px auto; padding:15px 0;}
 .subCnt .themeTit p{text-align:center; font-size:20px; font-weight:bold; color:#fff;}
-.subCnt .sorting{border-top:1px solid #9a9c9e; padding-top:40px; overflow:hidden;}
+.subCnt .sorting{border-top:1px solid #9a9c9e; padding-top:20px; overflow:hidden;}
 .subCnt .sideL,
 .subBody .sideL{float:left; line-height:1.3em;}
 .subCnt .sideR,
@@ -145,25 +146,28 @@ line-height:14px; font-weight:700;}
 .subCnt ul.themeT li:nth-child(3n+1){margin-left:0;}
 .subCnt ul.themeT li{display:inline-block; float:left; width:298px; height:146px; border:1px solid #cecece; background:#fff; margin:30px 0 0 40px; text-align:center; overflow:hidden; box-shadow:0 4px 0 #d8d8d8;}
 .subCnt ul.themeT li p{color:#454545; font-size:14px; height:35px; padding:15px 0 0 0; font-weight:700; background:#e5e5e5;}
+/*.subCnt ul.themeT li p{color:#454545; font-size:14px; height:35px; padding:15px 0 0 0; font-weight:700; background:#99cfe2;}*/
 .subCnt ul.themeT li span{display:inline-block; color:#545454; font-size:18px; padding:20px 0; line-height:30px;}
 
 .subCnt .cultureList{border-top:1px solid #9a9c9e; padding-top:20px; overflow:hidden;}
-.subCnt .cultureList .cultureT{display:inline-block; float:left; width:300px; height:215px; margin:15px 0 0 40px; text-align:center; overflow:hidden;}
+/*.subCnt .cultureList .cultureT{display:inline-block; float:left; width:300px; height:215px; margin:15px 0 0 40px; text-align:center; overflow:hidden;}*/
+.subCnt .cultureList .cultureT{display:inline-block; float:left; width:300px; height:235px; margin:15px 0 0 40px; text-align:center; overflow:hidden;}
 .subCnt .cultureList .cultureT span{font-size:14px; color:#545454; display:inline-block; padding:10px 0;}
 .subCnt .cultureList .cultureT.first{margin-left:0;}
 
 /*문화유산검색*/
-.subCnt .searchTit{width:980px; height:20px; margin:50px auto; padding:15px 0;}
-.subCnt .searchTit p{text-align:left; font-size:14px; font-weight:bold; color:#646464;}
-.subCnt .searchBox{position:relative; background:#f8f8f8; border:3px solid #eeeeee; width:894px; min-height:80px; padding:45px 40px;}
+.subCnt .searchTit{width:980px; height:20px; margin:30px auto; padding:15px 0;}
+.subCnt .searchTit p{text-align:center; font-size:18px; font-weight:bold; color:#646464;}
+/*p{text-align:center;width:980px; height:30px; font-size:18px; font-weight:bold;background:#f4f4f4; margin:60px auto 30px auto;color:#464f56;}*/
+.subCnt .searchBox{position:relative; background:#f8f8f8; border:3px solid #eeeeee; width:894px; min-height:47px; padding:45px 40px;}
 .subCnt .searchBox dl{width:800px; overflow:hidden;}
 .subCnt .searchBox dl dt{width:100px; float:left; text-align:center; height:45px; vertical-align:middle; line-height:3em; font-size:14px; font-weight:bold; color:#454545;}
 .subCnt .searchBox dl .nextLine{clear:both;}
 .subCnt .searchBox dl dd{width:300px; float:left; height:45px; vertical-align:middle; line-height:3em; text-align:left;}
 .subCnt .searchBox dl dd select{width:100%; text-align:center; padding:10px; border-color:#ccc;}
-.subCnt .searchBox dl .text{padding:18px 10px; border-color:#ccc;}
+.subCnt .searchBox dl .text{height:40px;padding:0px 0px; border-color:#ccc;}
 .subCnt .searchBox dl dd.middle{width:395px; margin-left:5px;}
-.subCnt .searchBox .searhBtn{position:absolute; top:45px; right:45px; width:82px; height:54px; background:#fcaf17; color:#fff; font-size:18px; font-weight:bold; text-align:center; padding:30px 0 0 0; text-decoration:none;}
+.subCnt .searchBox .searhBtn{position:absolute; top:45px; right:45px; width:82px; height:29px; background:#fcaf17; color:#fff; font-size:18px; font-weight:bold; text-align:center; padding:10px 0 0 0; text-decoration:none;}
 .subCnt .searchResultTab{width:980px; margin:40px auto 15px auto; overflow:hidden;}
 .subCnt .searchResultTab a{width:446px; float:left; display:inline-block; text-align:center; padding:8px 20px 5px 20px; font-size:18px; font-weight:bold; line-height:2em; border:2px solid #8fa88a; border-radius:21px 21px 0 0; background:#8fa88a; color:#fff; border-bottom:none; text-decoration:none; overflow:hidden; white-space: nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; -ms-text-overflow:ellipsis;}/*말줄임 적용*/
 .subCnt .searchResultTab a.selTab{color:#2f2f2f; background:#fff;}
@@ -194,19 +198,30 @@ button.type2{color:#fff; background:#fcaf17; padding:0 13px;} /*yellow*/
 .subBody .subBodyArea{width:980px; margin:0 auto;}
 .subBody .subBodyArea .textSection{float:left; width:550px; margin-right:40px; } /*좌측본문*/
 .subBody .subBodyArea .descSection{float:left; width:360px; margin-left:30px; } /*우측본문*/
-	.textSection .themeTit{width:560px; height:20px; background:url('/resources/images/bg_themeTit.png') repeat 0 0; margin:60px auto 10px auto; padding:15px 0 15px 30px;}
-	.textSection .themeTit p{text-align:left; font-size:20px; font-weight:bold; color:#fff; }
-	.textSection h2{font-size:36px; color:#538433; line-height:2em; font-weight:bold; margin:30px 0 15px 0;}
-	.textSection p{color:#646464; font-size:14px; line-height:24px; margin-bottom:20px;}
-	.textSection p strong{font-size:16px; line-height:34px; color:#646464;}
-	.textSection figure{padding:25px 0; width:550px;}
-	.textSection figure img{max-width:100%;}
-	.textSection .termWord{position:relative;background:#21a1ae; color:#fff;}
-	.descSection{padding:60px 0 0 0;}
-	.descSection h2{font-size:14px; color:#444; line-height:32px;}
-	.descSection .uci{background:url('/resources/images/sub/icon_uci.png') no-repeat left center; padding:0 0 0 45px;}
-	.descSection h2 .button{margin:-3px 0 0 10px;}
-	.descSection h3{background:url('/resources/images/sub/h3.png') no-repeat left 6px; padding:0 0 0 20px; margin:30px 0 10px 0; font-size:18px; color:#444; line-height:24px; font-weight:bold;}
+.introArea{}
+.introArea .tit{color:#444; font-size:22px; margin:0 0 10px 0; font-weight:bold; background:url('/resources/images/sub/h4.png') no-repeat left 6px; padding:0 0 0 22px;}
+.introArea .desc{color:#646464; font-size:14px; margin:0 0 40px 0; display:inline-block; line-height:24px; padding-left:22px;}
+.introArea .fLimg{float:right; display:inline-block; width:403px; margin-top:-35px;}
+.introArea .fLimg + .desc{width:calc(100% - 425px);}
+.uciArea{}
+.uciArea .tit{color:#444; font-size:18px; margin:0px 0 20px 0; font-weight:bold;}
+.uciArea .desc{color:#646464; font-size:14px; margin:0 0 10px 0; display:inline-block; line-height:24px;}
+.uciArea figure{padding:20px 0;}
+.uciArea .btnLink{text-align:center;}
+.uciArea .btnLink a{padding:8px 80px 10px 80px; color:#fff; font-size:16px; font-weight:bold; background:#009944; display:inline-block; margin:0 auto; border-radius:17px;}
+.textSection .themeTit{width:560px; height:20px; background:url('/resources/images/bg_themeTit.png') repeat 0 0; margin:60px auto 10px auto; padding:15px 0 15px 30px;}
+.textSection .themeTit p{text-align:left; font-size:20px; font-weight:bold; color:#fff; }
+.textSection h2{font-size:36px; color:#538433; line-height:2em; font-weight:bold; margin:30px 0 15px 0;}
+.textSection p{color:#646464; font-size:14px; line-height:24px; margin-bottom:20px;}
+.textSection p strong{font-size:16px; line-height:34px; color:#646464;}
+.textSection figure{padding:25px 0; width:550px;}
+.textSection figure img{max-width:100%;}
+.textSection .termWord{position:relative;background:#21a1ae; color:#fff;}
+.descSection{padding:60px 0 0 0;}
+.descSection h2{font-size:14px; color:#444; line-height:32px;}
+.descSection .uci{background:url('/resources/images/sub/icon_uci.png') no-repeat left center; padding:0 0 0 45px;}
+.descSection h2 .button{margin:-3px 0 0 10px;}
+.descSection h3{background:url('/resources/images/sub/h3.png') no-repeat left 6px; padding:0 0 0 20px; margin:30px 0 10px 0; font-size:18px; color:#444; line-height:24px; font-weight:bold;}
 
 em.able{color:#518fbf;}
 em.disable{color:#d26c5e;}
@@ -222,7 +237,7 @@ hr{display:block !important; width:100%; height:0; border:none; border-top:1px s
 .paging span.next a{background:url("/resources/images/common/btn_paging.png") no-repeat -30px 0;}
 .paging a{padding:3px 5px; display:inline; margin:0; min-width:16px; color:#999999; font-size:14px; }
 .paging a:hover{text-decoration:none;}
-.paging a.now{color:#333; }
+.paging a.now{color:#333; font-weight: bold; }
 
 
 /* list */
@@ -336,7 +351,7 @@ label.radiobox.type2.active { color: #7587bd; background-image: url('/images/com
 	filter: alpha(opacity=65);
 	box-shadow: none;
 	cursor: default;
-	}
+}
 .selectboxit-text {
 	text-indent: 5px;
 	overflow: hidden;
@@ -362,7 +377,7 @@ label.radiobox.type2.active { color: #7587bd; background-image: url('/images/com
 	text-align: left;
 	border: 1px solid rgba(51,51,51,1);
 }
- .selectboxit-option .selectboxit-option-anchor{
+.selectboxit-option .selectboxit-option-anchor{
 	padding: 0 2px;
 }
 .selectboxit-option .selectboxit-option-anchor:hover {
@@ -396,8 +411,8 @@ label.radiobox.type2.active { color: #7587bd; background-image: url('/images/com
 	background-position: 0 50%;
 }
 .selectboxit-list {
-  background-color: rgba(255,255,255,.85);
-  color: #666;
+	background-color: rgba(255,255,255,.85);
+	color: #666;
 }
 .selectboxit-container .selectboxit-options a {
 	color: #333;

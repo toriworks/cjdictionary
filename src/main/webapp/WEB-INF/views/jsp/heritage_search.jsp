@@ -46,8 +46,8 @@
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="heritage_theme.do">테마 별 문화유산</a>
-				<a href="heritage_research.do">기획자료</a>
+				<a href="heritage_theme.do">테마별 문화유산</a>
+				<a href="heritage_research.do">학습자료</a>
 				<a href="#" class="focus">문화유산 검색</a>
 			</div>
 		</div>
@@ -63,7 +63,7 @@
 		<div class="subCnt">
 			<div class="section">
 				<div class="searchTit">
-					<p>검색에 대한 설명 영역</p>
+					<p>문화재청에서 제공하는 4,500여건의 문화유산 정보 관련 이미지를 검색하실 수 있습니다.</p>
 				</div>
 
 				<div class="searchBox">
@@ -82,7 +82,7 @@
 						</dd>
 						<dd class="middle"><input type="text" class="text" id="entryTitle" name="entryTitle" /></dd>
 
-						<dt class="nextLine">시대</dt>
+						<!-- dt class="nextLine">시대</dt>
 						<dd><select name="" id="">
 								<option value="전체">전체</option>
 							</select>
@@ -92,7 +92,7 @@
 						<dd><select name="" id="">
 								<option value="전체">전체</option>
 							</select>
-						</dd>
+						</dd -->
 					</dl>
 						</form>
 						<a href="javascript:searchHeritage();" class="searhBtn">검색</a>

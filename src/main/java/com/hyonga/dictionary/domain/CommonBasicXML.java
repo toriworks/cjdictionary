@@ -1,10 +1,13 @@
 package com.hyonga.dictionary.domain;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CommonBasicXML {
 
     private String bodyFirst;
     private String bodyImg;
-    private String bodySecond;
+    private List<String> bodySecond;
 
     public String getBodyFirst() {
         return bodyFirst;
@@ -22,11 +25,11 @@ public class CommonBasicXML {
         this.bodyImg = bodyImg;
     }
 
-    public String getBodySecond() {
+    public List<String> getBodySecond() {
         return bodySecond;
     }
 
-    public void setBodySecond(String bodySecond) {
+    public void setBodySecond(List<String> bodySecond) {
         this.bodySecond = bodySecond;
     }
 
@@ -35,7 +38,7 @@ public class CommonBasicXML {
         return "CommonBasicXML{" +
                 "bodyFirst='" + bodyFirst + '\'' +
                 ", bodyImg='" + bodyImg + '\'' +
-                ", bodySecond='" + bodySecond + '\'' +
+                ", bodySecond=" + bodySecond +
                 '}';
     }
 }

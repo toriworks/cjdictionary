@@ -69,7 +69,7 @@
 			</div>
 			<div class="themeHeritage">
 				<div class="section">
-					<p class="sectionTit theme">테마 별 문화유산 <a class="moreBtn" href="#">테마 전체보기 ▶</a></p>
+					<p class="sectionTit theme">테마별 문화유산 <a class="moreBtn" href="#">테마 전체보기 ▶</a></p>
 
 					<div class="themeT bg1 first">
 						<p>초등학생이 꼭 알아야 할 국보 10가지</p>
@@ -88,7 +88,7 @@
 			<!-- 문화재 학습자료 -->
 			<div class="mainStudy">
 				<div class="section">
-					<p class="sectionTit culture">문화재 학습자료 <a class="moreBtn" href="#">기획자료 전체보기 ▶</a></p>
+					<p class="sectionTit culture">문화재 학습자료 <a class="moreBtn" href="#">학습자료 전체보기 ▶</a></p>
 					<div class="cultureT first">
 						<a href="#"><img src="${croot}images/@culture1.png" alt=""> <span>세계문화유산 수원화성</span></a>
 					</div>

@@ -6,6 +6,7 @@ public class HeritageSearchRelations {
     private String idx;
     private String filename;
     private String tag;
+    private String taskidx;
 
     public String getEntryTitle() {
         return entryTitle;
@@ -39,6 +40,14 @@ public class HeritageSearchRelations {
         this.tag = tag;
     }
 
+    public String getTaskidx() {
+        return taskidx;
+    }
+
+    public void setTaskidx(String taskidx) {
+        this.taskidx = taskidx;
+    }
+
     @Override
     public String toString() {
         return "HeritageSearchRelations{" +
@@ -46,6 +55,7 @@ public class HeritageSearchRelations {
                 ", idx='" + idx + '\'' +
                 ", filename='" + filename + '\'' +
                 ", tag='" + tag + '\'' +
+                ", taskidx='" + taskidx + '\'' +
                 '}';
     }
 }

@@ -16,24 +16,24 @@ public class StaticPageController {
 
     @RequestMapping(value = "/intro_page.do", method = RequestMethod.GET)
     public String introPage(Map<String, Object> model) {
-        logger.debug("introPage() is executed!");
+        logger.debug("---->introPage() is executed!");
         return "intro_page";
     }
 
     @RequestMapping(value = "/uci_page.do", method = RequestMethod.GET)
     public String uciPage(Map<String, Object> model) {
-        logger.debug("uciPage() is executed!");
+        logger.debug("---->uciPage() is executed!");
         return "uci_page";
     }
 
     /**
-     * 생물정보 기획자료
+     * 생물정보 학습자료
      * @param model
      * @return
      */
     @RequestMapping(value = "/biology_research.do", method = RequestMethod.GET)
     public String biologyResearchPage(Map<String, Object> model) {
-        logger.debug("heritageResearchPage() is executed!");
+        logger.debug("---->heritageResearchPage() is executed!");
         return "biology_research";
     }
 }

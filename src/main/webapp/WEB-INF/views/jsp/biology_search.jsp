@@ -46,7 +46,7 @@
 		</div>
 		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="biology_theme.do">테마 별 생물정보</a>
+				<a href="biology_theme.do">테마별 생물정보</a>
 				<a href="biology_research.do">학습자료</a>
 				<a href="#" class="focus">생물정보 검색</a>
 			</div>
@@ -55,7 +55,7 @@
 
 	<div id="container">
 		<div class="subTit">
-			<div class="section menuCulture">
+			<div class="section menuBio">
 				<p>생물정보 검색</p>
 				<div class="breadcrumbs"><a href="main.do">HOME</a><a href="#">생물정보</a><span>검색</span></div>
 			</div>
@@ -63,7 +63,7 @@
 		<div class="subCnt">
 			<div class="section">
 				<div class="searchTit">
-					<p>검색에 대한 설명 영역</p>
+					<p>국립수목원에서 제공하는 4,500여건의 생물정보 관련 이미지를 검색하실 수 있습니다.</p>
 				</div>
 
 				<div class="searchBox">

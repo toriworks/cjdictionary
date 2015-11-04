@@ -90,45 +90,74 @@
 						<input type="text" id="hSearchText" name="hSearchText" class="searchText" /><button onclick="searchSth(1);">문화유산 검색</button>
 					</div>
 				</div>
+				<div class="themeHeritage">
+					<div class="section">
+						<p class="sectionTit theme">테마별 문화유산 <a class="moreBtn" href="heritage_theme.do">테마 전체보기 ▶</a></p>
+						<div class="themeT bg3 first" onclick="goHeritagePage(1, '초등학생이 꼭 알아야 할 국보 10가지');">
+							<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p></a>
+							<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
+						</div>
+						<div class="themeT bg3" onclick="goHeritagePage(44, '중학교 1학년 역사교과서에 나오는 문화재');">
+							<a href="javascript:goPage(44, '초등학생이 꼭 알아야 할 국보 10가지');"><p>중학교 1학년 역사교과서에 나오는 문화재</p></a>
+							<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
+						</div>
+						<div class="themeT bg3"onclick="goHeritagePage(45, '광복 70주년 독립운동 문화유산');">
+							<a href="javascript:goPage(45, '초등학생이 꼭 알아야 할 국보 10가지');"><p>광복 70주년 독립운동 문화유산</p></a>
+							<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span>
+						</div>
+					</div>
+				</div>
+				<div class="mainStudy">
+					<div class="section">
+						<p class="sectionTit culture">문화재 학습자료 <a class="moreBtn" href="heritage_research.do">학습자료 전체보기 ▶</a></p>
+						<div class="cultureT first">
+							<a href="heritage_view2.do?cat=1&idx=64172"><img src="${croot}images/132_1.jpg" alt=""> <span>세계문화유산 수원화성</span></a>
+						</div>
+						<div class="cultureT">
+							<a href="heritage_view2.do?cat=1&idx=64155"><img src="${croot}images/123_1.jpg" alt=""> <span>일본의 침략에 맞선 임진왜란</span></a>
+						</div>
+						<div class="cultureT">
+							<a href="heritage_view2.do?cat=1&idx=64156"><img src="${croot}images/123_2.jpg" alt=""> <span>오백년 역사가 잠든 조선왕릉</span></a>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div id="biologyBox" class="mainBox">
 				<div class="section">
 					<div class="heritageSearch">
-						<p><strong>24,500여건</strong>의 생물정보 정보를 검색하실 수 있습니다.</p>
+						<p>국립수목원에서 제공하는 <strong>4,500여건</strong>의 생물정보 정보를 검색하실 수 있습니다.</p>
 						<input type="text" id="bSearchText" name="bSearchText" class="searchText" /><button onclick="searchSth(2);">생물정보 검색</button>
 					</div>
 				</div>
-			</div>
-			<div class="themeHeritage">
-				<div class="section">
-					<p class="sectionTit theme">테마 별 문화유산 <a class="moreBtn" href="heritage_theme.do">테마 전체보기 ▶</a></p>
-
-					<div class="themeT bg1 first" onclick="goHeritagePage(1, '초등학생이 꼭 알아야 할 국보 10가지');">
-						<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p></a>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-					</div>
-					<div class="themeT bg2" onclick="goHeritagePage(44, '중학교 1학년 역사교과서에 나오는 문화재');">
-						<a href="javascript:goPage(44, '초등학생이 꼭 알아야 할 국보 10가지');"><p>중학교 1학년 역사교과서에 나오는 문화재</p></a>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-					</div>
-					<div class="themeT bg3"onclick="goHeritagePage(45, '광복 70주년 독립운동 문화유산');">
-						<a href="javascript:goPage(45, '초등학생이 꼭 알아야 할 국보 10가지');"><p>광복 70주년 독립운동 문화유산</p></a>
-						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span>
+				<div class="themeHeritage">
+					<div class="section">
+						<p class="sectionTit theme">테마별 생물정보 <a class="moreBtn" href="biology_theme.do">테마 전체보기 ▶</a></p>
+						<div class="themeT bg1 first" onclick="goHeritagePage(1, '초등학생이 꼭 알아야 할 국보 10가지');">
+							<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p></a>
+							<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
+						</div>
+						<div class="themeT bg1" onclick="goHeritagePage(44, '중학교 1학년 역사교과서에 나오는 문화재');">
+							<a href="javascript:goPage(44, '초등학생이 꼭 알아야 할 국보 10가지');"><p>중학교 1학년 역사교과서에 나오는 문화재</p></a>
+							<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
+						</div>
+						<div class="themeT bg1"onclick="goHeritagePage(45, '광복 70주년 독립운동 문화유산');">
+							<a href="javascript:goPage(45, '초등학생이 꼭 알아야 할 국보 10가지');"><p>광복 70주년 독립운동 문화유산</p></a>
+							<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span>
+						</div>
 					</div>
 				</div>
-			</div>
-			<!-- 문화재 학습자료 -->
-			<div class="mainStudy">
-				<div class="section">
-					<p class="sectionTit culture">문화재 학습자료 <a class="moreBtn" href="heritage_research.do">기획자료 전체보기 ▶</a></p>
-					<div class="cultureT first">
-						<a href="#"><img src="${croot}images/@culture1.png" alt=""> <span>세계문화유산 수원화성</span></a>
-					</div>
-					<div class="cultureT">
-						<a href="#"><img src="${croot}images/@culture2.png" alt=""> <span>일본의 침략에 맞선 임진왜란</span></a>
-					</div>
-					<div class="cultureT">
-						<a href="#"><img src="${croot}images/@culture3.png" alt=""> <span>오백년 역사가 잠든 조선왕릉</span></a>
+				<div class="mainStudy">
+					<div class="section">
+						<p class="sectionTit culture">생물정보 학습자료 <a class="moreBtn" href="biology_research.do">학습자료 전체보기 ▶</a></p>
+						<div class="cultureT first">
+							<a href="biology_view2.do?cat=1&idx=78872"><img src="${croot}images/173_1.jpg" alt=""> <span>연못이나 강가에 사는 식물</span></a>
+						</div>
+						<div class="cultureT">
+							<a href="biology_view2.do?cat=1&idx=79248"><img src="${croot}images/214_3.jpg" alt=""> <span>물에 사는 동물의 특징</span></a>
+						</div>
+						<div class="cultureT">
+							<a href="biology_view2.do?cat=1&idx=79246"><img src="${croot}images/214_1.jpg" alt=""> <span>곤충의 한살이 </span></a>
+						</div>
 					</div>
 				</div>
 			</div>

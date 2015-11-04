@@ -25,4 +25,17 @@ public interface IHeritageService {
     public List<HeritageSearchResult> listHeritageTheme(String binderIdx);
 
     public List<HeritageSearchResult> listBiologySearchResult(HeritageSearchCondition condition);
+
+    public int sizeOfBiologySearchResult(HeritageSearchCondition condition);
+
+    public List<HeritageSearchImgResult> listHeritageSearchImg(HeritageSearchCondition condition);
+
+    public int sizeOfHeritageSearchResult(HeritageSearchCondition condition);
+
+    public int sizeOfHeritageImgSearchResult(HeritageSearchCondition condition);
+
+    public int sizeOfBiologyImgSearchResult(HeritageSearchCondition condition);
+
+    public List<HeritageSearchImgResult> listBiologySearchImg(HeritageSearchCondition condition);
+
 }

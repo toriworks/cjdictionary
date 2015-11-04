@@ -16,12 +16,22 @@
 <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
 <script type="text/javascript" src="${croot}js/common.js"></script>
 <script type="text/javascript">
-	searchHeritage = function() {
+	searchHeritage = function(p) {
 		var munitidx = $("#munitidx option:selected").val();
 		var entryTitle = $("#entryTitle").val();	// search keyword
 
-		var form = $("#search_form");
+		var form = document.forms[0];
+		form.page.value = p;
 		form.action = "/heritage_search.do";
+		form.submit();
+	}
+
+	searchHeritageImg = function() {
+		var munitidx = $("#munitidx option:selected").val();
+		var entryTitle = $("#entryTitle").val();	// search keyword
+
+		var form = document.forms[0];
+		form.action = "/heritage_search_img.do";
 		form.submit();
 	}
 </script>
@@ -47,8 +57,8 @@
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="heritage_theme.do">테마 별 문화유산</a>
-				<a href="heritage_research.do">기획자료</a>
+				<a href="heritage_theme.do">테마별 문화유산</a>
+				<a href="heritage_research.do">학습자료</a>
 				<a href="#" class="focus">문화유산 검색</a>
 			</div>
 		</div>
@@ -64,11 +74,12 @@
 		<div class="subCnt">
 			<div class="section">
 				<div class="searchTit">
-					<p>검색에 대한 설명 영역</p>
+					<p>문화재청에서 제공하는 4,500여건의 문화유산 정보 관련 이미지를 검색하실 수 있습니다.</p>
 				</div>
 
 				<div class="searchBox">
 					<form name="search_form" id="search_form" method="post">
+						<input type="hidden" name="page" id="page" value="1" />
 					<dl>
 						<dt>문화재검색</dt>
 						<dd><select name="munitidx" id="munitidx">
@@ -83,7 +94,7 @@
 						</dd>
 						<dd class="middle"><input type="text" class="text" id="entryTitle" name="entryTitle" value="${entryTitle}" /></dd>
 
-						<dt class="nextLine">시대</dt>
+						<!-- dt class="nextLine">시대</dt>
 						<dd><select name="" id="">
 								<option value="전체">전체</option>
 							</select>
@@ -93,15 +104,15 @@
 						<dd><select name="" id="">
 								<option value="전체">전체</option>
 							</select>
-						</dd>
+						</dd -->
 					</dl>
 					</form>
-					<a href="javascript:searchHeritage();" class="searhBtn">검색</a>
+					<a href="javascript:searchHeritage(1);" class="searhBtn">검색</a>
 				</div>
 
 				<div class="searchResultTab">
 					<a href="#" class="selTab">“<c:out value="${refineEntryTitle}"/>” 검색 결과 (<c:out value="${totalCount}"/>건)</a>
-					<a href="heritage_search_img.do">“<c:out value="${refineEntryTitle}"/>” 관련 이미지 검색결과 (1,123건)</a>
+					<a href="javascript:searchHeritageImg();">“<c:out value="${refineEntryTitle}"/>” 관련 이미지 검색결과 (<c:out value="${utility.addComma(imgTotalCount)}" />건)</a>
 				</div>
 
 				<div class="board boardList"><!-- board -->
@@ -122,7 +133,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						<c:set var="i" value="0" scope="page" />
+						<c:set var="i" value="${(page - 1) * 20}" scope="page" />
 						<c:forEach var="lists" items="${data}">
 							<c:set var="i" value="${i + 1}" scope="page"/>
 							<tr>
@@ -136,20 +147,13 @@
 					</table>
 				</div><!-- //board -->
 
-				<!-- div class="paging">
-					<span class="prev"><a href="#">이전 보기</a></span>
-					<a href="#" class="now">1</a>
-					<a href="#">2</a>
-					<a href="#">3</a>
-					<a href="#">4</a>
-					<a href="#">5</a>
-					<a href="#">6</a>
-					<a href="#">7</a>
-					<a href="#">8</a>
-					<a href="#">9</a>
-					<a href="#">10</a>
-					<span class="next"><a href="#">다음 보기</a></span>
-				</div -->
+				<div class="paging">
+					<span class="prev"><c:if test="${canPrev == 1}"><a href="javascript:searchHeritage(${(curPageDiv - 2)*10 + 1})">이전 보기</a></c:if></span>
+					<c:forEach begin="${(curPageDiv - 1) * 10 + 1}" end="${(curPageDiv * 10) > blockPage ? blockPage : (curPageDiv * 10)}" step="1" varStatus="pp">
+						<a href="javascript:searchHeritage(${pp.index});" <c:if test="${page == pp.index}">class="now"</c:if>><c:out value="${pp.index}" /></a>
+					</c:forEach>
+					<span class="next"><c:if test="${canNext == 1}"><a href="javascript:searchHeritage(${(curPageDiv -1) * 10 + 10});">다음 보기</a></c:if></span>
+				</div>
 			</div>
 		</div>
 	</div>

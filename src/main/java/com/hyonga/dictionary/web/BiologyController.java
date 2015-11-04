@@ -23,13 +23,19 @@ public class BiologyController {
     /** Logger object */
     private final Logger logger = LoggerFactory.getLogger(BiologyController.class);
 
+    /** 한 페이지당 자료 수 */
+    private static final int PAGE_SIZE = 20;
+
+    /** 페이징 블록 수 */
+    private static final int BLOCK_SIZE = 10;
+
     /** Serivce object */
     @Autowired
     private IHeritageService iHeritageService;
 
     @RequestMapping(value = "/biology_theme.do", method = RequestMethod.GET)
     public String biologyThemePage(Map<String, Object> model) {
-        logger.debug("biologyThemePage() is executed!");
+        logger.debug("---->biologyThemePage() is executed!");
 
         return "biology_theme";
     }
@@ -41,7 +47,7 @@ public class BiologyController {
      */
     @RequestMapping(value = "/biology_view.do", method = RequestMethod.GET)
     public ModelAndView biologyResearchDetail(@RequestParam Map<String, String> model) {
-        logger.debug("biologyResearchDetail() is executed!");
+        logger.debug("---->biologyResearchDetail() is executed!");
         ModelAndView mav = new ModelAndView();
 
         // 파라미터 변수처리
@@ -49,8 +55,19 @@ public class BiologyController {
         String title = model.get("title");
         mav.addObject("title", title);
 
-        logger.debug("생물정보 기획자료 파라미터 idx : " + idx + "<<END");
+        logger.debug("---->생물정보 학습자료 파라미터 idx : " + idx + "<<END");
 
+
+        /////////////////////////////////////////////////////////////////////////////////////////
+        // 엔트리 기본정보 추가
+        HeritageSearchEntry heritageSearchEntry = iHeritageService.getHeritageSearchEntry(idx);
+        String entryTag = heritageSearchEntry.getTag();
+        if(null != entryTag) {
+            entryTag = Utility.getLastWordFromString(entryTag, ",");
+            heritageSearchEntry.setTag(entryTag);
+            //
+            mav.addObject("entry", heritageSearchEntry);
+        }
 
         /////////////////////////////////////////////////////////////////////////////////////////
         // 엔트리 기본정보
@@ -58,33 +75,19 @@ public class BiologyController {
         String basicIndexContent = "";
         String basicTag = "";
         for (int o=0; o<listHeritageSearchBasic.size(); o++) {
+            // BASIC, IMAGE 태그만 처리
             String tempData = listHeritageSearchBasic.get(o).getRecType();
             tempData = tempData.toUpperCase();
 
-            if (tempData.equals("INDEXCONTENT")) {
-                basicIndexContent = "<?xml version='1.0' encoding='UTF-8' ?><ROOT>" + listHeritageSearchBasic.get(o).getContent() + "</ROOT>";
-            } else {
-                basicTag =  listHeritageSearchBasic.get(o).getContent();;
+            if (tempData.equals("BASIC")) {
+                basicIndexContent += Utility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
+            } else if (tempData.equals("IMAGE")) {
+                basicIndexContent += Utility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
             }
         }
 
-        CommonBasicXML commonBasicXML = Utility.getCommonBasicXML(basicIndexContent);
-        mav.addObject("basic", commonBasicXML);
-        //
-        logger.debug(commonBasicXML.toString());
-        logger.debug("------- tag -------");
-        logger.debug(basicTag);                     // 데이터가 있기도 하고 없기도 함(대부분 빈 값)
-
-        /////////////////////////////////////////////////////////////////////////////////////////
-        // 엔트리 기본정보 추가
-        HeritageSearchEntry biologySearchEntry = iHeritageService.getHeritageSearchEntry(idx);
-        String entryTag = biologySearchEntry.getTag();
-        entryTag = Utility.getLastWordFromString(entryTag, ",");
-        biologySearchEntry.setTag(entryTag);
-
-        logger.debug("------- entryTag -------");
-        logger.debug(entryTag);
-        mav.addObject("entry", biologySearchEntry);
+        logger.debug(basicIndexContent);
+        mav.addObject("basic", basicIndexContent);
 
         /////////////////////////////////////////////////////////////////////////////////////////
         // 엔트리 부가정보
@@ -99,7 +102,7 @@ public class BiologyController {
 
             // 관련 문화재 얻기
             String relationEntryData = biologySearchEntryUCIResult.getRelationEntryData();
-            logger.debug("------- relationEntryData -------");
+            logger.debug("---->------- relationEntryData -------");
             logger.debug(relationEntryData);
 
             if (null != relationEntryData) {
@@ -129,7 +132,7 @@ public class BiologyController {
 
             // 용어해설 얻기
             String termsData = biologySearchEntryUCIResult.getTermsData();
-            logger.debug("------- termsData -------");
+            logger.debug("---->------- termsData -------");
             logger.debug(termsData);
 
             if (null != termsData) {
@@ -140,7 +143,7 @@ public class BiologyController {
                 mav.addObject("list_terms", "");
             }
         } else {
-            logger.debug("생물정보 기획자료 - biologySearchEntryUCIResult is null");
+            logger.debug("---->생물정보 학습자료 - biologySearchEntryUCIResult is null");
         }
 
         mav.setViewName("biology_view");
@@ -149,45 +152,21 @@ public class BiologyController {
     }
 
     /**
-     * 생물정보 기획자료 상세 페이지
+     * 생물정보 학습자료 상세 페이지
      * @param model
      * @return
      */
     @RequestMapping(value = "/biology_view2.do", method = RequestMethod.GET)
     public ModelAndView biologyResearchDetail2(@RequestParam Map<String, String> model) {
-        logger.debug("biologyResearchDetail2() is executed!");
+        logger.debug("---->biologyResearchDetail2() is executed!");
         ModelAndView mav = new ModelAndView();
 
         // 파라미터 변수처리
         String idx = model.get("idx");
-        logger.debug("생물정보 기획자료 파라미터 idx : " + idx + "<<END");
+        logger.debug("---->생물정보 학습자료 파라미터 idx : " + idx + "<<END");
 
         String category = model.get("cat");
         mav.addObject("cat", category);
-
-        /////////////////////////////////////////////////////////////////////////////////////////
-        // 엔트리 기본정보
-        List<HeritageSearchBasic> listHeritageSearchBasic = iHeritageService.listHeritageSearchBasic(idx);
-        String basicIndexContent = "";
-        String basicTag = "";
-        for (int o=0; o<listHeritageSearchBasic.size(); o++) {
-            String tempData = listHeritageSearchBasic.get(o).getRecType();
-            tempData = tempData.toUpperCase();
-
-            if (tempData.equals("INDEXCONTENT")) {
-                basicIndexContent = "<?xml version='1.0' encoding='UTF-8' ?><ROOT>" + listHeritageSearchBasic.get(o).getContent() + "</ROOT>";
-            } else {
-                basicTag =  listHeritageSearchBasic.get(o).getContent();
-            }
-        }
-
-        logger.debug(basicIndexContent);
-
-        CommonBasicXML commonBasicXML = Utility.getCommonBasicXML(basicIndexContent);
-        mav.addObject("basic", commonBasicXML);
-        //
-        logger.debug(commonBasicXML.toString());
-        logger.debug(basicTag);
 
         /////////////////////////////////////////////////////////////////////////////////////////
         // 엔트리 기본정보 추가
@@ -199,6 +178,26 @@ public class BiologyController {
             //
             mav.addObject("entry", heritageSearchEntry);
         }
+
+        /////////////////////////////////////////////////////////////////////////////////////////
+        // 엔트리 기본정보
+        List<HeritageSearchBasic> listHeritageSearchBasic = iHeritageService.listHeritageSearchBasic(idx);
+        String basicIndexContent = "";
+        String basicTag = "";
+        for (int o=0; o<listHeritageSearchBasic.size(); o++) {
+            // BASIC, IMAGE 태그만 처리
+            String tempData = listHeritageSearchBasic.get(o).getRecType();
+            tempData = tempData.toUpperCase();
+
+            if (tempData.equals("BASIC")) {
+                basicIndexContent += Utility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
+            } else if (tempData.equals("IMAGE")) {
+                basicIndexContent += Utility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
+            }
+        }
+
+        logger.debug(basicIndexContent);
+        mav.addObject("basic", basicIndexContent);
 
         /////////////////////////////////////////////////////////////////////////////////////////
         // 엔트리 부가정보
@@ -246,7 +245,7 @@ public class BiologyController {
             }
 
         } else {
-            logger.debug("생물정보 기획자료 - heritageSearchEntryUCIResult is null");
+            logger.debug("---->생물정보 학습자료 - heritageSearchEntryUCIResult is null");
         }
 
         mav.setViewName("biology_view2");
@@ -260,7 +259,7 @@ public class BiologyController {
      */
     @RequestMapping(value = "/biology_search.do", method = RequestMethod.GET)
     public String biologySearchPage(Map<String, Object> model) {
-        logger.debug("biologySearchPage() is executed!");
+        logger.debug("---->biologySearchPage() is executed!");
 
         return "biology_search";
     }
@@ -272,9 +271,9 @@ public class BiologyController {
      */
     @RequestMapping(value = "/biology_list.do", method = RequestMethod.GET)
     public ModelAndView biologyListPage(@RequestParam Map<String, String> model) {
-        logger.debug("heritageListPage() is executed!");
-        logger.debug("binderIdx:" + model.get("binderIdx"));
-        logger.debug("title:" + model.get("title"));
+        logger.debug("---->heritageListPage() is executed!");
+        logger.debug("---->binderIdx:" + model.get("binderIdx"));
+        logger.debug("---->title:" + model.get("title"));
 
         // 파라미터 변수처리
         String binderIdx = model.get("binderIdx");
@@ -300,27 +299,148 @@ public class BiologyController {
      */
     @RequestMapping(value = "/biology_search.do", method = RequestMethod.POST)
     public ModelAndView biologySearchResult(@RequestParam Map<String, String> model) {
-        logger.debug("biologySearchResult() is executed!");
-        String munitIdx = model.get("munitIdx");
+        logger.debug("---->biologySearchResult() is executed!");
+        String munitidx = "" + model.get("munitidx");
         String entryTitle = model.get("entryTitle");
+
+        // 페이징
+        String strPage = (null != model.get("page")) ? model.get("page") : "1";
+        int startPage = (Integer.parseInt(strPage) - 1) * PAGE_SIZE + 1;
 
         HeritageSearchCondition searchCondition = new HeritageSearchCondition();
         searchCondition.setEntryTitle(entryTitle);
-        logger.debug("파라미터 : " + model.toString() + "<<END");
+        searchCondition.setStartPage(startPage);
+        if (!"".equals(munitidx) && null != munitidx) {
+            searchCondition.setMunitidx(munitidx);
+        } else {
+            searchCondition.setMunitidx("");
+        }
+        logger.debug("---->파라미터 : " + model.toString() + "<<END");
+        logger.debug("---->searchCondition : " + searchCondition.toString() + "<<END");
 
         List<HeritageSearchResult> lists = iHeritageService.listBiologySearchResult(searchCondition);
-        int countOfLists = lists.size();
-        logger.debug("listHeritageSearchResult size : " + countOfLists + "<<END");
+        int sizeOfTotalList = iHeritageService.sizeOfBiologySearchResult(searchCondition);
+        int modVal = (sizeOfTotalList > 0) ? sizeOfTotalList % PAGE_SIZE : 0;
+        int divVal = (sizeOfTotalList > 0) ? sizeOfTotalList / PAGE_SIZE : 0;
+        int blockPage = (modVal > 0) ? divVal + 1 : divVal;
+        logger.debug("---->modVal : " + modVal + "<<END");
+        logger.debug("---->divVal : " + divVal + "<<END");
+        logger.debug("---->blockPage : " + blockPage + "<<END");
+        logger.debug("---->listHeritageSearchResult size : " + sizeOfTotalList + "<<END");
+
+        // 블럭 계산
+        int blockCnt = (blockPage / BLOCK_SIZE) > 0 ? (blockPage / BLOCK_SIZE) + 1 : (blockPage / BLOCK_SIZE);
+        int curPageDiv = (Integer.parseInt(strPage) >= BLOCK_SIZE) ? (Integer.parseInt(strPage) / BLOCK_SIZE) + 1 : 1;
+        logger.debug("---->blockCnt : " + blockCnt + "<<END");
+        logger.debug("---->curPageDiv : " + curPageDiv + "<<END");
+
+        // 이전, 다음
+        int canPrev = (curPageDiv > 1) ? 1 : 0;
+        int canNext = (curPageDiv < blockCnt) ? 1 : 0;
 
         ModelAndView mav = new ModelAndView();
         mav.addObject("munitidx", searchCondition.getMunitidx());
-        mav.addObject("strMUnitIdx", Utility.getStrMUnitIdx(searchCondition.getMunitidx()));
+        if (null != searchCondition.getMunitidx()) {
+            mav.addObject("strMUnitIdx", Utility.getStrMUnitIdx(searchCondition.getMunitidx()));
+        } else {
+            mav.addObject("strMUnitIdx", "");
+        }
         mav.addObject("entryTitle", searchCondition.getEntryTitle());
         mav.addObject("refineEntryTitle", Utility.getRefineEntryTitle(searchCondition.getMunitidx(), searchCondition.getEntryTitle()));
         mav.addObject("data", lists);
-        mav.addObject("totalCount", Utility.addComma("0" + countOfLists));
+        mav.addObject("totalCount", sizeOfTotalList);
+        mav.addObject("modVal", modVal);
+        mav.addObject("divVal", divVal);
+        mav.addObject("blockPage", blockPage);
+        mav.addObject("page", strPage);
+        mav.addObject("startPage", startPage);
+        mav.addObject("canPrev", canPrev);
+        mav.addObject("canNext", canNext);
+        mav.addObject("curPageDiv", curPageDiv);
+
+        // 생물정보 이미지 검색결과 수 얻기
+        int countOfImg = 0;
+        List<HeritageSearchImgResult> imgLists = iHeritageService.listBiologySearchImg(searchCondition);
+        if (null != imgLists) {
+            countOfImg = imgLists.size();
+        }
+        mav.addObject("imgTotalCount", countOfImg);
 
         mav.setViewName("biology_search_result");
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/biology_search_img.do", method = RequestMethod.POST)
+    public ModelAndView biologySearchImg(@RequestParam Map<String, String> model) {
+        logger.debug("---->biologySearchImg() is executed!");
+
+        String munitidx = "" + model.get("munitidx");
+        String entryTitle = model.get("entryTitle");
+
+        // 페이징
+        String strPage = (null != model.get("page")) ? model.get("page") : "1";
+        int startPage = (Integer.parseInt(strPage) - 1) * PAGE_SIZE + 1;
+
+        HeritageSearchCondition searchCondition = new HeritageSearchCondition();
+        searchCondition.setEntryTitle(entryTitle);
+        searchCondition.setStartPage(startPage);
+        if (!"".equals(munitidx) && null != munitidx) {
+            searchCondition.setMunitidx(munitidx);
+        } else {
+            searchCondition.setMunitidx("");
+        }
+        logger.debug("---->파라미터 : " + model.toString() + "<<END");
+        logger.debug("---->searchCondition : " + searchCondition.toString() + "<<END");
+
+        List<HeritageSearchImgResult> lists = iHeritageService.listBiologySearchImg(searchCondition);
+        int sizeOfTotalList = iHeritageService.sizeOfBiologyImgSearchResult(searchCondition);
+        int modVal = (sizeOfTotalList > 0) ? sizeOfTotalList % PAGE_SIZE : 0;
+        int divVal = (sizeOfTotalList > 0) ? sizeOfTotalList / PAGE_SIZE : 0;
+        int blockPage = (modVal > 0) ? divVal + 1 : divVal;
+        logger.debug("---->modVal : " + modVal + "<<END");
+        logger.debug("---->divVal : " + divVal + "<<END");
+        logger.debug("---->blockPage : " + blockPage + "<<END");
+        logger.debug("---->listHeritageSearchImg size : " + sizeOfTotalList + "<<END");
+
+        // 블럭 계산
+        int blockCnt = (blockPage / BLOCK_SIZE) > 0 ? (blockPage / BLOCK_SIZE) + 1 : (blockPage / BLOCK_SIZE);
+        int curPageDiv = (Integer.parseInt(strPage) >= BLOCK_SIZE) ? (Integer.parseInt(strPage) / BLOCK_SIZE) + 1 : 1;
+        logger.debug("---->blockCnt : " + blockCnt + "<<END");
+        logger.debug("---->curPageDiv : " + curPageDiv + "<<END");
+
+        // 이전, 다음
+        int canPrev = (curPageDiv > 1) ? 1 : 0;
+        int canNext = (curPageDiv < blockCnt) ? 1 : 0;
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("biology_search_img");
+        mav.addObject("munitidx", searchCondition.getMunitidx());
+        if (null != searchCondition.getMunitidx()) {
+            mav.addObject("strMUnitIdx", Utility.getStrMUnitIdx(searchCondition.getMunitidx()));
+        } else {
+            mav.addObject("strMUnitIdx", "");
+        }
+        mav.addObject("entryTitle", searchCondition.getEntryTitle());
+        mav.addObject("refineEntryTitle", Utility.getRefineEntryTitle(searchCondition.getMunitidx(), searchCondition.getEntryTitle()));
+        mav.addObject("data", lists);
+        mav.addObject("totalCount", sizeOfTotalList);
+        mav.addObject("modVal", modVal);
+        mav.addObject("divVal", divVal);
+        mav.addObject("blockPage", blockPage);
+        mav.addObject("page", strPage);
+        mav.addObject("startPage", startPage);
+        mav.addObject("canPrev", canPrev);
+        mav.addObject("canNext", canNext);
+        mav.addObject("curPageDiv", curPageDiv);
+
+        // 생물정보 검색결과 수 얻기
+        int countOfData = this.iHeritageService.sizeOfBiologySearchResult(searchCondition);
+//        List<HeritageSearchResult> dataList = iHeritageService.listBiologySearchResult(searchCondition);
+//        if (null != dataList) {
+//            countOfData = dataList.size();
+//        }
+        mav.addObject("dataTotalCount", countOfData);
 
         return mav;
     }

@@ -31,8 +31,6 @@ public class Utility {
     public static String addComma(String str) {
         int iStr = Integer.parseInt(str);
         DecimalFormat df = new DecimalFormat("#,###");
-
-        logger.debug("jjjjjj");
         return df.format(iStr);
     }
 

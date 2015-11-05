@@ -14,20 +14,20 @@
 	<context:component-scan base-package="com.hyonga.dictionary" />
 
 	<!-- Data source define(TEST) -->
-	<!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-		<!--<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />-->
-		<!--<property name="url" value="jdbc:sqlserver://hyonga.iptime.org:15433;databaseName=UCIOS" />-->
-		<!--<property name="username" value="uci_dba" />-->
-		<!--<property name="password" value="rhdro2015#" />-->
-	<!--</bean>-->
-
-	<!-- Data source define(REAL) -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-		<property name="url" value="jdbc:sqlserver://192.168.150.10:1433;databaseName=Chunjae_CMSOpen" />
-		<property name="username" value="chunjae_cms100" />
-		<property name="password" value="_cjswo2912" />
+		<property name="url" value="jdbc:sqlserver://hyonga.iptime.org:15433;databaseName=UCIOS" />
+		<property name="username" value="uci_dba" />
+		<property name="password" value="rhdro2015#" />
 	</bean>
+
+	<!-- Data source define(REAL) -->
+	<!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+		<!--<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />-->
+		<!--<property name="url" value="jdbc:sqlserver://192.168.150.10:1433;databaseName=Chunjae_CMSOpen" />-->
+		<!--<property name="username" value="chunjae_cms100" />-->
+		<!--<property name="password" value="_cjswo2912" />-->
+	<!--</bean>-->
 
 	<!-- Transaction -->
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

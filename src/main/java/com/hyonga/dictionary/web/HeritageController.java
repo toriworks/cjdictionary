@@ -191,6 +191,8 @@ public class HeritageController {
                 basicIndexContent += Utility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
             } else if (tempData.equals("IMAGE")) {
                 basicIndexContent += Utility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
+            } else if (tempData.equals("MAINTITLE")) {
+                basicIndexContent += Utility.parseBasicMainTitleText2Html(listHeritageSearchBasic.get(o).getContent());
             }
         }
 
@@ -288,6 +290,8 @@ public class HeritageController {
                 basicIndexContent += Utility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
             } else if (tempData.equals("IMAGE")) {
                 basicIndexContent += Utility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
+            } else if (tempData.equals("MAINTITLE")) {
+                basicIndexContent += Utility.parseBasicMainTitleText2Html(listHeritageSearchBasic.get(o).getContent());
             }
         }
 

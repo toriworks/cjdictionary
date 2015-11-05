@@ -83,6 +83,8 @@ public class BiologyController {
                 basicIndexContent += Utility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
             } else if (tempData.equals("IMAGE")) {
                 basicIndexContent += Utility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
+            } else if (tempData.equals("MAINTITLE")) {
+                basicIndexContent += Utility.parseBasicMainTitleText2Html(listHeritageSearchBasic.get(o).getContent());
             }
         }
 
@@ -185,7 +187,7 @@ public class BiologyController {
         String basicIndexContent = "";
         String basicTag = "";
         for (int o=0; o<listHeritageSearchBasic.size(); o++) {
-            // BASIC, IMAGE 태그만 처리
+            // BASIC, IMAGE, MAINTITLE 태그만 처리
             String tempData = listHeritageSearchBasic.get(o).getRecType();
             tempData = tempData.toUpperCase();
 
@@ -193,6 +195,8 @@ public class BiologyController {
                 basicIndexContent += Utility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
             } else if (tempData.equals("IMAGE")) {
                 basicIndexContent += Utility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
+            } else if (tempData.equals("MAINTITLE")) {
+                basicIndexContent += Utility.parseBasicMainTitleText2Html(listHeritageSearchBasic.get(o).getContent());
             }
         }
 

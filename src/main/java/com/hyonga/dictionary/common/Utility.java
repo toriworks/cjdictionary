@@ -25,7 +25,8 @@ public class Utility {
     /** Logger object */
     private static final Logger logger = LoggerFactory.getLogger(Utility.class);
 
-    private static final String CMS_URL = "http://hyonga.iptime.org:28080/CMS100Data/EntryData";
+//    private static final String CMS_URL = "http://hyonga.iptime.org:28080/CMS100Data/EntryData";
+    private static final String CMS_URL = "http://open.chunjae.co.kr:7080/CMS100Data/EntryData";
 
     public static String addComma(String str) {
         int iStr = Integer.parseInt(str);
@@ -285,6 +286,41 @@ public class Utility {
     }
 
     /**
+     * 메인 타이틀 변환
+     * @param xml
+     * @return
+     */
+    public static String parseBasicMainTitleText2Html(String xml) {
+        String ori = "<?xml version='1.0' encoding='UTF-8' ?><ROOT>";
+        ori += xml;
+        ori += "</ROOT>";
+
+        logger.debug(ori);
+        Document doc = convertStringToDocument(ori);
+        NodeList nodeLisfOfBasic = null;
+        Element elementOfBasic = null;
+        String strRet = "";
+        if (doc != null) {
+            nodeLisfOfBasic = doc.getElementsByTagName("TEXT");
+            int sizeOfNodeListText = nodeLisfOfBasic.getLength();
+            logger.debug("---->sizeOfNodeListText:" + sizeOfNodeListText);
+
+            for (int i=0; i<sizeOfNodeListText; i++) {
+                elementOfBasic = (Element) nodeLisfOfBasic.item(i);
+                String v = "" + elementOfBasic.getFirstChild().getNodeValue();
+                if (v.startsWith("http://") || v.startsWith("www")) {
+                    strRet = "<p><strong><a href=\"javascript:window.open('" + v + "');\">" + v + "</a></strong></p>";
+                } else {
+                    strRet += "<p><strong>" + v + "</strong></p>";
+                }
+            }
+        }
+
+        logger.debug("---->최종 문자열 변환 : " + strRet + "<<END");
+        return strRet;
+    }
+
+    /**
      * XML을 이미지로 변경
      * @param xml
      * @return
@@ -297,18 +333,61 @@ public class Utility {
         logger.debug(ori);
         Document doc = convertStringToDocument(ori);
         NodeList nodeLisfOfBasic = null;
-        Element elementOfBasic = null;
+        NodeList nodeListOfCaption = null;
+        NodeList nodeListOfDesc = null;
+        NodeList nodeListOfLink = null;
+
         String strRet = "";
         if (doc != null) {
             nodeLisfOfBasic = doc.getElementsByTagName("IMG");
+            nodeListOfCaption = doc.getElementsByTagName("CAPTION");
+            nodeListOfDesc = doc.getElementsByTagName("DESCRIPTION");
+            nodeListOfLink = doc.getElementsByTagName("LINK");
             int sizeOfNodeListText = nodeLisfOfBasic.getLength();
             logger.debug("---->sizeOfNodeListText:" + sizeOfNodeListText);
 
             for (int i=0; i<sizeOfNodeListText; i++) {
                 Element elementOfImgs = (Element) nodeLisfOfBasic.item(i);
+                Element elementOfCaption = (Element) nodeListOfCaption.item(i);
+                Element elementOfDesc = (Element) nodeListOfDesc.item(i);
+                Element elementOfLink = (Element) nodeListOfLink.item(i);
+
                 NodeList nodeListOfFilename = elementOfImgs.getElementsByTagName("FILENAME");
                 Element elementOfFilename = (Element) nodeListOfFilename.item(0);
-                strRet += "<figure><img src=\"#CMS_URL#/#ENTRY_TASKID#/" + elementOfFilename.getFirstChild().getNodeValue() + "\"></figure>";
+
+                NodeList nodeListOfCaptionText = elementOfCaption.getElementsByTagName("TEXT");
+                Element elementOfCaptionText = (Element) nodeListOfCaptionText.item(0);
+
+                NodeList nodeListOfDescText = elementOfDesc.getElementsByTagName("TEXT");
+                Element elementOfDescText = (Element) nodeListOfDescText.item(0);
+
+                NodeList nodeListOfLinkText = elementOfLink.getElementsByTagName("TEXT");
+                Element elementOfLinkText = (Element) nodeListOfLinkText.item(0);
+
+                strRet += "<figure>";
+                if (null != elementOfLinkText) {
+                    if (elementOfLinkText.getFirstChild().getNodeValue().startsWith("http://") || elementOfLinkText.getFirstChild().getNodeValue().equals("www")) {
+                        strRet += "<a href=\"javascript:window.open('" + elementOfLinkText.getFirstChild().getNodeValue() + "');\">";
+                    }
+                }
+                strRet += "<img src=\"#CMS_URL#/#ENTRY_TASKID#/" + elementOfFilename.getFirstChild().getNodeValue() + "\">";
+                if (null != elementOfLinkText) {
+                    if (elementOfLinkText.getFirstChild().getNodeValue().startsWith("http://") || elementOfLinkText.getFirstChild().getNodeValue().equals("www")) {
+                        strRet += "</a>";
+                    }
+                }
+                strRet += "</figure>";
+                if (null != elementOfCaptionText) {
+                    if (!elementOfCaptionText.getFirstChild().getNodeValue().equals("")) {
+                        strRet += "<p><" + elementOfCaptionText.getFirstChild().getNodeValue() + "><p />";
+                    }
+                }
+
+                if (null != elementOfDescText) {
+                    if (!elementOfDescText.getFirstChild().getNodeValue().equals("")) {
+                        strRet += "<p>" + elementOfDescText.getFirstChild().getNodeValue() + "<p />";
+                    }
+                }
             }
         }
 

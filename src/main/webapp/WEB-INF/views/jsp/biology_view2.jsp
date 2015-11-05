@@ -23,7 +23,7 @@
 		}
 
 		popupUCI = function(uci) {
-			uci = "A-O34-00-42-38";
+
 			var tUCI = "http://uci.or.kr/I421:" + uci + "@N2C";
 			window.open(tUCI, "UCI 정보", "width=540, height=405, toolbar=no, menubar=no, scrollbars=no, resizable=no");
 		}

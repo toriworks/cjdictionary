@@ -44,7 +44,7 @@ $(document).ready(function(){
 			$("#minipop_template").remove();
 
 			$(".miniPop").css({'display':'block'});
-			$(".pointDot").css({'display':'block'});
+			//$(".pointDot").css({'display':'block'});
 			var _word = $(this).attr("href");
 			$(_word).show();
 
@@ -59,6 +59,7 @@ $(document).ready(function(){
 
 		}else{
 			$(this).empty();
+			$(".pointDot").css({'display':'none'});
 			$(".pointDot").remove();
 		}
 	});

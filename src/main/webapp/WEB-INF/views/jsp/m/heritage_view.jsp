@@ -243,7 +243,7 @@
 <!--// wrap -->
 
 <!-- 용어 레이어 -->
-<span id="term1pop" style="display:none;"><span class="term miniPop"><p class="miniPop_title">홍예문</p><figure><img src="${croot}images/@pic02.jpg" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><img src="${croot}images/bg_po.png" class="pointDot"></span>
+<span id="term1pop" style="display:none;"><span class="term miniPop"><p class="miniPop_title">홍예문</p><figure><img src="${croot}images/@pic02.jpg" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><!-- img src="${croot}images/bg_po.png" class="pointDot" --></span>
 
 </body>
 </html>

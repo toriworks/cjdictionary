@@ -222,30 +222,37 @@
 		});
 	});
 
-	 saveFile = function() {
-		 //var url = $("#bigImg figure img").attr("src");
-		 var url = document.getElementById("popBigImg").src;
-		 try {
-			 url = url.replace("thumb", "ori");
-		 } catch(e) {
-			 alert('e->' + e);
-		 }
-		 // Get file name from url.
-		 var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
-		 var xhr = new XMLHttpRequest();
-		 xhr.responseType = 'blob';
-		 xhr.onload = function() {
-			 var a = document.createElement('a');
-			 a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
-			 a.download = filename; // Set the file name.
-			 a.style.display = 'none';
-			 document.body.appendChild(a);
-			 a.click();
-			 delete a;
-		 };
-		 xhr.open('GET', url);
-		 xhr.send();
-	 }
+	saveFile = function() {
+		//var url = $("#bigImg figure img").attr("src");
+		var url = document.getElementById("popBigImg").src;
+		try {
+			url = url.replace("thumb", "ori");
+		} catch(e) {
+			alert('e->' + e);
+		}
+		var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
+		if(/msie|trident/i.test(navigator.userAgent)){ // IE 인지 체크
+			var _window = window.open(url, '_blank');// 새창으로 열어서..
+			_window.document.close();
+			_window.document.execCommand('SaveAs', true, filename);// 저장하라, false 로 해도 동일
+			_window.close();// 끝나면 새창 닫음
+		} else {
+			// Get file name from url.
+			var xhr = new XMLHttpRequest();
+			xhr.responseType = 'blob';
+			xhr.onload = function() {
+				var a = document.createElement('a');
+				a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
+				a.download = filename; // Set the file name.
+				a.style.display = 'none';
+				document.body.appendChild(a);
+				a.click();
+				delete a;
+			};
+			xhr.open('GET', url);
+			xhr.send();
+		}
+	}
 //-->
 </script>
 

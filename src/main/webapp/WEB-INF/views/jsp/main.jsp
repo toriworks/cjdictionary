@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, initial-scale=0.38, maximum-scale=2, user-scalable=yes" />
 <title>천재학습백과 공유저작물</title>
 <link rel="stylesheet" href="${croot}css/common.css" type="text/css" />
+<link rel="shortcut icon" href="${croot}images/favicon.ico">
 <script type="text/javascript" src="${croot}js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -17,6 +18,10 @@
 <script type="text/javascript">
 	goHeritagePage = function(binderIdx, title) {
 		location.href = "heritage_list.do?binderIdx=" + binderIdx + "&title=" + title;
+	}
+	
+	goBiologyPage = function(binderIdx, title) {
+		location.href = "biology_list.do?binderIdx=" + binderIdx + "&title=" + title;
 	}
 
 	searchSth = function(id) {
@@ -59,8 +64,8 @@
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_theme.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="heritage_research.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_research.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -71,8 +76,8 @@
 	<div id="container">
 		<div id="mainVisual" style="background:#b2eef0 url(${croot}images/main/mainVisual_img.png) no-repeat center 59px;">
 			<div class="section">
-				<a href="heritage_theme.do">문화유산 GO</a>
-				<a href="biology_theme.do">생물정보 GO</a>
+				<a href="heritage_research.do">문화유산 GO</a>
+				<a href="biology_research.do">생물정보 GO</a>
 			</div>
 		</div>
 		<!-- 문화유산, 생물정보 tab -->
@@ -90,23 +95,8 @@
 						<input type="text" id="hSearchText" name="hSearchText" class="searchText" /><button onclick="searchSth(1);">문화유산 검색</button>
 					</div>
 				</div>
-				<div class="themeHeritage">
-					<div class="section">
-						<p class="sectionTit theme">테마별 문화유산 <a class="moreBtn" href="heritage_theme.do">테마 전체보기 ▶</a></p>
-						<div class="themeT bg3 first" onclick="goHeritagePage(1, '초등학생이 꼭 알아야 할 국보 10가지');">
-							<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p></a>
-							<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-						</div>
-						<div class="themeT bg3" onclick="goHeritagePage(44, '중학교 1학년 역사교과서에 나오는 문화재');">
-							<a href="javascript:goPage(44, '초등학생이 꼭 알아야 할 국보 10가지');"><p>중학교 1학년 역사교과서에 나오는 문화재</p></a>
-							<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-						</div>
-						<div class="themeT bg3"onclick="goHeritagePage(45, '광복 70주년 독립운동 문화유산');">
-							<a href="javascript:goPage(45, '초등학생이 꼭 알아야 할 국보 10가지');"><p>광복 70주년 독립운동 문화유산</p></a>
-							<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span>
-						</div>
-					</div>
-				</div>
+
+
 				<div class="mainStudy">
 					<div class="section">
 						<p class="sectionTit culture">문화재 학습자료 <a class="moreBtn" href="heritage_research.do">학습자료 전체보기 ▶</a></p>
@@ -121,6 +111,25 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="themeHeritage">
+					<div class="section">
+						<p class="sectionTit theme">테마별 문화유산 <a class="moreBtn" href="heritage_theme.do">테마 전체보기 ▶</a></p>
+						<div class="themeT bg3 first" onclick="goHeritagePage(5, '우리나라의 세계유산');">
+							<a href="javascript:goPage(5, '우리나라의 세계유산');"><p>우리나라의 세계유산</p></a>
+							<span style="font-size:15px;">수원 화성, 경주 불국사, 창덕궁,<br /> 남한산성, 합천 해인사…</span>
+						</div>
+						<div class="themeT bg3" onclick="goHeritagePage(7, '우리나라의 기록유산');">
+							<a href="javascript:goPage(7, '우리나라의 기록유산');"><p>우리나라의 기록유산</p></a>
+							<span style="font-size:15px;">훈민정음, 이순신 난중일기, 동의보감<br />조선왕조실록 태백산사고본…</span>
+						</div>
+						<div class="themeT bg3"onclick="goHeritagePage(6, '우리나라의 인류무형문화유산');">
+							<a href="javascript:goPage(6, '우리나라의 인류무형문화유산');"><p>우리나라의 인류무형문화유산</p></a>
+							<span style="font-size:15px;">판소리, 강강술래, 남사당놀이 <br />종묘제례악, 강릉단오제…</span>
+						</div>
+					</div>
+				</div>
+
 			</div>
 			<div id="biologyBox" class="mainBox">
 				<div class="section">
@@ -129,23 +138,7 @@
 						<input type="text" id="bSearchText" name="bSearchText" class="searchText" /><button onclick="searchSth(2);">생물정보 검색</button>
 					</div>
 				</div>
-				<div class="themeHeritage">
-					<div class="section">
-						<p class="sectionTit theme">테마별 생물정보 <a class="moreBtn" href="biology_theme.do">테마 전체보기 ▶</a></p>
-						<div class="themeT bg1 first" onclick="goHeritagePage(1, '초등학생이 꼭 알아야 할 국보 10가지');">
-							<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p></a>
-							<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-						</div>
-						<div class="themeT bg1" onclick="goHeritagePage(44, '중학교 1학년 역사교과서에 나오는 문화재');">
-							<a href="javascript:goPage(44, '초등학생이 꼭 알아야 할 국보 10가지');"><p>중학교 1학년 역사교과서에 나오는 문화재</p></a>
-							<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span>
-						</div>
-						<div class="themeT bg1"onclick="goHeritagePage(45, '광복 70주년 독립운동 문화유산');">
-							<a href="javascript:goPage(45, '초등학생이 꼭 알아야 할 국보 10가지');"><p>광복 70주년 독립운동 문화유산</p></a>
-							<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span>
-						</div>
-					</div>
-				</div>
+				
 				<div class="mainStudy">
 					<div class="section">
 						<p class="sectionTit culture">생물정보 학습자료 <a class="moreBtn" href="biology_research.do">학습자료 전체보기 ▶</a></p>
@@ -160,6 +153,25 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="themeHeritage">
+					<div class="section">
+						<p class="sectionTit theme">테마별 생물정보 <a class="moreBtn" href="biology_theme.do">테마 전체보기 ▶</a></p>
+						<div class="themeT bg1 first" onclick="goBiologyPage(12, '우리나라의 단풍나무');">
+							<a href="javascript:goPage(12, '우리나라의 단풍나무');"><p>우리나라의 단풍나무</p></a>
+							<span style="font-size:15px;">단풍나무, 당단풍나무, 은단풍<br />섬단풍나무, 돌단풍…</span>
+						</div>
+						<div class="themeT bg1" onclick="goBiologyPage(10, '우리나라에 서식하는 잠자리');">
+							<a href="javascript:goPage(10, '우리나라에 서식하는 잠자리');"><p>우리나라에 서식하는 잠자리</p></a>
+							<span style="font-size:15px;">고추좀잠자리, 물잠자리, 꼬마잠자리,<br />검은물잠자리, 뱀잠자리…</span>
+						</div>
+						<div class="themeT bg1" onclick="goBiologyPage(11, '족제비과의 동물들');">
+							<a href="javascript:goPage(11, '족제비과의 동물들');"><p>족제비과의 동물들</p></a>
+							<span style="font-size:15px;">족제비, 오소리, 수달, 담비</span>
+						</div>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 	</div>

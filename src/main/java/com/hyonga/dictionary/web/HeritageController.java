@@ -32,7 +32,7 @@ public class HeritageController {
     private final Logger logger = LoggerFactory.getLogger(HeritageController.class);
 
     /** 한 페이지당 자료 수 */
-    private static final int PAGE_SIZE = 20;
+    private static final int PAGE_SIZE = 21;
 
     /** 페이징 블록 수 */
     private static final int BLOCK_SIZE = 10;
@@ -127,11 +127,11 @@ public class HeritageController {
         mav.addObject("curPageDiv", curPageDiv);
 
         // 문화유산 이미지 검색결과 수 얻기
-        int countOfImg = 0;
-        List<HeritageSearchImgResult> imgLists = iHeritageService.listHeritageSearchImg(searchCondition);
-        if (null != imgLists) {
-            countOfImg = imgLists.size();
-        }
+        int countOfImg = iHeritageService.sizeOfHeritageImgSearchResult(searchCondition);
+//        List<HeritageSearchImgResult> imgLists = iHeritageService.listHeritageSearchImg(searchCondition);
+//        if (null != imgLists) {
+//            countOfImg = imgLists.size();
+//        }
         mav.addObject("imgTotalCount", countOfImg);
 
         mav.setViewName("heritage_search_result");
@@ -449,6 +449,7 @@ public class HeritageController {
 
         // 문화유산 검색결과 수 얻기
         int countOfData = iHeritageService.sizeOfHeritageSearchResult(searchCondition);
+        logger.debug("countOfData:" + countOfData);
 //        List<HeritageSearchResult> dataList = iHeritageService.listHeritageSearchResult(searchCondition);
 //        if (null != dataList) {
 //            countOfData = dataList.size();

@@ -1,5 +1,6 @@
 package com.hyonga.dictionary.web.m;
 
+import com.hyonga.dictionary.common.MUtility;
 import com.hyonga.dictionary.common.Utility;
 import com.hyonga.dictionary.domain.*;
 import com.hyonga.dictionary.service.IHeritageService;
@@ -24,7 +25,7 @@ public class MHeritageController {
     private final Logger logger = LoggerFactory.getLogger(MHeritageController.class);
 
     /** 한 페이지당 자료 수 */
-    private static final int PAGE_SIZE = 20;
+    private static final int PAGE_SIZE = 21;
 
     /** 페이징 블록 수 */
     private static final int BLOCK_SIZE = 10;
@@ -119,11 +120,11 @@ public class MHeritageController {
         mav.addObject("curPageDiv", curPageDiv);
 
         // 문화유산 이미지 검색결과 수 얻기
-        int countOfImg = 0;
-        List<HeritageSearchImgResult> imgLists = iHeritageService.listHeritageSearchImg(searchCondition);
-        if (null != imgLists) {
-            countOfImg = imgLists.size();
-        }
+        int countOfImg = iHeritageService.sizeOfHeritageImgSearchResult(searchCondition);
+//        List<HeritageSearchImgResult> imgLists = iHeritageService.listHeritageSearchImg(searchCondition);
+//        if (null != imgLists) {
+//            countOfImg = imgLists.size();
+//        }
         mav.addObject("imgTotalCount", countOfImg);
 
         mav.setViewName("m/heritage_search_result");
@@ -180,11 +181,11 @@ public class MHeritageController {
             tempData = tempData.toUpperCase();
 
             if (tempData.equals("BASIC")) {
-                basicIndexContent += Utility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
+                basicIndexContent += MUtility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
             } else if (tempData.equals("IMAGE")) {
-                basicIndexContent += Utility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
+                basicIndexContent += MUtility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
             } else if (tempData.equals("MAINTITLE")) {
-                basicIndexContent += Utility.parseBasicMainTitleText2Html(listHeritageSearchBasic.get(o).getContent());
+                basicIndexContent += MUtility.parseBasicMainTitleText2Html(listHeritageSearchBasic.get(o).getContent());
             }
         }
 
@@ -279,11 +280,11 @@ public class MHeritageController {
             tempData = tempData.toUpperCase();
 
             if (tempData.equals("BASIC")) {
-                basicIndexContent += Utility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
+                basicIndexContent += MUtility.parseBasicText2Html(listHeritageSearchBasic.get(o).getContent());
             } else if (tempData.equals("IMAGE")) {
-                basicIndexContent += Utility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
+                basicIndexContent += MUtility.parseBasicImg2Html(listHeritageSearchBasic.get(o).getContent(), heritageSearchEntry.getTaskidx());
             } else if (tempData.equals("MAINTITLE")) {
-                basicIndexContent += Utility.parseBasicMainTitleText2Html(listHeritageSearchBasic.get(o).getContent());
+                basicIndexContent += MUtility.parseBasicMainTitleText2Html(listHeritageSearchBasic.get(o).getContent());
             }
         }
 

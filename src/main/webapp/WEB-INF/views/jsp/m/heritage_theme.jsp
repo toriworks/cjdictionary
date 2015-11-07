@@ -26,18 +26,18 @@
 	<!-- header -->
 	<header>
 		<article class="mHeader">
-			<h1><img src="${croot}images/m/main/logo.jpg" alt="천재학습백과 공유저작물"></h1>
+			<h1><a href="main.do"><img src="${croot}images/m/main/logo.jpg" alt="천재학습백과 공유저작물"></a></h1>
 		</article>
 		<nav>
-			<a href="heritage_theme.do" class="page">문화유산</a>
-			<a href="biology_theme.do">생물정보</a>
+			<a href="heritage_research.do" class="page">문화유산</a>
+			<a href="biology_research.do">생물정보</a>
 			<a href="intro_page.do">공유저작물 소개</a>
 			<a href="uci_page.do">UCI 서비스 소개</a>
 		</nav>
 		<div class="subNav">
-			<a href="#" class="focus">테마별 문화유산</a>
-			<a href="heritage_research.do">기획자료</a>
-			<a href="heritage_search.do">문화유산 검색</a>
+			<a href="heritage_research.do" target="_self">학습자료</a>
+			<a class="focus" href="heritage_theme.do" target="_self">테마별 문화유산</a>
+			<a href="heritage_search.do" target="_self">문화유산 검색</a>
 		</div>
 		<div class="subTit">
 			<figure><img src="${croot}images/m/sub/bg_menuCulture.png" alt=""></figure>
@@ -85,24 +85,24 @@
 
 			<ul class="themeT">
 				<li>
-					<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
-					<span>숭례문, 진흥왕 순수비, 원각사지 10층 석탑…</span></a>
+					<a href="javascript:goPage(1, '우리나라의 세계유산');"><p>우리나라의 세계유산</p>
+						<span style="font-size:15px;">수원 화성, 경주 불국사, 창덕궁,<br /> 남한산성, 합천 해인사…</span></a>
 				</li>
 				<li>
-					<a href="javascript:goPage(44, '중학교 1학년 역사교과서에 나오는 문화재');"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
-					<span>숭례문, 진흥왕 순수비, 원각사지 10층 석탑…</span></a>
+					<a href="javascript:goPage(44, '우리나라의 기록유산');"><p>우리나라의 기록유산</p>
+						<span style="font-size:15px;">훈민정음, 이순신 난중일기, 동의보감<br />조선왕조실록 태백산사고본…</span></a>
 				</li>
 				<li>
-					<a href="javascript:goPage(45, '광복 70주년 독립운동 문화유산');"><p>광복 70주년 독립운동 문화유산</p>
-					<span>독립문, 독립신문, 아우내 3.1운동 독립사적지..</span></a>
+					<a href="javascript:goPage(45, '우리나라의 인류무형문화유산');"><p>우리나라의 인류무형문화유산</p>
+						<span style="font-size:15px;">판소리, 강강술래, 남사당놀이 <br />종묘제례악, 강릉단오제…</span></a>
 				</li>
 				<li>
-					<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
-					<span>숭례문, 진흥왕 순수비, 원각사지 10층 석탑…</span></a>
+					<a href="javascript:goPage(46, '백제의 문화재');"><p>백제의 문화재</p>
+						<span style="font-size:15px;">백제 금동대향로, 서울 몽촌토성, <br />무령왕 금귀걸이, 금동보살입상 …</span></a>
 				</li>
 				<li>
-					<a href="javascript:goPage(44, '중학교 1학년 역사교과서에 나오는 문화재');"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
-					<span>숭례문, 진흥왕 순수비, 원각사지 10층 석탑…</span></a>
+					<a href="javascript:goPage(47, '세종시 중요문화재');"><p>세종시 중요문화재</p>
+						<span style="font-size:15px;">세종시 연화사 칠존불비상, 세종 유계화 가옥, <br />세종시 연화사 무인명불비상…</span></a>
 				</li>
 			</ul>
 			<!--

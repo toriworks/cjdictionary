@@ -24,7 +24,7 @@ public class BiologyController {
     private final Logger logger = LoggerFactory.getLogger(BiologyController.class);
 
     /** 한 페이지당 자료 수 */
-    private static final int PAGE_SIZE = 20;
+    private static final int PAGE_SIZE = 21;
 
     /** 페이징 블록 수 */
     private static final int BLOCK_SIZE = 10;
@@ -363,11 +363,11 @@ public class BiologyController {
         mav.addObject("curPageDiv", curPageDiv);
 
         // 생물정보 이미지 검색결과 수 얻기
-        int countOfImg = 0;
-        List<HeritageSearchImgResult> imgLists = iHeritageService.listBiologySearchImg(searchCondition);
-        if (null != imgLists) {
-            countOfImg = imgLists.size();
-        }
+        int countOfImg = iHeritageService.sizeOfBiologyImgSearchResult(searchCondition);
+//        List<HeritageSearchImgResult> imgLists = iHeritageService.listBiologySearchImg(searchCondition);
+//        if (null != imgLists) {
+//            countOfImg = imgLists.size();
+//        }
         mav.addObject("imgTotalCount", countOfImg);
 
         mav.setViewName("biology_search_result");

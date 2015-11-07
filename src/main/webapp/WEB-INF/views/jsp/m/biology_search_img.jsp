@@ -42,21 +42,21 @@
 	<!-- header -->
 	<header>
 		<article class="mHeader">
-			<h1><img src="${croot}images/m/main/logo.jpg" alt="천재학습백과 공유저작물"></h1>
+			<h1><a href="main.do"><img src="${croot}images/m/main/logo.jpg" alt="천재학습백과 공유저작물"></a></h1>
 		</article>
 		<nav>
-			<a href="heritage_theme.do">문화유산</a>
-			<a href="biology_theme.do" class="page">생물정보</a>
+			<a href="heritage_research.do">문화유산</a>
+			<a href="biology_research.do" class="page">생물정보</a>
 			<a href="intro_page.do" >공유저작물 소개</a>
 			<a href="uci_page.do" >UCI 서비스 소개</a>
 		</nav>
 		<div class="subNav">
+			<a href="biology_research.do" >학습자료</a>
 			<a href="biology_theme.do" >테마별 생물정보</a>
-			<a href="biology_research.do" >기획자료</a>
-			<a href="#" class="focus" >생물정보 검색</a>
+			<a href="biology_search.do" class="focus" >생물정보 검색</a>
 		</div>
 		<div class="subTit">
-			<figure><img src="${croot}images/m/sub/bg_menuCulture.png" alt=""></figure>
+			<figure><img src="${croot}images/sub/bg_menuBio.png" alt=""></figure>
 		</div>
 	</header>
 	<!--// header -->
@@ -190,8 +190,8 @@
 <div id="popImg" class="popup">
 	<div id="bigImg">
 		<!--<a href="#" class="prevBtn"><span><img src="${croot}images/m/sub/btn_prev.png" alt=""></span></a>-->
-		<p class="caption">봄 숭례문(2015)</p>
-		<figure><img src="http://www.cha.go.kr/unisearch/images/national_treasure/2685609.jpg" alt=""></figure>
+		<p id="popBigCaption" class="caption">봄 숭례문(2015)</p>
+		<figure><img id="popBigImg" src="http://www.cha.go.kr/unisearch/images/national_treasure/2685609.jpg" alt=""></figure>
 		<a href="javascript:saveFile();" class="downloadBtn">이미지 저장</a>
 		<!--<a href="#" class="nextBtn"><span><img src="${croot}images/m/sub/btn_next.png" alt=""></span></a>-->
 	</div>
@@ -206,8 +206,25 @@
 		$(".imgList ul li a").on({
 			click : function(e) {
 				e.preventDefault();
+
+				var src = $($(this)).children().attr("src");
+				src = src.replace("thumb", "ori");
+				var alt = $($(this)).children().attr("alt");
+				$("#popBigImg").attr("src",src);
+				$("#popBigCaption").html(alt);
+
 				$($(this).attr("href")).css({display:"block"});
 				$("#mask").css({display:"block"});
+			}
+		});
+
+		$(".thumbLi ul li a").on({
+			click : function(e) {
+				e.preventDefault();
+				var imgUrl = $(this).attr("href");
+				$("#bigImg figure img").attr("src",imgUrl);
+				$(".thumbLi ul li").removeClass("focus");
+				$(this).parent().addClass("focus");
 			}
 		});
 
@@ -219,6 +236,7 @@
 			}
 		});
 	});
+
 	saveFile = function() {
 		var url = $("#bigImg figure img").attr("src");
 		url = url.replace("thumb", "ori");

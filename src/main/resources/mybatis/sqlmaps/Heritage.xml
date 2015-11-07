@@ -30,7 +30,7 @@
             AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
             </if>
         ) pagetable
-        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 19
+        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 20
         ORDER BY EntryTitle ASC
     </select>
 
@@ -152,7 +152,7 @@
             <!--AND MUnitIdx = #{munitidx}-->
         <!--</if>-->
         <!--<if test="munitidx ==''">-->
-            <!--AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)-->
+            <!--AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038)-->
         <!--</if>-->
         <!--ORDER BY a.EntryTitle ASC-->
         SELECT *
@@ -168,10 +168,10 @@
                 AND MUnitIdx = #{munitidx}
             </if>
             <if test="munitidx ==''">
-                AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
+                AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038)
             </if>
         ) pagetable
-        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 19
+        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 20
         ORDER BY EntryTitle ASC
     </select>
 
@@ -190,7 +190,7 @@
         AND MUnitIdx = #{munitidx}
         </if>
         <if test="munitidx ==''">
-        AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
+        AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038)
         </if>
     </select>
 
@@ -213,7 +213,7 @@
                 AND (MUnitIdx = 995 OR MUnitIdx = 996 OR MUnitIdx = 997 OR MUnitIdx = 998 OR MUnitIdx = 999 OR MUnitIdx = 1000)
             </if>
         ) pagetable
-        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 19
+        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 20
         ORDER BY ImageTitle ASC
     </select>
 
@@ -244,10 +244,10 @@
                 AND (ImageTitle like '%'+#{entryTitle}+'%' OR ImageCaption LIKE '%'+#{entryTitle}+'%' OR ImageTag LIKE  '%'+#{entryTitle}+'%')
             </if>
             <if test="munitidx != ''">AND MUnitIdx = #{munitidx} </if>
-            <if test="munitidx ==''">AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
+            <if test="munitidx ==''">AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038)
             </if>
         ) pagetable
-        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 19
+        WHERE rownum BETWEEN #{startPage} AND #{startPage} + 20
         ORDER BY ImageTitle ASC
     </select>
 
@@ -262,7 +262,7 @@
             AND (ImageTitle like '%'+#{entryTitle}+'%' OR ImageCaption LIKE '%'+#{entryTitle}+'%' OR ImageTag LIKE  '%'+#{entryTitle}+'%')
         </if>
         <if test="munitidx != ''">AND MUnitIdx = #{munitidx} </if>
-        <if test="munitidx ==''">AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038 OR MUnitIdx = 1000)
+        <if test="munitidx ==''">AND (MUnitIdx = 1034 OR MUnitIdx = 1035 OR MUnitIdx = 1036 OR MUnitIdx = 1037 OR MUnitIdx = 1038)
         </if>
     </select>
 </mapper>

@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, initial-scale=0.38, maximum-scale=2, user-scalable=yes" />
 <title>천재학습백과 공유저작물</title>
 	<link rel="stylesheet" href="${croot}css/common.css" type="text/css" />
+	<link rel="shortcut icon" href="${croot}images/favicon.ico">
 	<script type="text/javascript" src="${croot}js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -32,8 +33,8 @@
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_theme.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="heritage_research.do" class="page"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_research.do"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -41,8 +42,8 @@
 		</div>
 		<div class="subNav"><!-- 문화유산 // sub menu -->
 			<div class="section">
-				<a href="#" class="focus">테마별 문화유산</a>
 				<a href="heritage_research.do">학습자료</a>
+				<a href="heritage_theme.do" class="focus">테마별 문화유산</a>
 				<a href="heritage_search.do">문화유산 검색</a>
 			</div>
 		</div>
@@ -81,40 +82,24 @@
 				</div>
 				<ul class="themeT">
 					<li>
-						<a href="javascript:goPage(1, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
+						<a href="javascript:goPage(1, '우리나라의 세계유산');"><p>우리나라의 세계유산</p>
+						<span style="font-size:15px;">수원 화성, 경주 불국사, 창덕궁,<br /> 남한산성, 합천 해인사…</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(44, '중학교 1학년 역사교과서에 나오는 문화재');"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
+						<a href="javascript:goPage(44, '우리나라의 기록유산');"><p>우리나라의 기록유산</p>
+						<span style="font-size:15px;">훈민정음, 이순신 난중일기, 동의보감<br />조선왕조실록 태백산사고본…</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(45, '광복 70주년 독립운동 문화유산');"><p>광복 70주년 독립운동 문화유산</p>
-						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
+						<a href="javascript:goPage(45, '우리나라의 인류무형문화유산');"><p>우리나라의 인류무형문화유산</p>
+						<span style="font-size:15px;">판소리, 강강술래, 남사당놀이 <br />종묘제례악, 강릉단오제…</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(46, '초등학생이 꼭 알아야 할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
+						<a href="javascript:goPage(46, '백제의 문화재');"><p>백제의 문화재</p>
+						<span style="font-size:15px;">백제 금동대향로, 서울 몽촌토성, <br />무령왕 금귀걸이, 금동보살입상 …</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(47, '중학교 1학년 역사교과서에 나오는 문화재');"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '광복 70주년 독립운동 문화유산');"><p>광복 70주년 독립운동 문화유산</p>
-						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '초등학생이 꼭 알아야할 국보 10가지');"><p>초등학생이 꼭 알아야 할 국보 10가지</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '중학교 1학년 역사교과서에 나오는 문화재');"><p>중학교 1학년 역사교과서에 나오는 문화재</p>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '광복 70주년 독립운동 문화유산');"><p>광복 70주년 독립운동 문화유산</p>
-						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
+						<a href="javascript:goPage(47, '세종시 중요문화재');"><p>세종시 중요문화재</p>
+						<span style="font-size:15px;">세종시 연화사 칠존불비상, 세종 유계화 가옥, <br />세종시 연화사 무인명불비상…</span></a>
 					</li>
 				</ul>
 			</div>

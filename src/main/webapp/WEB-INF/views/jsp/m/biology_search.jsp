@@ -34,18 +34,18 @@
 			<h1><a href="main.do"><img src="${croot}images/m/main/logo.jpg" alt="천재학습백과 공유저작물"></a></h1>
 		</article>
 		<nav>
-			<a href="heritage_theme.do">문화유산</a>
-			<a href="biology_theme.do" class="page">생물정보</a>
+			<a href="heritage_research.do">문화유산</a>
+			<a href="biology_research.do" class="page">생물정보</a>
 			<a href="intro_page.do" >공유저작물 소개</a>
 			<a href="uci_page.do" >UCI 서비스 소개</a>
 		</nav>
 		<div class="subNav">
-			<a href="biology_theme.do" >테마별 생물정보</a>
-			<a href="biology_research.do" >기획자료</a>
-			<a href="#" class="focus" >생물정보 검색</a>
+			<a href="biology_research.do">학습자료</a>
+			<a href="biology_theme.do">테마별 생물정보</a>
+			<a href="biology_search.do" class="focus">생물정보 검색</a>
 		</div>
 		<div class="subTit">
-			<figure><img src="${croot}images/m/sub/bg_menuCulture.png" alt=""></figure>
+			<figure><img src="${croot}images/m/sub/bg_menuBio.png" alt=""></figure>
 		</div>
 	</header>
 	<!--// header -->

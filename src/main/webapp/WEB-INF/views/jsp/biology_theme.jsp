@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, initial-scale=0.38, maximum-scale=2, user-scalable=yes" />
 <title>천재학습백과 공유저작물</title>
 	<link rel="stylesheet" href="${croot}css/common.css" type="text/css" />
+	<link rel="shortcut icon" href="${croot}images/favicon.ico">
 	<script type="text/javascript" src="${croot}js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -19,6 +20,7 @@
 			location.href = "biology_list.do?binderIdx=" + binderIdx + "&title=" + title;
 		}
 	</script>
+
 </head>
 
 <body>
@@ -32,8 +34,8 @@
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_theme.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="heritage_research.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_research.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -41,8 +43,8 @@
 		</div>
 		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="#" class="focus">테마별 생물정보</a>
 				<a href="biology_research.do">학습자료</a>
+				<a href="biology_theme.do" class="focus">테마별 생물정보</a>
 				<a href="biology_search.do">생물정보 검색</a>
 			</div>
 		</div>
@@ -81,40 +83,16 @@
 				</div>
 				<ul class="themeT">
 					<li>
-						<a href="javascript:goPage(48, '생물정보 테마48');"><p>생물정보 테마48</p></a>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
+						<a href="javascript:goPage(12, '생물정보 테마48');"><p>우리나라의 단풍나무</p></a>
+						<span style="font-size:15px;">단풍나무, 당단풍나무, 은단풍<br />섬단풍나무, 돌단풍…</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(49, '생물정보 테마49');"><p>생물정보 테마49</p></a>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
+						<a href="javascript:goPage(10, '생물정보 테마49');"><p>우리나라에 서식하는 잠자리</p></a>
+						<span style="font-size:15px;">고추좀잠자리, 물잠자리, 꼬마잠자리,<br />검은물잠자리, 뱀잠자리…</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
-						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
-						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
-						<span>숭례문, 진흥왕 순수비, <br />원각사지 10층 석탑…</span></a>
-					</li>
-					<li>
-						<a href="javascript:goPage(1, '생물정보 테마1');"><p>생물정보 테마1</p></a>
-						<span>독립문, 독립신문, <br />아우내 3.1운동 독립사적지..</span></a>
+						<a href="javascript:goPage(11, '생물정보 테마1');"><p>족제비과의 동물들</p></a>
+						<span style="font-size:15px;">족제비, 오소리, 수달, 담비</span></a>
 					</li>
 				</ul>
 			</div>

@@ -3,6 +3,9 @@
  * Desc      : 스크립트
  * Created   : 2015-09-09 by tttboram
  ------------------------------------------------------------ */
+function winopen(url) {
+	window.open(url, "_blank", "", "");
+}
 function fileUpload() {
 	var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'});
 	var fileInput = $(this).children('input:file').wrap(wrapper);

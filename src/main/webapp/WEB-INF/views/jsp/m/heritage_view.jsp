@@ -1,7 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <spring:url value="/resources/" var="croot" />
-<spring:url value="http://hyonga.iptime.org:28080/CMS100Data/EntryData" var="cms_url" />
+<spring:url value="http://open.chunjae.co.kr:7080/CMS100Data/EntryData" var="cms_url" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,8 +22,16 @@
 
 		popupUCI = function(uci) {
 
-			var tUCI = "http://uci.or.kr/I421:" + uci + "@N2C";
+			var tUCI = "http://uci.or.kr/" + uci + "@N2C";
 			window.open(tUCI, "UCI 정보", "width=540, height=405, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+		}
+
+		showLayer = function(a, b) {
+			var caption = a;
+			var img = "${pop_url}/" + b;
+			$("#pop_img_src").attr("src", img);
+			$("#pop_p_str").html(caption);
+			$("#term1pop").show();
 		}
 	</script>
 </head>
@@ -37,15 +45,15 @@
 			<h1><a href="main.do"><img src="${croot}images/m/main/logo.jpg" alt="천재학습백과 공유저작물"></a></h1>
 		</article>
 		<nav>
-			<a href="heritage_theme.do" class="page">문화유산</a>
-			<a href="biology_theme.do" >생물정보</a>
+			<a href="heritage_research.do" class="page">문화유산</a>
+			<a href="biology_research.do" >생물정보</a>
 			<a href="intro_page.do" >공유저작물 소개</a>
 			<a href="uci_page.do" >UCI 서비스 소개</a>
 		</nav>
 		<div class="subNav">
-			<a href="heritage_theme.do">테마별 문화유산</a>
-			<a href="heritage_research.do" >기획자료</a>
-			<a href="#" class="focus">문화유산 검색</a>
+			<a href="heritage_research.do" >학습자료</a>
+			<a href="heritage_theme.do" class="focus">테마별 문화유산</a>
+			<a href="heritage_search.do">문화유산 검색</a>
 		</div>
 		<div class="subTit">
 			<figure><img src="${croot}images/m/sub/bg_menuCulture.png" alt=""></figure>
@@ -56,7 +64,7 @@
 	<!-- subwrap -->
 	<section class="contents">
 		<header>
-			<h1>문화유산 검색</h1>
+			<h1>테마별 문화유산</h1>
 			<div class="themeTit">
 				${title}
 			</div>
@@ -131,8 +139,8 @@
 						<tbody>
 						<c:forEach var="data_relations" items="${list_relations}">
 							<tr>
-								<th class="figure"><img src="${cms_url}/${data_relations.taskidx}/${data_relations.filename}" alt=""></th>
-								<td>${data_relations.entryTitle}</td>
+								<th class="figure"><a href="heritage_view2.do?cat=3&idx=${data_relations.idx}&title=${title}"><img src="${cms_url}/${data_relations.taskidx}/${data_relations.filename}" alt=""></a></th>
+								<td><a href="heritage_view2.do?cat=3&idx=${data_relations.idx}&title=${title}">${data_relations.entryTitle}</a></td>
 								<td>${data_relations.tag}</td>
 							</tr>
 						</c:forEach>
@@ -194,7 +202,7 @@
 							<c:if test="${j mod 3 eq 0}">
 								<tr>
 							</c:if>
-							<td><a class="termWord" href="heritage_view.do?idx=${terms_data.idx}">${terms_data.entryTitle}</a></td>
+							<td><a href="heritage_view2.do?cat=3&idx=${list_terms.get(j).idx}">${terms_data.entryTitle}</a></td>
 							<c:if test="${j mod 3 eq 0}">
 								</tr>
 							</c:if>
@@ -215,7 +223,7 @@
 		</article>
 	</section>
 
-	<div class="btnBar"><a href="javascript:goPage('heritage_search.do');" >목록</a></div>
+	<div class="btnBar"><a href="javascript:goPage('heritage_search.do');" >&lt; BACK</a></div>
 	<!--// subwrap -->
 
 	<!-- footer -->
@@ -233,6 +241,9 @@
 	<!-- footer -->
 </section>
 <!--// wrap -->
+
+<!-- 용어 레이어 -->
+<span id="term1pop" style="display:none;"><span class="term miniPop"><p class="miniPop_title">홍예문</p><figure><img src="${croot}images/@pic02.jpg" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><img src="${croot}images/bg_po.png" class="pointDot"></span>
 
 </body>
 </html>

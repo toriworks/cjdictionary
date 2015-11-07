@@ -21,17 +21,17 @@
 	<!-- header -->
 	<header>
 		<article class="mHeader">
-			<h1><img src="${croot}images/m/main/logo.jpg" alt="천재학습백과 공유저작물"></h1>
+			<h1><a href="main.do"><img src="${croot}images/m/main/logo.jpg" alt="천재학습백과 공유저작물"></a></h1>
 		</article>
 		<nav>
-			<a href="heritage_theme.do">문화유산</a>
-			<a href="biology_theme.do">생물정보</a>
+			<a href="heritage_research.do">문화유산</a>
+			<a href="biology_research.do">생물정보</a>
 			<a href="intro_page.do">공유저작물 소개</a>
 			<a href="uci_page.do" class="page">UCI 서비스 소개</a>
 		</nav>
 		<!-- <div class="subNav">
 			<a href="#" target="_self">테마별 문화유산</a>
-			<a href="#" target="_self">기획자료</a>
+			<a href="#" target="_self">학습자료</a>
 			<a class="focus" href="#" target="_self">생물정보 검색</a>
 		</div> -->
 		<div class="subTit">

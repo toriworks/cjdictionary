@@ -275,7 +275,7 @@ public class Utility {
 
             for (int i=0; i<sizeOfNodeListText; i++) {
                 elementOfBasic = (Element) nodeLisfOfBasic.item(i);
-                strRet += "<p>" + elementOfBasic.getFirstChild().getNodeValue() + "</p>";
+                strRet += "<p style=\"margin-top:-25px;\">" + elementOfBasic.getFirstChild().getNodeValue() + "</p>";
             }
         }
 
@@ -309,9 +309,9 @@ public class Utility {
                 elementOfBasic = (Element) nodeLisfOfBasic.item(i);
                 String v = "" + elementOfBasic.getFirstChild().getNodeValue();
                 if (v.startsWith("http://") || v.startsWith("www")) {
-                    strRet = "<p><strong><a href=\"javascript:window.open('" + v + "');\">" + v + "</a></strong></p>";
+                    strRet = "<p style=\"margin-top:50px;\"><strong><a href=\"javascript:winopen('" + v + "');\">" + v + "</a></strong></p>";
                 } else {
-                    strRet += "<p><strong>" + v + "</strong></p>";
+                    strRet += "<p style=\"margin-top:50px;\"><strong>" + v + "</strong></p>";
                 }
             }
         }
@@ -364,10 +364,11 @@ public class Utility {
                 NodeList nodeListOfLinkText = elementOfLink.getElementsByTagName("TEXT");
                 Element elementOfLinkText = (Element) nodeListOfLinkText.item(0);
 
-                strRet += "<figure>";
+//                strRet += "<figure>";
+                strRet += "<figure style=\"margin-top:-25px;margin-bottom:-30px;text-align:center;\">";
                 if (null != elementOfLinkText) {
                     if (elementOfLinkText.getFirstChild().getNodeValue().startsWith("http://") || elementOfLinkText.getFirstChild().getNodeValue().equals("www")) {
-                        strRet += "<a href=\"javascript:window.open('" + elementOfLinkText.getFirstChild().getNodeValue() + "');\">";
+                        strRet += "<a href=\"javascript:winopen('" + elementOfLinkText.getFirstChild().getNodeValue() + "');\">";
                     }
                 }
                 strRet += "<img src=\"#CMS_URL#/#ENTRY_TASKID#/" + elementOfFilename.getFirstChild().getNodeValue() + "\">";
@@ -376,18 +377,23 @@ public class Utility {
                         strRet += "</a>";
                     }
                 }
-                strRet += "</figure>";
                 if (null != elementOfCaptionText) {
                     if (!elementOfCaptionText.getFirstChild().getNodeValue().equals("")) {
-                        strRet += "<p><" + elementOfCaptionText.getFirstChild().getNodeValue() + "><p />";
+                        String v = elementOfCaptionText.getFirstChild().getNodeValue();
+                        if (!v.equals("<br>") && !v.equals("<br />") && !v.equals("<br/>")) {
+                            strRet += "<p><" + elementOfCaptionText.getFirstChild().getNodeValue() + "><p />";
+                        } else {
+                            strRet += "<p></p>";
+                        }
                     }
                 }
 
                 if (null != elementOfDescText) {
                     if (!elementOfDescText.getFirstChild().getNodeValue().equals("")) {
-                        strRet += "<p>" + elementOfDescText.getFirstChild().getNodeValue() + "<p />";
+                        strRet += "<p style=\"margin-top:-25px;\">" + elementOfDescText.getFirstChild().getNodeValue() + "<p />";
                     }
                 }
+                strRet += "</figure>";
             }
         }
 
@@ -396,5 +402,27 @@ public class Utility {
 
         logger.debug(strRet);
         return strRet;
+    }
+
+    public static int isMobileBrowser(javax.servlet.http.HttpServletRequest request) {
+        int isMobile = 0;
+        String agent = request.getHeader("USER-AGENT");
+        String[] mobileos = {
+                "iphone", "ipod", "android", "blackberry", "windows cd",
+                "nokia", "webos", "opera mini", "sonyericsson"
+        };
+
+        agent = agent.toLowerCase();
+        int j = -1;
+        for (int i=0; i<mobileos.length; i++) {
+            j = agent.indexOf(mobileos[i]);
+
+            if (j > -1) {
+                isMobile = 1;
+                break;
+            }
+        }
+
+        return isMobile;
     }
 }

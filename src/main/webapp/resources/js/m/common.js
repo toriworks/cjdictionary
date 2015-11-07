@@ -33,13 +33,30 @@ $(document).ready(function(){
 	$(".termWord").click(function(e){
 		e.preventDefault();
 
+		//x,y 값
+		cli_Top=$(this).prop("offsetTop");
+		cli_Left=$(this).prop("offsetLeft");
+
+
+
 		if($(this).children().css({'display':'none'})){
-			//$(".miniPop").css({'display':'block'});
+
+			$("#minipop_template").remove();
+
+			$(".miniPop").css({'display':'block'});
+			$(".pointDot").css({'display':'block'});
 			var _word = $(this).attr("href");
-			//$(_word).show();
-			var _thisHtml = $(_word).html();
+			$(_word).show();
+
+			var _thisHtml = "<span id='minipop_template' style='display:none'>" + $(_word).html()+"</span>";
 			$(this).append(_thisHtml);
-			$(this).next(".miniPop").show();
+
+			$(".miniPop_title").html( $(this).attr("title") );
+
+			$(".miniPop_image").attr("src",$(this).attr("value"));
+
+			$("#minipop_template").show();
+
 		}else{
 			$(this).empty();
 			$(".pointDot").remove();

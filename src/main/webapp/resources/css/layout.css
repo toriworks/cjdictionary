@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* ------------------------------------------------------------
  * Name      : layout.css
  * Desc      : 천재학습백과
@@ -90,8 +90,9 @@ body {}
 #mainContent .mainBox .heritageSearch p strong{color:#ec4646; font-size:22px;}
 #mainContent .mainBox .heritageSearch input.searchText{width:530px; border-radius:19px; border:1px solid #dfe0e3; background:#fff; height:40px;}
 #mainContent .mainBox .heritageSearch button{margin:0 0 0 8px; padding:0 20px; background:#009944; border-radius:19px;  height:38px; color:#fff; font-size:16px; line-height:18px;}
+
 #mainContent .themeHeritage{background:#f1f1f1;}
-#mainContent .themeHeritage .section{padding:45px 0 35px 0; border-top:1px solid #9a9c9e; overflow:hidden;}
+#mainContent .themeHeritage .section{padding:45px 0 35px 0; overflow:hidden;}
 #mainContent .themeHeritage .themeT{display:inline-block; float:left; width:300px; height:146px; border-bottom:4px solid #d8d8d8; background:#fff; margin:15px 0 0 40px; text-align:center; overflow:hidden;}
 #mainContent .themeHeritage .themeT p{color:#454545; font-size:14px; height:35px; padding:15px 0 0 0; font-weight:700;}
 #mainContent .themeHeritage .themeT span{display:inline-block; color:#545454; font-size:18px; padding:20px 0; line-height:30px;}
@@ -100,7 +101,8 @@ body {}
 #mainContent .themeHeritage .themeT.bg2 p{background:#aada7b;}
 #mainContent .themeHeritage .themeT.bg3 p{background:#dbb67e;}
 
-#mainContent .mainStudy{padding:40px 0 90px 0; overflow:hidden;}
+#mainContent .mainStudy{overflow:hidden;}
+#mainContent .mainStudy .section{padding:45px 0 35px 0; border-top:1px solid #9a9c9e; overflow:hidden;}
 #mainContent .mainStudy .cultureT{display:inline-block; float:left; width:300px; height:235px; margin:15px 0 0 40px; text-align:center; overflow:hidden;}
 #mainContent .mainStudy .cultureT span{font-size:14px; color:#545454; display:inline-block; padding:10px 0;}
 #mainContent .mainStudy .cultureT.first{margin-left:0;}
@@ -157,7 +159,7 @@ body {}
 
 /*문화유산검색*/
 .subCnt .searchTit{width:980px; height:20px; margin:30px auto; padding:15px 0;}
-.subCnt .searchTit p{text-align:center; font-size:18px; font-weight:bold; color:#646464;}
+.subCnt .searchTit p{text-align:center; font-size:18px; font-weight:bold; color:#538433;}
 /*p{text-align:center;width:980px; height:30px; font-size:18px; font-weight:bold;background:#f4f4f4; margin:60px auto 30px auto;color:#464f56;}*/
 .subCnt .searchBox{position:relative; background:#f8f8f8; border:3px solid #eeeeee; width:894px; min-height:47px; padding:45px 40px;}
 .subCnt .searchBox dl{width:800px; overflow:hidden;}
@@ -165,7 +167,7 @@ body {}
 .subCnt .searchBox dl .nextLine{clear:both;}
 .subCnt .searchBox dl dd{width:300px; float:left; height:45px; vertical-align:middle; line-height:3em; text-align:left;}
 .subCnt .searchBox dl dd select{width:100%; text-align:center; padding:10px; border-color:#ccc;}
-.subCnt .searchBox dl .text{height:40px;padding:0px 0px; border-color:#ccc;}
+.subCnt .searchBox dl .text{height:40px;padding:0px 0px; border-color:#ccc;padding-left:10px;}
 .subCnt .searchBox dl dd.middle{width:395px; margin-left:5px;}
 .subCnt .searchBox .searhBtn{position:absolute; top:45px; right:45px; width:82px; height:29px; background:#fcaf17; color:#fff; font-size:18px; font-weight:bold; text-align:center; padding:10px 0 0 0; text-decoration:none;}
 .subCnt .searchResultTab{width:980px; margin:40px auto 15px auto; overflow:hidden;}
@@ -173,14 +175,14 @@ body {}
 .subCnt .searchResultTab a.selTab{color:#2f2f2f; background:#fff;}
 
 button.button{vertical-align:middle; padding:0; margin:0; border:none; font-size:14px; text-align:center; line-height:24px; padding:3px 18px;}
-button.type1{color:#fff; background:#90c86b;} /*green*/
+button.type1{color:#fff; background:#90c86b;margin-bottom:10px;} /*green*/
 button.type2{color:#fff; background:#fcaf17; padding:0 13px;} /*yellow*/
 
 .popup {display:none; position: fixed; left: 50%; top: 100px; width: 640px; min-height:560px; z-index: 1000; margin-left: -320px; padding:0; background-color: #fff; }
 .popup #bigImg{position:relative; text-align:center; padding:40px 0 25px 0;}
 .popup #bigImg .caption{text-align:center; padding:0 0 20px 0; font-size:18px; color:#545454;}
-.popup #bigImg figure{max-width:480px; /*max-height:320px;*/ text-align:center; margin:0 auto 20px auto;}
-.popup #bigImg figure img{width:100%;}
+.popup #bigImg figure{max-width:500px; max-height:500px; text-align:center; margin:0 auto 20px auto;}
+.popup #bigImg figure img{max-width:500px; max-height:500px;}
 .popup #bigImg .downloadBtn{display:inline-block; margin:0 auto; background:#009944; border-radius:20px ; color:#fff; font-size:16px; text-align:center; padding:10px 20px;}
 .popup #bigImg .prevBtn{position:absolute; top:50%; left:20px;}
 .popup #bigImg .nextBtn{position:absolute; top:50%; right:20px;}
@@ -194,7 +196,7 @@ button.type2{color:#fff; background:#fcaf17; padding:0 13px;} /*yellow*/
 .popup .thumbLi .nextBtn{position:absolute; top:40px; right:20px; color:#323538; font-size:20px;}
 
 .mainBody{width:980px; margin:0 auto; padding:60px 0 70px 0; background:none; overflow:hidden;} /*일반cnt*/
-.subBody{padding:0 0 70px 0; background:url('/resources/images/common/bg_body.gif') repeat-y center top; overflow:hidden;}/*좌우bg cnt*/
+.subBody{padding:0 0 70px 0; /*background:url('/resources/images/common/bg_body.gif') repeat-y center top;*/}/*좌우bg cnt*/
 .subBody .subBodyArea{width:980px; margin:0 auto;}
 .subBody .subBodyArea .textSection{float:left; width:550px; margin-right:40px; } /*좌측본문*/
 .subBody .subBodyArea .descSection{float:left; width:360px; margin-left:30px; } /*우측본문*/
@@ -216,6 +218,7 @@ button.type2{color:#fff; background:#fcaf17; padding:0 13px;} /*yellow*/
 .textSection p strong{font-size:16px; line-height:34px; color:#646464;}
 .textSection figure{padding:25px 0; width:550px;}
 .textSection figure img{max-width:100%;}
+/*.textSection figure img{width:100%; max-height:76px; display:block;}*/
 .textSection .termWord{position:relative;background:#21a1ae; color:#fff;}
 .descSection{padding:60px 0 0 0;}
 .descSection h2{font-size:14px; color:#444; line-height:32px;}

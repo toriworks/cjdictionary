@@ -47,18 +47,18 @@
 			<h1><a href="main.do"><img src="${croot}images/m/main/logo.jpg" alt="천재학습백과 공유저작물"></a></h1>
 		</article>
 		<nav>
-			<a href="heritage_theme.do">문화유산</a>
-			<a href="biology_theme.do" class="page">생물정보</a>
+			<a href="heritage_research.do">문화유산</a>
+			<a href="biology_research.do" class="page">생물정보</a>
 			<a href="intro_page.do" >공유저작물 소개</a>
 			<a href="uci_page.do" >UCI 서비스 소개</a>
 		</nav>
 		<div class="subNav">
+			<a href="biology_research.do" >학습자료</a>
 			<a href="biology_theme.do" >테마별 생물정보</a>
-			<a href="biology_research.do" >기획자료</a>
-			<a href="#" class="focus" >생물정보 검색</a>
+			<a href="biology_search.do" class="focus" >생물정보 검색</a>
 		</div>
 		<div class="subTit">
-			<figure><img src="${croot}images/m/sub/bg_menuCulture.png" alt=""></figure>
+			<figure><img src="${croot}images/sub/bg_menuBio.png" alt=""></figure>
 		</div>
 	</header>
 	<!--// header -->
@@ -123,16 +123,14 @@
 					<colgroup>
 						<col style="width:10%" />
 						<col style="width:*" />
-						<col style="width:30%" />
-						<col style="width:20%" />
+						<col style="width:50%" />
 						<col style="width:22%" />
 					</colgroup>
 					<thead>
 						<tr>
 							<th scope="col">번호</th>
-							<th scope="col">등록</th>
+							<th scope="col">분류</th>
 							<th scope="col">명칭</th>
-							<th scope="col">소재지</th>
 							<th scope="col">UCI</th>
 						</tr>
 					</thead>
@@ -141,10 +139,9 @@
 						<c:forEach var="lists" items="${data}">
 						<c:set var="i" value="${i + 1}" scope="page"/>
 						<tr>
-							<td><c:out value="${i}" /></td>
-							<td><a href="biology_view2.do?cat=2&idx=${lists.idx}">${lists.tag}</a></td>
+							<td><c:out value="${i+1}" /></td>
+							<td><a href="biology_view2.do?cat=2&idx=${lists.idx}">${utility.getLastWordFromString(lists.tag, ",")}</a></td>
 							<td><a href="biology_view2.do?cat=2&idx=${lists.idx}"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitleC}" /></a></td>
-							<td>소재지</td>
 							<td><c:out value="${lists.ucicode}" /></td>
 						</tr>
 						</c:forEach>

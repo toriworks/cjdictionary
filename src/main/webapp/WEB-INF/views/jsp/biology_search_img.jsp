@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, initial-scale=0.38, maximum-scale=2, user-scalable=yes" />
 <title>천재학습백과 공유저작물</title>
 <link rel="stylesheet" href="${croot}css/common.css" type="text/css" />
+<link rel="shortcut icon" href="${croot}images/favicon.ico">
 <script type="text/javascript" src="${croot}js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -48,8 +49,8 @@
 		<div class="section">
 			<h1><a href="main.do"><img src="${croot}images/common/logo.png" alt="천재학습백과 공유저작물"></a></h1>
 			<div id="nav">
-				<a href="heritage_theme.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
-				<a href="biology_theme.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
+				<a href="heritage_research.do"><img src="${croot}images/common/gnb_01.png" alt="문화유산" /></a>
+				<a href="biology_research.do" class="page"><img src="${croot}images/common/gnb_02.png" alt="생물정보" /></a>
 				<a href="intro_page.do"><img src="${croot}images/common/gnb_03.png" alt="공유저작물 소개" /></a>
 				<a href="uci_page.do"><img src="${croot}images/common/gnb_04.png" alt="UCI 서비스 소개" /></a>
 			</div>
@@ -57,9 +58,9 @@
 		</div>
 		<div class="subNav menu2"><!-- 생물정보 // sub menu -->
 			<div class="section">
-				<a href="biology_theme.do">테마별 생물정보</a>
 				<a href="biology_research.do">학습자료</a>
-				<a href="#" class="focus">생물정보 검색</a>
+				<a href="biology_theme.do">테마별 생물정보</a>
+				<a href="biology_search.do" class="focus">생물정보 검색</a>
 			</div>
 		</div>
 	</div>
@@ -222,9 +223,13 @@
 	});
 
 	 saveFile = function() {
-		 var url = $("#bigImg figure img").attr("src");
-		 url = url.replace("thumb", "ori");
-
+		 //var url = $("#bigImg figure img").attr("src");
+		 var url = document.getElementById("popBigImg").src;
+		 try {
+			 url = url.replace("thumb", "ori");
+		 } catch(e) {
+			 alert('e->' + e);
+		 }
 		 // Get file name from url.
 		 var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
 		 var xhr = new XMLHttpRequest();

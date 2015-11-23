@@ -1,4 +1,4 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+﻿<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <spring:url value="/resources/" var="croot" />
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, initial-scale=0.38, maximum-scale=2, user-scalable=yes" />
 <title>천재학습백과 공유저작물</title>
 <link rel="stylesheet" href="${croot}css/common.css" type="text/css" />
-<link rel="shortcut icon" href="${croot}images/favicon.ico">
+<link rel="shortcut icon" href="http://www.chunjae.co.kr/resource/images/common/favicon.ico" />
 <script type="text/javascript" src="${croot}js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -26,20 +26,23 @@
 
 	searchSth = function(id) {
 		var keyword = "";
+		var munitidx= "";
 		var action = "";
 		if(id == 1) {
 			keyword = $("#hSearchText").val();
+			munitidx = $("#hmunitidx  option:selected").val();
 			action = "heritage_search.do";
 		} else {
 			keyword = $("#bSearchText").val();
+			munitidx = $("#bmunitidx  option:selected").val();
 			action = "biology_search.do";
 		}
 
-		if(keyword == "") {
-			var alertMsg = (id == 1) ? "문화유산 " : "생물정보 ";
-			alert(alertMsg + "검색어를 입력해 주세요.");
-			return;
-		}
+		//if(keyword == "") {
+		//	var alertMsg = (id == 1) ? "문화유산 " : "생물정보 ";
+		//	alert(alertMsg + "검색어를 입력해 주세요.");
+		//	return;
+		//}
 
 //		$('#search_form').attr('action', action);
 //		$('#entryTitle').val = keyword;
@@ -47,9 +50,22 @@
 		var form = document.forms[0];
 		form.action = action;
 		form.entryTitle.value = keyword;
+		form.munitidx.value = munitidx;
 		form.submit()
 
 	}
+</script>
+
+<!--Glogle Analytics-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69979853-1', 'auto');
+  ga('send', 'pageview');
+
 </script>
 </head>
 
@@ -92,7 +108,15 @@
 				<div class="section">
 					<div class="heritageSearch">
 						<p>문화재청에서 제공하는 <strong>4,500여건</strong>의 문화유산 정보를 검색하실 수 있습니다.</p>
-						<input type="text" id="hSearchText" name="hSearchText" class="searchText" /><button onclick="searchSth(1);">문화유산 검색</button>
+						<select  name="hmunitidx" id="hmunitidx">
+								<option value="">전체</option>
+								<option value="995">국보</option>
+								<option value="996">보물</option>
+								<option value="997">사적</option>
+								<option value="998">중요무형문화재</option>
+								<option value="999">천연기념물</option>
+								<option value="1000">기타</option>
+							</select><input type="text" id="hSearchText" name="hSearchText" class="searchText" /><button onclick="searchSth(1);">문화유산 검색</button>
 					</div>
 				</div>
 
@@ -135,7 +159,14 @@
 				<div class="section">
 					<div class="heritageSearch">
 						<p>국립수목원에서 제공하는 <strong>4,500여건</strong>의 생물정보 정보를 검색하실 수 있습니다.</p>
-						<input type="text" id="bSearchText" name="bSearchText" class="searchText" /><button onclick="searchSth(2);">생물정보 검색</button>
+						<select name="bmunitidx" id="bmunitidx">
+							<option value="">전체</option>
+								<option value="1034">포유류</option>
+								<option value="1035">조류</option>
+								<option value="1036">식물</option>
+								<option value="1037">균류</option>
+								<option value="1038">곤충</option>
+							</select><input type="text" id="bSearchText" name="bSearchText" class="searchText" /><button onclick="searchSth(2);">생물정보 검색</button>
 					</div>
 				</div>
 				
@@ -181,7 +212,7 @@
 			<span>(주)천재교육</span>
 			<span>대표 : 최용준</span>
 			<span> 주소 : 서울특별시 금천구 가산로 9길 54</span>
-			<span>고객만족센터 : 1577-7609</span><br />
+			<span>고객만족센터 : 1577-0902</span><br />
 			<span>사업자등록번호 : 119-81-19350</span>
 			<span>통신판매신고번호 : 제 18-439호</span>
 			<span>부가통신사업신고번호 : 016712</span><br />

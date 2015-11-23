@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 /* ------------------------------------------------------------
  * Name      : layout.css
@@ -125,7 +125,7 @@ body #wrap.dimed_on header .location:before{display:block; content:""; position:
 #wrap #mainWrap #mainContent .mainBox .section .heritageSearch p strong{color:#ec4646; font-size:17px;}
 #wrap #mainWrap #mainContent .mainBox .section .heritageSearch .searchText{width:calc(65% + 30px); border-radius:20px 0 0 20px; border:1px solid #e5e6e9; height:35px; padding:5px;}
 #wrap #mainWrap #mainContent .mainBox .section .heritageSearch button{background:#009944; border:none; color:#fff; font-size:13px; text-align:center; width:35%; margin-left:-30px; border-radius:20px; height:35px; padding:5px 0;}
-#wrap #mainWrap .themeHeritage{background:#f1f1f1; border-top:1px solid #9a9c9e;}
+#wrap #mainWrap .themeHeritage{background:#f1f1f1; border-top:0px solid #9a9c9e;}
 #wrap #mainWrap .themeHeritage .section{padding:30px 20px 10px 20px;}
 	.sectionTit{font-size:16.4px; color:#333; min-height:20px; font-weight:bold; margin-bottom:15px;}
 	.sectionTit.theme{background:url('../../images/main/icon_theme.png') no-repeat left top; background-size:20px 20px; padding:0 0 0 25px;}
@@ -145,7 +145,7 @@ body #wrap.dimed_on header .location:before{display:block; content:""; position:
 #wrap #mainWrap .mainStudy .section .cultureT span{display:block; text-align:center; margin:5px 0; font-size:14px; color:#555; line-height:18px; }
 
 #wrap .contents{overflow:hidden; padding:0 18px;}
-#wrap .contents header h1{text-align:center; font-size:19px; padding:30px 0; font-weight:bold; color:#000;}
+#wrap .contents header h1{text-align:center; font-size:19px; padding:12px 0; font-weight:bold; color:#000;}
 #wrap .contents header .themeTit{padding:15px 0; text-align:center; background:#8fa185 url('../../images/sub/bg_themeTit.png') repeat; background-size:contain; color:#fff; font-size:15px; margin-bottom:20px;}
 
 #wrap .contents .sorting{}
@@ -154,7 +154,8 @@ body #wrap.dimed_on header .location:before{display:block; content:""; position:
 #wrap .contents .sorting select{width:calc(100% - 70px); float:left;}
 #wrap .contents .sorting select.part3{width:calc(((100% - 70px) / 3) - 7px); margin-left:0;}
 #wrap .contents .sorting select.part3 + .part3{margin-left:10px;}
-#wrap .contents .themeT{margin-top:30px;}
+/*#wrap .contents .themeT{margin-top:30px;}*/
+#wrap .contents .themeT{margin-top:0px;}
 #wrap .contents .themeT li{margin-bottom:10px; border:1px solid #e5e5e5; border-bottom-width:2px;}
 #wrap .contents .themeT li a{}
 #wrap .contents .themeT li p{font-size:14px; color:#454545; padding:15px; background:#e5e5e5; font-weight:bold;}
@@ -246,7 +247,7 @@ button.button{vertical-align: middle; padding: 0; margin: 0; border: none; font-
 .imgList ul{overflow:hidden;}
 .imgList ul li{float:left; margin-left:15px; width:calc((100% - 30px) / 3); overflow:hidden; margin-bottom: 10px; min-height:160px;}
 .imgList ul li:nth-child(3n+1){margin-left:0;}
-.imgList ul li img{width:100%; display:inline-block;}
+.imgList ul li img{width:114px; height:114px; display:inline-block;}
 .imgList ul li span{display:inline-block; width: 90%; line-height:18px; font-size:14px; color:#545454; text-align:center; margin:5px 0 0 0; padding:0 5px; max-height:38px; overflow:hidden;}
 
 /*생물검색 우측 리스트*/
@@ -254,7 +255,7 @@ button.button{vertical-align: middle; padding: 0; margin: 0; border: none; font-
 .bioList ul{overflow:hidden; margin-left:-4px;}
 .bioList ul li{float:left; margin:0 0 15px 10px; width:calc((100% - 20px) / 2); min-height:152px; overflow:hidden; border:1px solid #ccc;}
 .bioList ul li:nth-child(2n+1){margin-left:0;}
-.bioList ul li img{width:100%; display:inline-block;}
+.bioList ul li img{width:176px; height:124px; display:inline-block;}
 .bioList ul li span{display:inline-block; width: 100%; line-height:18px; font-size:14px; color:#545454; text-align:center; margin:5px 0;}
 
 /*예문레이어팝업*/

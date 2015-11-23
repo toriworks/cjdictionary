@@ -1,4 +1,4 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+﻿<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <spring:url value="/resources/" var="croot" />
 <spring:url value="http://open.chunjae.co.kr:7080/CMS100Data/EntryData" var="cms_url" />
@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, initial-scale=0.38, maximum-scale=2, user-scalable=yes" />
 	<title>천재학습백과 공유저작물</title>
 	<link rel="stylesheet" href="${croot}css/common.css" type="text/css" />
-	<link rel="shortcut icon" href="${croot}images/favicon.ico">
+	<link rel="shortcut icon" href="http://www.chunjae.co.kr/resource/images/common/favicon.ico" />
 	<script type="text/javascript" src="${croot}js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -28,6 +28,17 @@
 			window.open(tUCI, "UCI 정보", "width=553, height=605, toolbar=no, menubar=no, scrollbars=yes, resizable=no");
 		}
 	</script>
+<!--Glogle Analytics-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69979853-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </head>
 
 <body>
@@ -85,12 +96,29 @@
 					<!-- <div class="themeTit">
 						<p>광복 70주년 독립운동 문화유산</p>
 					</div> -->
-					<h2>${entry.entryTitle}</h2>
+					<h2>${entry.entryTitle}<br/></h2>
 					<c:out value="${basic}" escapeXml="false" />
 					<c:set var="referer" value="" />
 					<c:if test="${cat == '1'}"><c:set var="referer" value="heritage_research.do" /></c:if>
 					<c:if test="${cat == '2'}"><c:set var="referer" value="heritage_search.do" /></c:if>
 					<div class="sideR"><button class="button type1" onclick="goPage('${referer}');">< BACK</button></div>
+					
+					<!-- CC 표시 영역 -->
+					<div style="margin-top:70px;margin-bottom:20px;">
+						<table style="background-color:#f9f9f9;">
+							<colgroup>
+								<col style="width:auto;" />
+								<col style="width:auto;" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<td style="vertical-align:middle;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></th>
+									<td style="padding:5px 5px 5px 5px;font-size:12px;text-align:left;line-height:15px;"><a xmlns:cc="http://creativecommons.org/ns#" href="http://open.chunjae.co.kr" property="cc:attributionName" rel="cc:attributionURL"  target="_blank">천재교육</a>에 의해 작성된 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">학습백과 공유저작물</span>은(는) <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
 				</div>
 				<!-- 우측 본문 -->
 				<div class="descSection">
@@ -107,42 +135,14 @@
 								<col style="width:70%" />
 							</colgroup>
 							<tbody>
-							<tr>
-								<th>종목</th>
-								<td>${informations[0].outlineData}</td>
-							</tr>
-							<tr>
-								<th>명칭</th>
-								<td>${entry.entryTitle} <c:if test="${entry.entryTitleC != ''}">(<c:out value="${entry.entryTitleC}" />)</c:if></td>
-							</tr>
-							<tr>
-								<th>분류</th>
-								<td>${informations[1].outlineData}</td>
-							</tr>
-							<tr>
-								<th>수량/면적</th>
-								<td>${informations[2].outlineData}</td>
-							</tr>
-							<tr>
-								<th>지정(등록)일</th>
-								<td>${informations[3].outlineData}</td>
-							</tr>
-							<tr>
-								<th>소재지</th>
-								<td>${informations[4].outlineData}</td>
-							</tr>
-							<tr>
-								<th>시대</th>
-								<td>${informations[5].outlineData}</td>
-							</tr>
-							<tr>
-								<th>소유자<br /><em>(소유단체)</em></th>
-								<td>${informations[6].outlineData}</td>
-							</tr>
-							<tr>
-								<th>관리자<br /><em>(관리단체)</em></th>
-								<td>${informations[7].outlineData}</td>
-							</tr>
+							<c:set var="i" value="0" scope="page" />
+							<c:forEach var="inform" items="${informations}">
+								<tr>
+									<th>${inform.outlineName}</th>
+									<td>${inform.outlineData}</td>
+								</tr>
+								<c:set var="i" value="${i + 1}" scope="page"/>
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -233,7 +233,7 @@
 			<span>(주)천재교육</span>
 			<span>대표 : 최용준</span>
 			<span> 주소 : 서울특별시 금천구 가산로 9길 54</span>
-			<span>고객만족센터 : 1577-7609</span><br />
+			<span>고객만족센터 : 1577-0902</span><br />
 			<span>사업자등록번호 : 119-81-19350</span>
 			<span>통신판매신고번호 : 제 18-439호</span>
 			<span>부가통신사업신고번호 : 016712</span><br />
@@ -245,7 +245,7 @@
 	<span style="display:none;"><img src="http://uci.or.kr/${uciresult.uciCode}@N2L:1" width="0" height="0" /></span>
 	
 	<!-- 용어 레이어 -->
-	<span id="term1pop" style="display:none;"><span class="term miniPop"><p class="miniPop_title">홍예문</p><figure><img src="${croot}images/@pic02.jpg" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><img src="${croot}images/bg_po.png" class="pointDot"></span>
+	<span id="term1pop" style="display:block;"><span class="term miniPop"><p class="miniPop_title">홍예문</p><figure><img src="${croot}images/@pic02.jpg" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><img src="${croot}images/bg_po.png" class="pointDot"></span>
 
 
 </div>

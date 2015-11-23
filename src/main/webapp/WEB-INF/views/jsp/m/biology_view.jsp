@@ -34,6 +34,16 @@
 			$("#term1pop").show();
 		}
 	</script>
+	<!--Glogle Analytics-->
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-69979853-1', 'auto');
+	ga('send', 'pageview');
+	</script>
 </head>
 <body>
 
@@ -52,8 +62,8 @@
 		</nav>
 		<div class="subNav">
 			<a href="biology_research.do" >학습자료</a>
-			<a href="biology_theme.do">테마별 생물정보</a>
-			<a href="biology_search.do" class="focus">생물정보 검색</a>
+			<a href="biology_theme.do"  class="focus">테마별 생물정보</a>
+			<a href="biology_search.do">생물정보 검색</a>
 		</div>
 		<div class="subTit">
 			<figure><img src="${croot}images/sub/bg_menuBio.png" alt=""></figure>
@@ -64,14 +74,14 @@
 	<!-- subwrap -->
 	<section class="contents">
 		<header>
-			<h1>생물정보 검색</h1>
+			<h1><!--테마 별 생물정보--></h1>
 			<div class="themeTit">
 				${title}
 			</div>
 		</header>
 		<article>
 			<div class="textSection">
-				<h2>${entry.entryTitle}</h2>
+				<h2>${entry.entryTitle}<br/><br/></h2>
 				<p><c:out value="${basic}" escapeXml="false" /></p>
 			</div>
 
@@ -174,34 +184,41 @@
 					<table>
 						<caption>용어 해설</caption>
 						<colgroup>
-							<col style="width:33%" />
-							<col style="width:33%" />
-							<col style="width:33%" />
+								<col style="width:50%" />
+								<col style="width:50%" />
 						</colgroup>
-						<tbody>
-						<c:set var="j" value="0" scope="page" />
-						<c:forEach var="terms_data" items="${list_terms}">
-							<c:if test="${j mod 3 eq 0}">
-								<tr>
-							</c:if>
-							<td><a class="termWord" href="biology_view.do?idx=${terms_data.idx}">${terms_data.entryTitle}</a></td>
-							<c:if test="${j mod 3 eq 0}">
-								</tr>
-							</c:if>
-							<c:set var="j" value="${j + 1}" scope="page"/>
-						</c:forEach>
-						<!--
+							<tbody>
 							<tr>
-								<td><a class="termWord" href="#term1pop">홍예문</a></td>
-								<td><a class="termWord" href="#term2pop">누각</a></td>
-								<td><a class="termWord" href="#term3pop">석축</a></td>
-							</tr>
-						-->
-						</tbody>
+							<c:set var="j" value="0" scope="page" />
+							<c:forEach var="terms_data" items="${list_terms}">
+								<td><a href="biology_view2.do?cat=3&idx=${list_terms.get(j).idx}">${list_terms.get(j).entryTitle}</a></td>
+								<c:if test="${j mod 2 eq 1}">
+									</tr>
+									<tr>
+								</c:if>
+								<c:set var="j" value="${j + 1}" scope="page"/>
+							</c:forEach>
+							</tbody>
 					</table>
 				</div>
 				</c:if>
 				</c:if>
+				
+				<!-- CC 표시 영역 -->
+					<div style="margin-top:40px;margin-bottom:0px;">
+						<table style="background-color:#f9f9f9;">
+							<colgroup>
+								<col style="width:auto;" />
+								<col style="width:auto;" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<td style="vertical-align:middle;"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></th>
+									<td style="padding:5px 5px 5px 5px;font-size:12px;text-align:left;line-height:15px;"><a xmlns:cc="http://creativecommons.org/ns#" href="http://open.chunjae.co.kr" property="cc:attributionName" rel="cc:attributionURL"  target="_blank">천재교육</a>에 의해 작성된 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">학습백과 공유저작물</span>은(는) <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 			</div>
 		</article>
 	</section>
@@ -215,7 +232,7 @@
 		<span>(주)천재교육</span>
 		<span>대표 : 최용준</span>
 		<span>주소 : 서울특별시 금천구 가산로 9길 54</span><br />
-		<span>고객만족센터 : 1577-7609</span>
+		<span>고객만족센터 : 1577-0902</span>
 		<span>사업자등록번호 : 119-81-19350</span><br />
 		<span>통신판매신고번호 : 제 18-439호</span>
 		<span>부가통신사업신고번호 : 016712</span><br />
@@ -225,8 +242,10 @@
 </section>
 <!--// wrap -->
 
+<!---UCI 변환 통계--->
+<span style="display:none;"><img src="http://uci.or.kr/${uciresult.uciCode}@N2L:1" width="0" height="0" /></span>
 <!-- 용어 레이어 -->
-<span id="term1pop" style="display:none;"><span class="term miniPop"><p class="miniPop_title">홍예문</p><figure><img src="${croot}images/@pic02.jpg" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><!-- img src="${croot}images/bg_po.png" class="pointDot" --></span>
+<span id="term1pop" style="display:none;"><span class="term miniPop"><p class="miniPop_title">&nbsp;</p><figure><img src="" alt="" class="miniPop_image" width=270 height=180></figure><a class="btnX" href="#"><img src="/resources/images/common/btn_x.png" alt=""></a></span><!-- img src="${croot}images/bg_po.png" class="pointDot" --></span>
 
 </body>
 </html>

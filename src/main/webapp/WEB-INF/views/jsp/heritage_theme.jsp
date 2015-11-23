@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, initial-scale=0.38, maximum-scale=2, user-scalable=yes" />
 <title>천재학습백과 공유저작물</title>
 	<link rel="stylesheet" href="${croot}css/common.css" type="text/css" />
-	<link rel="shortcut icon" href="${croot}images/favicon.ico">
+	<link rel="shortcut icon" href="http://www.chunjae.co.kr/resource/images/common/favicon.ico" />
 	<script type="text/javascript" src="${croot}js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -20,6 +20,17 @@
 			location.href = "heritage_list.do?binderIdx=" + binderIdx + "&title=" + title;
 		}
 	</script>
+<!--Glogle Analytics-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69979853-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </head>
 
 <body>
@@ -82,23 +93,23 @@
 				</div>
 				<ul class="themeT">
 					<li>
-						<a href="javascript:goPage(1, '우리나라의 세계유산');"><p>우리나라의 세계유산</p>
+						<a href="javascript:goPage(5, '우리나라의 세계유산');"><p>우리나라의 세계유산</p>
 						<span style="font-size:15px;">수원 화성, 경주 불국사, 창덕궁,<br /> 남한산성, 합천 해인사…</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(44, '우리나라의 기록유산');"><p>우리나라의 기록유산</p>
+						<a href="javascript:goPage(7, '우리나라의 기록유산');"><p>우리나라의 기록유산</p>
 						<span style="font-size:15px;">훈민정음, 이순신 난중일기, 동의보감<br />조선왕조실록 태백산사고본…</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(45, '우리나라의 인류무형문화유산');"><p>우리나라의 인류무형문화유산</p>
+						<a href="javascript:goPage(6, '우리나라의 인류무형문화유산');"><p>우리나라의 인류무형문화유산</p>
 						<span style="font-size:15px;">판소리, 강강술래, 남사당놀이 <br />종묘제례악, 강릉단오제…</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(46, '백제의 문화재');"><p>백제의 문화재</p>
+						<a href="javascript:goPage(4, '백제의 문화재');"><p>백제의 문화재</p>
 						<span style="font-size:15px;">백제 금동대향로, 서울 몽촌토성, <br />무령왕 금귀걸이, 금동보살입상 …</span></a>
 					</li>
 					<li>
-						<a href="javascript:goPage(47, '세종시 중요문화재');"><p>세종시 중요문화재</p>
+						<a href="javascript:goPage(8, '세종시 중요문화재');"><p>세종시 중요문화재</p>
 						<span style="font-size:15px;">세종시 연화사 칠존불비상, 세종 유계화 가옥, <br />세종시 연화사 무인명불비상…</span></a>
 					</li>
 				</ul>
@@ -125,7 +136,7 @@
 			<span>(주)천재교육</span>
 			<span>대표 : 최용준</span>
 			<span> 주소 : 서울특별시 금천구 가산로 9길 54</span>
-			<span>고객만족센터 : 1577-7609</span><br />
+			<span>고객만족센터 : 1577-0902</span><br />
 			<span>사업자등록번호 : 119-81-19350</span>
 			<span>통신판매신고번호 : 제 18-439호</span>
 			<span>부가통신사업신고번호 : 016712</span><br />

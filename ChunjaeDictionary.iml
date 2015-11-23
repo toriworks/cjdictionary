@@ -13,8 +13,8 @@
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/java" />
         </sourceRoots>
       </configuration>
     </facet>
@@ -62,7 +62,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="sqljdbc4" level="project" />
-    <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>

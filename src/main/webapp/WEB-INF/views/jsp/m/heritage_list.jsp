@@ -19,6 +19,16 @@
 			location.href = url;
 		}
 	</script>
+	<!--Glogle Analytics-->
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-69979853-1', 'auto');
+	ga('send', 'pageview');
+	</script>
 </head>
 <body>
 
@@ -49,7 +59,7 @@
 	<!-- subwrap -->
 	<section class="contents">
 		<header>
-			<h1>테마 별 문화유산</h1>
+			<h1><!--테마 별 문화유산--></h1>
 			<div class="themeTit">
 				${title}
 			</div>
@@ -81,7 +91,7 @@
 						<c:set var="i" value="${i + 1}" scope="page"/>
 						<tr>
 							<td><c:out value="${i}" /></td>
-							<td><a href="heritage_view.do?idx=${lists.idx}&title=${title}">${lists.tag}</a></td>
+							<td><a href="heritage_view.do?idx=${lists.idx}&title=${title}">${utility.getStrMUnitIdx(lists.munitidx)}</a></td>
 							<td><a href="heritage_view.do?idx=${lists.idx}&title=${title}"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitleC}" /></a></td>
 							<td><c:out value="${lists.ucicode}" /></td>
 						</tr>
@@ -170,7 +180,7 @@
 		<span>(주)천재교육</span>
 		<span>대표 : 최용준</span>
 		<span>주소 : 서울특별시 금천구 가산로 9길 54</span><br />
-		<span>고객만족센터 : 1577-7609</span>
+		<span>고객만족센터 : 1577-0902</span>
 		<span>사업자등록번호 : 119-81-19350</span><br />
 		<span>통신판매신고번호 : 제 18-439호</span>
 		<span>부가통신사업신고번호 : 016712</span><br />

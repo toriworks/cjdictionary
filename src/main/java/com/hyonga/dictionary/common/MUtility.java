@@ -159,7 +159,7 @@ public class MUtility {
                 Element elementOfLinkText = (Element) nodeListOfLinkText.item(0);
 
 //                strRet += "<figure>";
-                strRet += "<figure>";
+                strRet += "<figure style=\"text-align:center;\">";
                 if (null != elementOfLinkText) {
                     if (elementOfLinkText.getFirstChild().getNodeValue().startsWith("http://") || elementOfLinkText.getFirstChild().getNodeValue().equals("www")) {
                         strRet += "<a href=\"javascript:winopen('" + elementOfLinkText.getFirstChild().getNodeValue() + "');\">";
@@ -217,12 +217,15 @@ public class MUtility {
 //        ori = ori.replaceAll("\\^", "\');\">");
 //        ori = ori.replaceAll("(\\$>)", "</a>");
 
-        ori = ori.replaceAll("[$]", "");
+//        ori = ori.replaceAll("[$]", "");
         ori = ori.replaceAll("#", "\" value=\"/resources/images/highlight/");
-        ori = ori.replaceAll("&lt;", "<a href=\"#term1pop\" class=\"termWord\" title=\"");
+        ori = ori.replaceAll("&lt;[$]", "<a href=\"#term1pop\" class=\"termWord\" title=\"");
         ori = ori.replaceAll("\\^", "\">");
-        ori = ori.replaceAll("&gt;", "</a>");
+        ori = ori.replaceAll("[$]&gt;", "</a>");
         ori = ori.replaceAll("href=\"\"", "href=\"#term1pop\"");
+
+        ori = ori.replaceAll("&lt;", "<");
+        ori = ori.replaceAll("&gt;", ">");
 
         System.out.println("변환본:" + ori + "<<END");
         return ori;

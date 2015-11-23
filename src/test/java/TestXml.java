@@ -141,7 +141,7 @@ public class TestXml {
         //String ori = "<$잎자루#038.jpg^잎자루$>";
 //        String ori = "부레옥잠의 <$잎자루#038.jpg^잎자루$>를 물에 넣어보면 그 이유를 알 수 있습니다.";
 //        String ori = "가을철에 2개의 가시가 달린 &lt;$겨드랑이눈#007.jpg^겨드랑이눈$&gt;이 떨어져서 물 밑에 잠겼다가 싹이 터서 자라는 특색이 있다.";
-        String ori = "가을철에 2개의 가시가 달린 &lt;겨드랑이눈#007.jpg^겨드랑이눈&gt;이 떨어져서 물 밑에 잠겼다가 싹이 터서 자라는 특색이 있다.";
+        String ori = "▶가을철에 2개의 가시가 달린 &lt;$겨드랑이눈#007.jpg^겨드랑이눈$&gt;이 떨어져서 물 밑에 잠겼다가 싹이 터서 자라는 특색이 있다.";
 
 //        ori = ori.replaceAll("[$]", "");
 //        ori = ori.replaceAll("&lt;", "<a href=\"showLayer('");
@@ -152,11 +152,11 @@ public class TestXml {
 
         System.out.println(ori);
 
-        ori = ori.replaceAll("[$]", "");
+//        ori = ori.replaceAll("[$]", "");
         ori = ori.replaceAll("#", "\" value=\"/resources/images/hightlight/");
-        ori = ori.replaceAll("&lt;", "<a href=\"#term1pop\" class=\"termWord\" title=\"");
+        ori = ori.replaceAll("&lt;[$]", "<a href=\"#term1pop\" class=\"termWord\" title=\"");
         ori = ori.replaceAll("\\^", "\">");
-        ori = ori.replaceAll("&gt;", "</a>");
+        ori = ori.replaceAll("[$]&gt;", "</a>");
         ori = ori.replaceAll("href=\"\"", "href=\"#term1pop\"");
 
         System.out.println(ori);

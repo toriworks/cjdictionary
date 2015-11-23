@@ -173,12 +173,16 @@ public class Utility {
 //        ori = ori.replaceAll("\\^", "\');\">");
 //        ori = ori.replaceAll("(\\$>)", "</a>");
 
-        ori = ori.replaceAll("[$]", "");
+//        ori = ori.replaceAll("[$]", "");
+
         ori = ori.replaceAll("#", "\" value=\"/resources/images/highlight/");
-        ori = ori.replaceAll("&lt;", "<a href=\"#term1pop\" class=\"termWord\" title=\"");
+        ori = ori.replaceAll("&lt;[$]", "<a href=\"#term1pop\" class=\"termWord\" title=\"");
         ori = ori.replaceAll("\\^", "\">");
-        ori = ori.replaceAll("&gt;", "</a>");
+        ori = ori.replaceAll("[$]&gt;", "</a>");
         ori = ori.replaceAll("href=\"\"", "href=\"#term1pop\"");
+
+        ori = ori.replaceAll("&lt;", "<");
+        ori = ori.replaceAll("&gt;", ">");
 
         System.out.println("변환본:" + ori + "<<END");
         return ori;
@@ -231,6 +235,16 @@ public class Utility {
             strMUnitIdx = "천연기념물";
         } else if (munitidx.equals("1000")) {
             strMUnitIdx = "기타";
+        } else if (munitidx.equals("1034")) {
+            strMUnitIdx = "포유류";
+        } else if (munitidx.equals("1035")) {
+            strMUnitIdx = "조류";
+        } else if (munitidx.equals("1036")) {
+            strMUnitIdx = "식물";
+        } else if (munitidx.equals("1037")) {
+            strMUnitIdx = "균류";
+        } else if (munitidx.equals("1038")) {
+            strMUnitIdx = "곤충";
         }
 
         return strMUnitIdx;

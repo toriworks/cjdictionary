@@ -36,6 +36,16 @@
 			form.submit();
 		}
 	</script>
+	<!--Glogle Analytics-->
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-69979853-1', 'auto');
+	ga('send', 'pageview');
+	</script>
 </head>
 <body>
 
@@ -66,7 +76,7 @@
 	<!-- subwrap -->
 	<section class="contents">
 		<header>
-			<h1>생물정보 검색</h1>
+			<h1><!--생물정보 검색--></h1>
 		</header>
 		<article>
 
@@ -74,7 +84,7 @@
 				<form name="search_form" id="search_form" method="post">
 					<input type="hidden" name="page" id="page" value="1" />
 					<dl>
-						<dt>생물정보 검색</dt>
+						<dt>생물정보<br />검색</dt>
 						<dd><select name="munitidx" id="munitidx">
 							<option value="" <c:if test="${munitidx == ''}"><c:out value="selected" /></c:if>>전체</option>
 							<option value="1034" <c:if test="${munitidx == '1034'}"><c:out value="selected" /></c:if>>포유류</option>
@@ -135,88 +145,29 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:set var="i" value="${(page - 1) * 20}" scope="page" />
-						<c:forEach var="lists" items="${data}">
+					
+					<c:set var="cnt" value="${totalCount}" />
+					<c:if test="${cnt > 0}">
+					
+					<c:set var="i" value="${(page - 1) * 20}" scope="page" />
+					<c:forEach var="lists" items="${data}">
 						<c:set var="i" value="${i + 1}" scope="page"/>
 						<tr>
-							<td><c:out value="${i+1}" /></td>
-							<td><a href="biology_view2.do?cat=2&idx=${lists.idx}">${utility.getLastWordFromString(lists.tag, ",")}</a></td>
+							<td><c:out value="${i}" /></td>
+							<td><a href="biology_view2.do?cat=2&idx=${lists.idx}">${utility.getStrMUnitIdx(lists.munitidx)}</a></td>
 							<td><a href="biology_view2.do?cat=2&idx=${lists.idx}"><c:out value="${lists.entryTitle}" /><br /><c:out value="${lists.entryTitleC}" /></a></td>
 							<td><c:out value="${lists.ucicode}" /></td>
 						</tr>
 						</c:forEach>
-						<!--
-						<tr>
-							<td>1</td>
-							<td><a href="heritage_view.html">사적 제 32호</a></td>
-							<td><a href="heritage_view.html">서울 독립문<br />(서울 獨立門)</a></td>
-							<td>서울 서대문구</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td><a href="heritage_view.html">국보 제 2호</a></td>
-							<td><a href="heritage_view.html">아우내 3.1운동 독립사적지<br />(아우내 3.1運動 獨立史蹟址)</a></td>
-							<td>충남 천안시</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td><a href="heritage_view.html">국보 제 3호</a></td>
-							<td><a href="heritage_view.html">광주학생독립운동진원지나주역사<br />(光州學生獨立運動震源地羅州驛舍)</a></td>
-							<td>전남 나주시</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td><a href="heritage_view.html">국보 제 4호</a></td>
-							<td><a href="heritage_view.html">독립지사김태원생가유허<br />(獨立志士金泰源生家遺墟)</a></td>
-							<td>대전 동구</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td><a href="heritage_view.html">국보 제 5호</a></td>
-							<td><a href="heritage_view.html">‘대한독립만세’ 태극기</a></td>
-							<td>충남 천안시</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td><a href="heritage_view.html">국보 제 6호</a></td>
-							<td><a href="heritage_view.html">진관사 소장 태극기 및 독립신문류</a></td>
-							<td>서울 은평구</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td><a href="heritage_view.html">국보 제 7호</a></td>
-							<td><a href="heritage_view.html">대조선독립협회회보</a></td>
-							<td>전남 나주시</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td><a href="heritage_view.html">국보 제 8호</a></td>
-							<td><a href="heritage_view.html">독립신문</a></td>
-							<td>대전 동구</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td><a href="heritage_view.html">국보 제 9호</a></td>
-							<td><a href="heritage_view.html">대조선독립협회회보</a></td>
-							<td>충남 천안시</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td><a href="heritage_view.html">국보 제 10호</a></td>
-							<td><a href="heritage_view.html">대한국독립협회지장</a></td>
-							<td>서울 은평구</td>
-							<td>I421:111-111-111</td>
-						</tr>
-						-->
+						</c:if>
+						
+						<c:set var="cnt" value="${totalCount}" />
+						<c:if test="${cnt < 1}">
+							<tr>
+								<td colspan="4">검색결과가 없습니다.</td>
+							</tr>
+						</c:if>
+						
 					</tbody>
 				</table>
 			</div><!-- //board -->
@@ -240,7 +191,7 @@
 		<span>(주)천재교육</span>
 		<span>대표 : 최용준</span>
 		<span>주소 : 서울특별시 금천구 가산로 9길 54</span><br />
-		<span>고객만족센터 : 1577-7609</span>
+		<span>고객만족센터 : 1577-0902</span>
 		<span>사업자등록번호 : 119-81-19350</span><br />
 		<span>통신판매신고번호 : 제 18-439호</span>
 		<span>부가통신사업신고번호 : 016712</span><br />

@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi, initial-scale=0.38, maximum-scale=2, user-scalable=yes" />
 <title>천재학습백과 공유저작물</title>
 <link rel="stylesheet" href="${croot}css/common.css" type="text/css" />
-<link rel="shortcut icon" href="${croot}images/favicon.ico">
+<link rel="shortcut icon" href="http://www.chunjae.co.kr/resource/images/common/favicon.ico" />
 <script type="text/javascript" src="${croot}js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${croot}js/jquery-ui-1.8.23.custom.min.js"></script>
@@ -36,6 +36,17 @@
 			form.submit();
 		}
 	</script>
+<!--Glogle Analytics-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69979853-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </head>
 
 <body>
@@ -105,29 +116,17 @@
 
 				<div class="board imgList"><!-- board -->
 					<ul>
+					<c:set var="cnt" value="${totalCount}" />
+					<c:if test="${cnt > 0}">
 						<c:forEach var="lists" items="${data}">
 						<li><a href="#popImg"><img src="${croot}images/uci/thumb/<c:out value="${lists.filename}" />" alt="<c:out value="${lists.imageCaption}" />"> <span><c:out value="${lists.imageCaption}" /></span></a></li>
 						</c:forEach>
-						<!-- li><a href="#popImg"><img src="${croot}images/@pic05.jpg" alt=""> <span>숭례문(1882)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic06.jpg" alt=""> <span>남대문 시장과 숭례문(1904)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic07.jpg" alt=""> <span>숭례문과 숭례문 성곽(1904)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic08.jpg" alt=""> <span>전찻길이 놓인 숭례문(1905)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic09.jpg" alt=""> <span>일저 강점기 숭례문(1915년 추정)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic10.jpg" alt=""> <span>10환 지폐 전면에 담긴 숭례문<br />(1953~1962년 발행권)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic04.jpg" alt=""> <span>봄 숭례문(2015)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic05.jpg" alt=""> <span>숭례문(1882)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic06.jpg" alt=""> <span>남대문 시장과 숭례문(1904)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic07.jpg" alt=""> <span>숭례문과 숭례문 성곽(1904)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic08.jpg" alt=""> <span>전찻길이 놓인 숭례문(1905)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic09.jpg" alt=""> <span>일저 강점기 숭례문(1915년 추정)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic10.jpg" alt=""> <span>10환 지폐 전면에 담긴 숭례문<br />(1953~1962년 발행권)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic04.jpg" alt=""> <span>봄 숭례문(2015)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic05.jpg" alt=""> <span>숭례문(1882)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic06.jpg" alt=""> <span>남대문 시장과 숭례문(1904)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic07.jpg" alt=""> <span>숭례문과 숭례문 성곽(1904)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic08.jpg" alt=""> <span>전찻길이 놓인 숭례문(1905)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic09.jpg" alt=""> <span>일저 강점기 숭례문(1915년 추정)</span></a></li>
-						<li><a href="#popImg"><img src="${croot}images/@pic10.jpg" alt=""> <span>10환 지폐 전면에 담긴 숭례문<br />(1953~1962년 발행권)</span></a></li -->
+					</c:if>
+						
+					<c:set var="cnt" value="${totalCount}" />
+					<c:if test="${cnt < 1}">
+						<li style="width:100%;text-align:center;font-size:15px;">검색결과가 없습니다.</li>
+					</c:if>
 					</ul>
 				</div><!-- //board -->
 
@@ -147,7 +146,7 @@
 			<span>(주)천재교육</span>
 			<span>대표 : 최용준</span>
 			<span> 주소 : 서울특별시 금천구 가산로 9길 54</span>
-			<span>고객만족센터 : 1577-7609</span><br />
+			<span>고객만족센터 : 1577-0902</span><br />
 			<span>사업자등록번호 : 119-81-19350</span>
 			<span>통신판매신고번호 : 제 18-439호</span>
 			<span>부가통신사업신고번호 : 016712</span><br />
